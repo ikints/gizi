@@ -59,7 +59,12 @@ $route['valid-login'] = 'home/valid_login_users';
 $route['users/profil'] = 'users';
 $route['users/logout'] = 'users/logout';
 $route['kecamatan'] = 'users/kecamatan';
+
 $route['kelurahan'] = 'users/kelurahan';
 $route['add_kelurahan'] = 'users/add_kelurahan';
+
 $route['puskesmas'] = 'users/puskesmas';
+$route['add_puskesmas'] = 'users/add_puskesmas';
+
 $route['posyandu'] = 'users/posyandu';
+$route['add_posyandu'] = 'users/add_posyandu';
