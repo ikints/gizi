@@ -22,9 +22,7 @@ $(function () {
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : false,
-      dom: 'lBfrtip',
-      buttons: [],
+      'autoWidth'   : false
     });
 
     //Date picker
