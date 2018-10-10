@@ -1,4 +1,3 @@
-$(function () {
 
     $.validate({
       modules : 'location, date, security, file',
@@ -30,5 +29,3 @@ $(function () {
       format: 'dd/mm/yyyy',
       autoclose: true
     });
-
-  });

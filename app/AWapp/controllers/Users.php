@@ -60,9 +60,26 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		//$data['profil'] = $this->user_model->profil_member();			
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['kelurahan'] = $this->user_model->kelurahan();			
 		$data['main_content'] = 'users/kelurahan';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kelurahan()
+	{
+		$data = array(
+				'kec_id' 	=> $this->input->post('kec_id'),
+				'kel_kode' 	=> $this->input->post('kel_kode'),
+				'kel_nama' 	=> $this->input->post('kel_nama')
+			);
+
+		$result = $this->user_model->add_kelurahan($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kelurahan');
+				redirect('users/kelurahan');
+			}
 	}
 
 	public function puskesmas()
