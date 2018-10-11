@@ -70,4 +70,73 @@ function add_kelurahan($data)
 		return $insert;						
 	}
 
+
+	//tambah kecamatan
+function add_kecamatan($data)
+	{					
+		$insert = $this->db->insert('kecamatan', $data);
+		return $insert;						
+	}
+
+	//tambah balita
+function add_balita($data)
+	{					
+		$insert = $this->db->insert('balita', $data);
+		return $insert;						
+	}
+
+	//balita
+function balita()
+	{					
+			$q = $this->db->select('
+
+				a.balita_id,
+				a.posyandu_id,
+				a.balita_nik,
+				a.balita_nama,
+				a.balita_anak_ke,
+				a.balita_anak_dari,
+				a.balita_jk,
+				a.balita_tgl_lahir,
+				a.balita_berat_lahir,
+				a.balita_ortu_nama,
+				a.balita_ortu_nik,
+				a.balita_tlpn,
+				a.balita_alamat,
+				a.balita_rt,
+				a.balita_rw,
+				a.kel_id,
+				a.kec_id
+
+			')
+			
+			->from('balita a');
+			
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+
+	function posyandu()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id,
+				a.kel_id,
+				a.puskesmas_id,
+				a.posyandu_nama,
+				a.posyandu_alamat,
+				a.posyandu_rt,
+				a.posyandu_rw
+
+			')
+			
+			->from('posyandu a');
+			
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
 }

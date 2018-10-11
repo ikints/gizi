@@ -19,6 +19,7 @@
                 <li><a href="<?php echo base_url(); ?>kelurahan">Kelurahan</a></li>
                 <li><a href="<?php echo base_url(); ?>puskesmas">Puskesmas</a></li>
                 <li><a href="<?php echo base_url(); ?>posyandu">Posyandu</a></li>
+                <li><a href="<?php echo base_url(); ?>balita">Balita</a></li>
               </ul>
             </li>
           </ul>

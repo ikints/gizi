@@ -51,19 +51,34 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		//$data['profil'] = $this->user_model->profil_member();			
+		$data['kecamatan'] = $this->user_model->kecamatan();			
 		$data['main_content'] = 'users/kecamatan';
 		$this->load->view('template/user/view', $data);
 	}
 
 	public function kelurahan()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Kelurahan';		
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['kelurahan'] = $this->user_model->kelurahan();			
 		$data['main_content'] = 'users/kelurahan';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kecamatan()
+	{
+		$data = array(
+				'kec_kode' 	=> $this->input->post('kec_kode'),
+				'kec_nama' 	=> $this->input->post('kec_nama')
+			);
+
+		$result = $this->user_model->add_kecamatan($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kecamatan');
+				redirect('users/kecamatan');
+			}
 	}
 
 	public function add_kelurahan()
@@ -98,5 +113,48 @@ class Users extends CI_Controller {
 		//$data['profil'] = $this->user_model->profil_member();			
 		$data['main_content'] = 'users/posyandu';
 		$this->load->view('template/user/view', $data);
+	}
+
+
+	public function balita()
+	{
+		$data['title'] = 'Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['balita'] = $this->user_model->balita();
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['kelurahan'] = $this->user_model->kelurahan();			
+		$data['main_content'] = 'users/balita';
+		$this->load->view('template/user/view', $data);
+	}
+	public function add_balita()
+	{
+		$data = array(
+				
+				'balita_id' 			=> $this->input->post('balita_id'),
+				'posyandu_id' 			=> $this->input->post('posyandu_id'),
+				'balita_nik' 			=> $this->input->post('balita_nik'),
+				'balita_nama' 			=> $this->input->post('balita_nama'),
+				'balita_anak_ke' 		=> $this->input->post('balita_anak_ke'),
+				'balita_anak_dari' 		=> $this->input->post('balita_anak_dari'),
+				'balita_jk' 			=> $this->input->post('balita_jk'),
+				'balita_tgl_lahir' 		=> $this->input->post('balita_tgl_lahir'),
+				'balita_berat_lahir' 	=> $this->input->post('balita_berat_lahir'),
+				'balita_ortu_nama' 		=> $this->input->post('balita_ortu_nama'),
+				'balita_ortu_nik' 		=> $this->input->post('balita_ortu_nik'),
+				'balita_tlpn' 			=> $this->input->post('balita_tlpn'),
+				'balita_alamat' 		=> $this->input->post('balita_alamat'),
+				'balita_rt' 			=> $this->input->post('balita_rt'),
+				'balita_rw' 			=> $this->input->post('balita_rw'),
+				'kel_id' 				=> $this->input->post('kel_id'),
+				'kec_id' 				=> $this->input->post('kec_id')
+			);
+
+		$result = $this->user_model->add_balita($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Data Balita');
+				redirect('users/balita');
+			}
 	}
 }
