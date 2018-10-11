@@ -149,7 +149,7 @@ function posyandu()
 	{					
 			$q = $this->db->select('
 
-				a.posyandu_id as pposyandu_id,			
+				a.posyandu_id as posyandu_id,			
 				a.posyandu_nama as posyandu_nama
 
 			')

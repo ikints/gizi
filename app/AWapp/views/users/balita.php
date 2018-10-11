@@ -152,7 +152,7 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">No Telepon/Hp Orang Tua</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="No Telepon/Hp Orang Tua" name="" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" placeholder="No Telepon/Hp Orang Tua" name="balita_tlpn" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
 
@@ -160,7 +160,8 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Alamat</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="Alamat" name="balita_alamat" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <textarea class="form-control" rows="3" placeholder="Alamat" name="balita_alamat" data-validation="required" data-validation-error-msg="Harus diisi"></textarea>
+                            
                           </div>
                         </div>
 
