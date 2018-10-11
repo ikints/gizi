@@ -174,6 +174,8 @@ class Users extends CI_Controller {
 			{	
 				$this->session->set_flashdata('msg','Tambah Data Balita');
 				redirect('users/balita');
+		}
+	}
 
 	public function add_posyandu()
 	{

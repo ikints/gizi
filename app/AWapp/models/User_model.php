@@ -91,28 +91,30 @@ function balita()
 	{					
 			$q = $this->db->select('
 
-				a.balita_id,
-				a.posyandu_id,
-				a.balita_nik,
-				a.balita_nama,
-				a.balita_anak_ke,
-				a.balita_anak_dari,
-				a.balita_jk,
-				a.balita_tgl_lahir,
-				a.balita_berat_lahir,
-				a.balita_ortu_nama,
-				a.balita_ortu_nik,
-				a.balita_tlpn,
-				a.balita_alamat,
-				a.balita_rt,
-				a.balita_rw,
-				a.kel_id,
-				a.kec_id
+				d.balita_id,
+				d.posyandu_id,
+				d.balita_nik,
+				d.balita_nama,
+				d.balita_anak_ke,
+				d.balita_anak_dari,
+				d.balita_jk,
+				d.balita_tgl_lahir,
+				d.balita_berat_lahir,
+				d.balita_ortu_nama,
+				d.balita_ortu_nik,
+				d.balita_tlpn,
+				d.balita_alamat,
+				d.balita_rt,
+				d.balita_rw,
+				d.kel_id,
+				d.kec_id
 
 			')
 			
-			->from('balita a');
-=======
+			->from('balita d');
+			$result = $q->get()->result();
+			return $result;
+		}
 //Puskesmas
 function puskesmas()
 	{					
