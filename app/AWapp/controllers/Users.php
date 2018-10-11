@@ -101,19 +101,38 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		//$data['profil'] = $this->user_model->profil_member();			
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['puskesmas'] = $this->user_model->puskesmas();		
 		$data['main_content'] = 'users/puskesmas';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_puskesmas()
+	{
+		$data = array(
+				'kec_id' 	=> $this->input->post('kec_id'),
+				'puskesmas_nama' 	=> $this->input->post('puskesmas_nama')
+			);
+
+		$result = $this->user_model->add_puskesmas($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Puskesmas');
+				redirect('users/puskesmas');
+			}
 	}
 
 	public function posyandu()
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		//$data['profil'] = $this->user_model->profil_member();			
+		$data['kelurahan'] = $this->user_model->kelurahan();
+		$data['puskesmas'] = $this->user_model->puskesmas();
+		$data['posyandu'] = $this->user_model->posyandu();			
 		$data['main_content'] = 'users/posyandu';
 		$this->load->view('template/user/view', $data);
 	}
+
 
 
 	public function balita()
@@ -155,6 +174,24 @@ class Users extends CI_Controller {
 			{	
 				$this->session->set_flashdata('msg','Tambah Data Balita');
 				redirect('users/balita');
+
+	public function add_posyandu()
+	{
+		$data = array(
+				'kel_id' 	=> $this->input->post('kel_id'),
+				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
+				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
+				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
+				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
+				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
+			);
+
+		$result = $this->user_model->add_posyandu($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Posyandu');
+				redirect('users/posyandu');
+
 			}
 	}
 }

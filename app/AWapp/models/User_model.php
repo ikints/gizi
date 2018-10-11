@@ -71,6 +71,7 @@ function add_kelurahan($data)
 	}
 
 
+
 	//tambah kecamatan
 function add_kecamatan($data)
 	{					
@@ -111,6 +112,20 @@ function balita()
 			')
 			
 			->from('balita a');
+=======
+//Puskesmas
+function puskesmas()
+	{					
+			$q = $this->db->select('
+
+				a.puskesmas_id as puskesmas_id,			
+				a.puskesmas_nama as puskesmas_nama,
+				b.kec_nama as kec_nama
+
+			')
+			
+			->from('puskesmas a')
+			->join('kecamatan b','b.kec_id = a.kec_id');
 			
 			
 			$result = $q->get()->result();
@@ -118,25 +133,41 @@ function balita()
 	}
 
 
-	function posyandu()
+		
+
+//tambah puskesmas
+function add_puskesmas($data)
+	{					
+		$insert = $this->db->insert('puskesmas', $data);
+		return $insert;						
+	}
+
+//Posyandu
+function posyandu()
 	{					
 			$q = $this->db->select('
 
-				a.posyandu_id,
-				a.kel_id,
-				a.puskesmas_id,
-				a.posyandu_nama,
-				a.posyandu_alamat,
-				a.posyandu_rt,
-				a.posyandu_rw
+				a.posyandu_id as pposyandu_id,			
+				a.posyandu_nama as posyandu_nama
 
 			')
 			
-			->from('posyandu a');
-			
+			->from('posyandu a')
+			->join('kelurahan b','b.kel_id = a.kel_id')
+			->join('puskesmas c','c.puskesmas_id = a.puskesmas_id');
+
+
 			
 			$result = $q->get()->result();
 			return $result;					
+	}
+
+
+//tambah posyandu
+function add_posyandu($data)
+	{					
+		$insert = $this->db->insert('posyandu', $data);
+		return $insert;						
 	}
 
 }
