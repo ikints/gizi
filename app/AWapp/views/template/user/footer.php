@@ -58,6 +58,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="<?php echo base_url("assets/theme/"); ?>plugins/iCheck/icheck.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?php echo base_url("assets/theme/"); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <script src="<?php echo base_url("assets/"); ?>js/custom.js"></script>
 <?php if($this->session->flashdata('msg')) : ?>
 <script>

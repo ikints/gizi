@@ -106,8 +106,7 @@ function balita()
 				d.balita_alamat,
 				d.balita_rt,
 				d.balita_rw,
-				d.kel_id,
-				d.kec_id
+				d.kel_id
 
 			')
 			
@@ -150,7 +149,13 @@ function posyandu()
 			$q = $this->db->select('
 
 				a.posyandu_id as posyandu_id,			
-				a.posyandu_nama as posyandu_nama
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw,
+				b.kel_nama as kel_nama,
+				c.puskesmas_nama as puskesmas_nama
+
 
 			')
 			
@@ -169,6 +174,66 @@ function posyandu()
 function add_posyandu($data)
 	{					
 		$insert = $this->db->insert('posyandu', $data);
+		return $insert;						
+	}
+
+
+//Jadwal
+function jadwal()
+	{					
+			$q = $this->db->select('
+
+				a.jadwal_id as jadwal_id,		
+				a.jadwal_bulan as jadwal_bulan,
+				a.jadwal_tahun as jadwal_tahun,
+				a.jadwal_tgl as jadwal_tgl,
+				a.jadwal_waktu as jadwal_waktu,
+				a.jadwal_kegiatan as jadwal_kegiatan,
+				b.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('jadwal a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+//tambah jadwal
+function add_jadwal($data)
+	{					
+		$insert = $this->db->insert('jadwal', $data);
+		return $insert;						
+	}
+
+//Pengukuran
+function pengukuran()
+	{					
+			$q = $this->db->select('
+
+				a.ukur_usia as ukur_usia,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+//tambah pengukuran
+function add_pengukuran($data)
+	{					
+		$insert = $this->db->insert('pengukuran', $data);
 		return $insert;						
 	}
 
