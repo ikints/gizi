@@ -237,7 +237,9 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		$data['pengukuran'] = $this->user_model->pengukuran();		
+		$data['pengukuran'] = $this->user_model->pengukuran();
+		$data['jadwal'] = $this->user_model->jadwal();	
+		$data['balita'] = $this->user_model->balita();		
 		$data['main_content'] = 'users/pengukuran';
 		$this->load->view('template/user/view', $data);
 	}
@@ -245,19 +247,24 @@ class Users extends CI_Controller {
 	public function add_pengukuran()
 	{
 		$data = array(
-				'kel_id' 	=> $this->input->post('kel_id'),
-				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
-				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
-				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
-				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
-				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
+				'jadwal_id' 	=> $this->input->post('jadwal_id'),
+				'balita_id' 	=> $this->input->post('balita_id'),
+				'ukur_usia' 	=> $this->input->post('ukur_usia'),
+				'ukur_bb' 	=> $this->input->post('ukur_bb'),
+				'ukur_tb' 	=> $this->input->post('ukur_tb'),
+				'ukur_cara_ukur_tb' 	=> $this->input->post('ukur_cara_ukur_tb'),
+				'ukur_vitamin' 	=> $this->input->post('ukur_vitamin'),
+				'ukur_pmt_sts' 	=> $this->input->post('ukur_pmt_sts'),
+				'ukur_pmt_uraian' 	=> $this->input->post('ukur_pmt_uraian'),
+				'ukur_catatan' 	=> $this->input->post('ukur_catatan'),
+				'ukur_status_gizi' 	=> $this->input->post('ukur_status_gizi')
 			);
 
 		$result = $this->user_model->add_pengukuran($data);
 		if ($result) 
 			{	
-				$this->session->set_flashdata('msg','Tambah Posyandu');
-				redirect('users/posyandu');
+				$this->session->set_flashdata('msg','Tambah Pengukuran');
+				redirect('users/pengukuran');
 
 			}
 	}
