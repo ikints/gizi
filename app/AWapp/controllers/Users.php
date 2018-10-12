@@ -165,8 +165,8 @@ class Users extends CI_Controller {
 				'balita_alamat' 		=> $this->input->post('balita_alamat'),
 				'balita_rt' 			=> $this->input->post('balita_rt'),
 				'balita_rw' 			=> $this->input->post('balita_rw'),
-				'kel_id' 				=> $this->input->post('kel_id'),
-				'kec_id' 				=> $this->input->post('kec_id')
+				'kel_id' 				=> $this->input->post('kel_id')/*,
+				'kec_id' 				=> $this->input->post('kec_id')*/
 			);
 
 		$result = $this->user_model->add_balita($data);
@@ -193,6 +193,32 @@ class Users extends CI_Controller {
 			{	
 				$this->session->set_flashdata('msg','Tambah Posyandu');
 				redirect('users/posyandu');
+
+			}
+	}
+
+	public function kader()
+	{
+		$data['title'] = 'Kader';		
+		$data['name'] = $this->name_member["name"];
+		$data['kader'] = $this->user_model->kader();
+		$data['posyandu'] = $this->user_model->posyandu();		
+		$data['main_content'] = 'users/kader';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kader()
+	{
+		$data = array(
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'kader_nama' 	=> $this->input->post('kader_nama')
+			);
+
+		$result = $this->user_model->add_kader($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kader');
+				redirect('users/kader');
 
 			}
 	}

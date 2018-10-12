@@ -1,3 +1,28 @@
+<script type="text/javascript">
+
+
+ 
+  function isNumberKeyTrue(evt)
+      {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 65)
+          return false;        
+          return true;
+      }
+
+      function hapus_data(){
+        var table = $('#info').DataTable();
+     
+        $('#info tbody').on('dblclick', 'tr', function () {
+            var data = table.row( this ).data();
+            alert( 'You clicked on '+data[0]+'\'s row' );
+            return false;
+        } );
+
+
+    }
+</script>
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="container">
@@ -17,13 +42,14 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal"  ><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
             <!-- /.box-header -->
+
             <div class="box-body">
-              <table id="info" class="table table-bordered table-hover">
+              <table id="info" class="table table-bordered table-hover" onclick="javascript:hapus_data();">
                 <thead>
                 <tr>
                   <th>NIK</th>
@@ -101,7 +127,7 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">NIK</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="NIK" name="balita_nik" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" placeholder="NIK" onkeypress="return isNumberKeyTrue(event)" name="balita_nik" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
 
@@ -109,12 +135,12 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Anak ke</label>
 
                           <div class="col-xs-3">
-                            <input type="text" class="form-control" id="kecamatan" name="balita_anak_ke" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" name="balita_anak_ke" onkeypress="return isNumberKeyTrue(event)" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                           <label for="inputPassword3" class="col-sm-2 control-label">dari</label>
 
                           <div class="col-xs-3">
-                            <input type="text" class="form-control" id="kecamatan" name="balita_anak_dari" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" name="balita_anak_dari" onkeypress="return isNumberKeyTrue(event)" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
 
@@ -122,23 +148,36 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="L">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="L">
                                 Laki-laki
                               </label>
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="P">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="P">
                                 Perempuan
                               </label>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Tanggal Lahir</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="Nama Kecamatan" name="balita_tgl_lahir" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" placeholder="Tanggal Lahir" name="balita_tgl_lahir" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
-                        </div>
+                        </div> -->
+
+                        <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Tanggal Lahir</label>
+                <div class="col-sm-10">
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker" name="balita_tgl_lahir" >
+                </div>
+              </div>
+                <!-- /.input group -->
+              </div>
 
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Nama Orang Tua</label>
@@ -148,13 +187,27 @@
                           </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">No Telepon/Hp Orang Tua</label>
 
                           <div class="col-sm-10">
                             <input type="text" class="form-control" id="kecamatan" placeholder="No Telepon/Hp Orang Tua" name="balita_tlpn" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
-                        </div>
+                        </div> -->
+
+                        <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">No Telepon/Hp Orang Tua</label>
+                <div class="col-sm-10">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input type="text" class="form-control" id="kecamatan" name="balita_tlpn" onkeypress="return isNumberKeyTrue(event)"
+                         data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask>
+                </div>
+              </div>
+                <!-- /.input group -->
+              </div>
 
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Alamat</label>
@@ -169,17 +222,17 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">RT/RW</label>
 
                           <div class="col-xs-3">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="RT" name="balita_rt" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" placeholder="RT" name="balita_rt" onkeypress="return isNumberKeyTrue(event)" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                           <label for="inputPassword3" class="col-sm-2 control-label">/</label>
 
                           <div class="col-xs-3">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="RW" name="balita_rw" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="kecamatan" placeholder="RW" name="balita_rw" onkeypress="return isNumberKeyTrue(event)" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
 
                         <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Kelurahan</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="kel_id" data-validation="required" data-validation-error-msg="Harus diisi">
                               <option value="">--Pilih kelurahan--</option>
@@ -190,7 +243,7 @@
                           </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="kec_id" data-validation="required" data-validation-error-msg="Harus diisi">
@@ -200,7 +253,7 @@
                               <?php endforeach; ?>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
 
 
 
@@ -222,5 +275,8 @@
         </div>
         <!-- /.modal -->
       </div>
+
+
+      
 
         

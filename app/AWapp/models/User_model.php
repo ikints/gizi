@@ -172,4 +172,38 @@ function add_posyandu($data)
 		return $insert;						
 	}
 
+
+	 function  rev_date($tgl){
+			$t=explode("/",$tgl);
+			$tanggal  =  $t[2];
+			$bulan    =  $t[1];
+			$tahun    =  $t[0];
+			return  $tahun.'/'.$bulan.'/'.$tanggal;
+
+        }
+
+    //tambah kader
+	function add_kader($data)
+		{					
+			$insert = $this->db->insert('kader', $data);
+			return $insert;						
+		}
+
+	//kader
+function kader()
+	{					
+			$q = $this->db->select('
+
+				a.kader_id,
+				b.posyandu_nama,
+				a.kader_nama
+
+			')
+			
+			->from('kader a')
+			->join('posyandu b','a.posyandu_id=b.posyandu_id');
+			$result = $q->get()->result();
+			return $result;
+		}
+
 }
