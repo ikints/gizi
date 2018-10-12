@@ -68,6 +68,10 @@ $route['add_balita'] = 'users/add_balita';
 $route['add_puskesmas'] = 'users/add_puskesmas';
 $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
+
+$route['jadwal'] = 'users/jadwal';
+$route['add_jadwal'] = 'users/add_jadwal';
+$route['pengukuran'] = 'users/pengukuran';
+$route['add_pengukuran'] = 'users/add_pengukuran';
 $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';
-

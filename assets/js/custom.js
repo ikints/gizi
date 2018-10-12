@@ -26,6 +26,15 @@
 
     //Date picker
     $('#datepicker').datepicker({
+
       format: 'yyyy-mm-dd',
+
+      autoclose: true
+    });
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false,
+
       autoclose: true
     });

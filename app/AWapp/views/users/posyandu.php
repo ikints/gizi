@@ -35,10 +35,10 @@
                 <tbody>
                 <?php foreach ($posyandu as $rows) : ?>
                 <tr>
+                  <td><?php echo $rows->kel_nama ?></td>
                   <td><?php echo $rows->posyandu_nama ?></td>
-                  <td><?php echo $rows->posyandu_nama ?></td>
-                  <td><?php echo $rows->posyandu_nama ?></td>
-                  <td><?php echo $rows->posyandu_nama ?></td>
+                  <td><?php echo $rows->posyandu_alamat ?> <?php echo $rows->posyandu_rt ?>/<?php echo $rows->posyandu_rw ?></td>
+                  <td><?php echo $rows->puskesmas_nama ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
