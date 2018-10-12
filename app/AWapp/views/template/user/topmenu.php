@@ -13,14 +13,25 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master Data <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="<?php echo base_url(); ?>kecamatan">Kecamatan</a></li>
                 <li><a href="<?php echo base_url(); ?>kelurahan">Kelurahan</a></li>
                 <li><a href="<?php echo base_url(); ?>puskesmas">Puskesmas</a></li>
                 <li><a href="<?php echo base_url(); ?>posyandu">Posyandu</a></li>
-                <li><a href="<?php echo base_url(); ?>balita">Balita</a></li>
               </ul>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>balita">Balita</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>jadwal">Jadwal</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>pengukuran">Pengukuran</a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>pengukuran">Kader</a>
             </li>
           </ul>
         </div>
