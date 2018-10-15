@@ -86,34 +86,68 @@ function add_balita($data)
 		return $insert;						
 	}
 
-	//balita
+//balita
 function balita()
 	{					
 			$q = $this->db->select('
 
-				d.balita_id,
-				d.posyandu_id,
-				d.balita_nik,
-				d.balita_nama,
-				d.balita_anak_ke,
-				d.balita_anak_dari,
-				d.balita_jk,
-				d.balita_tgl_lahir,
-				d.balita_berat_lahir,
-				d.balita_ortu_nama,
-				d.balita_ortu_nik,
-				d.balita_tlpn,
-				d.balita_alamat,
-				d.balita_rt,
-				d.balita_rw,
-				d.kel_id
+				a.balita_id,
+				a.posyandu_id,
+				a.balita_nik,
+				a.balita_nama,
+				a.balita_anak_ke,
+				a.balita_anak_dari,
+				a.balita_jk,
+				a.balita_tgl_lahir,
+				a.balita_berat_lahir,
+				a.balita_ortu_nama,
+				a.balita_ortu_nik,
+				a.balita_tlpn,
+				a.balita_alamat,
+				a.balita_rt,
+				a.balita_rw,
+				a.kel_id
 
 			')
 			
-			->from('balita d');
+			->from('balita a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id');
 			$result = $q->get()->result();
 			return $result;
 		}
+
+//detail balita
+function detail_balita($balita_id)
+	{					
+			$q = $this->db->select('
+
+				a.balita_id,
+				a.posyandu_id,
+				a.balita_nik,
+				a.balita_nama,
+				a.balita_anak_ke,
+				a.balita_anak_dari,
+				a.balita_jk,
+				a.balita_tgl_lahir,
+				a.balita_berat_lahir,
+				a.balita_ortu_nama,
+				a.balita_ortu_nik,
+				a.balita_tlpn,
+				a.balita_alamat,
+				a.balita_rt,
+				a.balita_rw,
+				a.kel_id,
+				b.posyandu_nama
+
+			')
+			
+			->from('balita a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->where('a.balita_id', $balita_id);
+			$result = $q->get()->result();
+			return $result;
+		}
+
 //Puskesmas
 function puskesmas()
 	{					
@@ -214,17 +248,62 @@ function pengukuran()
 	{					
 			$q = $this->db->select('
 
+				a.ukur_id as ukur_id,
 				a.ukur_usia as ukur_usia,
 				b.jadwal_tgl as jadwal_tgl,
-				c.balita_nama as balita_nama
+				c.balita_nama as balita_nama,
+				d.posyandu_nama as posyandu_nama
 				
 			')
 			
 			->from('pengukuran a')
 			->join('jadwal b','b.jadwal_id = a.jadwal_id')
-			->join('balita c','c.balita_id = a.balita_id');
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id');
 
 
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+//Pengukuran
+function detail_pengukuran($ukur_id)
+	{					
+			$q = $this->db->select('
+
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				a.ukur_cara_ukur_tb as ukur_cara_ukur_tb,
+				a.ukur_vitamin as ukur_vitamin,
+				a.ukur_pmt_sts as ukur_pmt_sts,
+				a.ukur_pmt_uraian as ukur_pmt_uraian,
+				a.ukur_catatan as ukur_catatan,
+				a.ukur_status_gizi as ukur_status_gizi,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_nama,
+				c.balita_anak_ke,
+				c.balita_anak_dari,
+				c.balita_jk,
+				c.balita_tgl_lahir,
+				c.balita_berat_lahir,
+				c.balita_ortu_nama,
+				c.balita_ortu_nik,
+				c.balita_tlpn,
+				c.balita_alamat,
+				c.balita_rt,
+				c.balita_rw,
+				d.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id')
+			->where('a.ukur_id', $ukur_id);
 			
 			$result = $q->get()->result();
 			return $result;					
@@ -234,6 +313,31 @@ function pengukuran()
 function add_pengukuran($data)
 	{					
 		$insert = $this->db->insert('pengukuran', $data);
+		return $insert;						
+	}
+
+//kader
+function kader()
+	{					
+			$q = $this->db->select('
+
+				a.kader_id as kader_id,
+				a.kader_nama as kader_nama,
+				b.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('kader a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id');
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+//tambah kader
+function add_kader($data)
+	{					
+		$insert = $this->db->insert('kader', $data);
 		return $insert;						
 	}
 

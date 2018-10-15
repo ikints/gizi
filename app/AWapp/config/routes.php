@@ -63,14 +63,20 @@ $route['add_kecamatan'] = 'users/add_kecamatan';
 $route['kelurahan'] = 'users/kelurahan';
 $route['add_kelurahan'] = 'users/add_kelurahan';
 $route['puskesmas'] = 'users/puskesmas';
+$route['add_puskesmas'] = 'users/add_puskesmas';
+
 $route['balita'] = 'users/balita';
 $route['add_balita'] = 'users/add_balita';
-$route['add_puskesmas'] = 'users/add_puskesmas';
+$route['balita/(:num)'] = 'users/detail_balita/$1';
+
 $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
 $route['jadwal'] = 'users/jadwal';
 $route['add_jadwal'] = 'users/add_jadwal';
+
 $route['pengukuran'] = 'users/pengukuran';
 $route['add_pengukuran'] = 'users/add_pengukuran';
+$route['pengukuran/(:num)'] = 'users/detail_pengukuran/$1';
+
 $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';

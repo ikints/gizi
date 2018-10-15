@@ -12,20 +12,23 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          <form id="frm-info" action="#" method="POST">
           <div class="box box-primary">
             <div class="box-header">
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
@@ -34,7 +37,8 @@
                 <tbody>
                 <?php foreach ($pengukuran as $rows) : ?>
                 <tr>
-                  <td><?php echo $rows->balita_nama ?></td>
+                  <td></td>
+                  <td><a href="pengukuran/<?php echo $rows->ukur_id;  ?>"><?php echo $rows->balita_nama ?></a></td>
                   <td><?php echo $rows->jadwal_tgl ?></td>
                   <td><?php echo $rows->ukur_usia ?></td>
                 </tr>
@@ -42,15 +46,27 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th></th>
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
                 </tr>
                 </tfoot>
               </table>
+            
+
+
+
+              <p><b>Selected rows data:</b></p>
+              <pre id="example-console-rows"></pre>
+
+              <p><b>Form data as submitted to the server:</b></p>
+              <pre id="example-console-form"></pre>
+
             </div>
             <!-- /.box-body -->
           </div>
+          </form>
           <!-- /.box -->
         </div>
         <!-- /.col -->

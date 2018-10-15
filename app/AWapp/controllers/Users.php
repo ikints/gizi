@@ -176,6 +176,17 @@ class Users extends CI_Controller {
 		}
 	}
 
+	public function detail_balita()
+	{
+		$balita_id = $this->uri->segment(2);
+
+		$data['title'] = 'Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['balita'] = $this->user_model->detail_balita($balita_id);		
+		$data['main_content'] = 'users/detail_balita';
+		$this->load->view('template/user/view', $data);
+	}
+
 	public function add_posyandu()
 	{
 		$data = array(
@@ -269,30 +280,40 @@ class Users extends CI_Controller {
 			}
 	}
 
+	public function detail_pengukuran()
+	{
+		$ukur_id = $this->uri->segment(2);
+
+		$data['title'] = 'Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['pengukuran'] = $this->user_model->detail_pengukuran($ukur_id);		
+		$data['main_content'] = 'users/detail_pengukuran';
+		$this->load->view('template/user/view', $data);
+	}
+
 	public function kader()
 	{
 		$data['title'] = 'Kecamatan';		
-		$data['name'] = $this->name_member["name"];		
-		$data['main_content'] = 'users/jadwal';
-		$this->load->view('template/user/kader', $data);
+		$data['name'] = $this->name_member["name"];	
+		$data['posyandu'] = $this->user_model->posyandu();	
+		$data['kader'] = $this->user_model->kader();
+		$data['main_content'] = 'users/kader';
+		$this->load->view('template/user/view', $data);
 	}
 
 	public function add_kader()
 	{
 		$data = array(
-				'kel_id' 	=> $this->input->post('kel_id'),
-				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
-				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
-				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
-				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
-				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
+				
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'kader_nama' 	=> $this->input->post('kader_nama')
 			);
 
 		$result = $this->user_model->add_kader($data);
 		if ($result) 
 			{	
-				$this->session->set_flashdata('msg','Tambah Posyandu');
-				redirect('users/posyandu');
+				$this->session->set_flashdata('msg','Tambah Kader');
+				redirect('users/kader');
 
 			}
 	}

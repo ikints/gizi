@@ -31,7 +31,7 @@
               <a href="<?php echo base_url(); ?>pengukuran">Pengukuran</a>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>pengukuran">Kader</a>
+              <a href="<?php echo base_url(); ?>kader">Kader</a>
             </li>
           </ul>
         </div>
