@@ -51,19 +51,34 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		//$data['profil'] = $this->user_model->profil_member();			
+		$data['kecamatan'] = $this->user_model->kecamatan();			
 		$data['main_content'] = 'users/kecamatan';
 		$this->load->view('template/user/view', $data);
 	}
 
 	public function kelurahan()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Kelurahan';		
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['kelurahan'] = $this->user_model->kelurahan();			
 		$data['main_content'] = 'users/kelurahan';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kecamatan()
+	{
+		$data = array(
+				'kec_kode' 	=> $this->input->post('kec_kode'),
+				'kec_nama' 	=> $this->input->post('kec_nama')
+			);
+
+		$result = $this->user_model->add_kecamatan($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kecamatan');
+				redirect('users/kecamatan');
+			}
 	}
 
 	public function add_kelurahan()
@@ -118,6 +133,50 @@ class Users extends CI_Controller {
 		$this->load->view('template/user/view', $data);
 	}
 
+
+
+	public function balita()
+	{
+		$data['title'] = 'Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['balita'] = $this->user_model->balita();
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['kelurahan'] = $this->user_model->kelurahan();			
+		$data['main_content'] = 'users/balita';
+		$this->load->view('template/user/view', $data);
+	}
+	public function add_balita()
+	{
+		$data = array(
+				
+				'balita_id' 			=> $this->input->post('balita_id'),
+				'posyandu_id' 			=> $this->input->post('posyandu_id'),
+				'balita_nik' 			=> $this->input->post('balita_nik'),
+				'balita_nama' 			=> $this->input->post('balita_nama'),
+				'balita_anak_ke' 		=> $this->input->post('balita_anak_ke'),
+				'balita_anak_dari' 		=> $this->input->post('balita_anak_dari'),
+				'balita_jk' 			=> $this->input->post('balita_jk'),
+				'balita_tgl_lahir' 		=> $this->input->post('balita_tgl_lahir'),
+				'balita_berat_lahir' 	=> $this->input->post('balita_berat_lahir'),
+				'balita_ortu_nama' 		=> $this->input->post('balita_ortu_nama'),
+				'balita_ortu_nik' 		=> $this->input->post('balita_ortu_nik'),
+				'balita_tlpn' 			=> $this->input->post('balita_tlpn'),
+				'balita_alamat' 		=> $this->input->post('balita_alamat'),
+				'balita_rt' 			=> $this->input->post('balita_rt'),
+				'balita_rw' 			=> $this->input->post('balita_rw'),
+				'kel_id' 				=> $this->input->post('kel_id')
+
+			);
+
+		$result = $this->user_model->add_balita($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Data Balita');
+				redirect('users/balita');
+		}
+	}
+
 	public function add_posyandu()
 	{
 		$data = array(
@@ -134,6 +193,103 @@ class Users extends CI_Controller {
 			{	
 				$this->session->set_flashdata('msg','Tambah Posyandu');
 				redirect('users/posyandu');
+
 			}
 	}
+
+
+	public function kader()
+	{
+		$data['title'] = 'Kader';		
+		$data['name'] = $this->name_member["name"];
+		$data['kader'] = $this->user_model->kader();
+		$data['posyandu'] = $this->user_model->posyandu();		
+		$data['main_content'] = 'users/kader';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kader()
+	{
+		$data = array(
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'kader_nama' 	=> $this->input->post('kader_nama')
+			);
+
+		$result = $this->user_model->add_kader($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kader');
+				redirect('users/kader');
+
+			}
+		}
+
+	public function jadwal()
+	{
+		$data['title'] = 'Kecamatan';		
+		$data['name'] = $this->name_member["name"];		
+		$data['jadwal'] = $this->user_model->jadwal();
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['main_content'] = 'users/jadwal';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_jadwal()
+	{
+
+		$jadwal_date = date('Y-m-d', strtotime($this->input->post('jadwal_tgl')));
+		$jadwal_tahun = date('Y', strtotime($this->input->post('jadwal_tgl')));
+		$jadwal_bulan = date('F', strtotime($this->input->post('jadwal_tgl')));
+
+		$data = array(
+				'jadwal_id' 	=> $this->input->post('jadwal_id'),
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'jadwal_bulan' 	=> $jadwal_bulan,
+				'jadwal_tahun' 	=> $jadwal_tahun,
+				'jadwal_tgl' 	=> $jadwal_date,
+				'jadwal_waktu' 	=> $this->input->post('jadwal_waktu'),
+				'jadwal_kegiatan' 	=> $this->input->post('jadwal_kegiatan'),
+			);
+
+		$result = $this->user_model->add_jadwal($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Jadwal');
+				redirect('users/jadwal');
+
+			}
+	}
+
+	public function pengukuran()
+	{
+		$data['title'] = 'Kecamatan';		
+		$data['name'] = $this->name_member["name"];
+		$data['pengukuran'] = $this->user_model->pengukuran();		
+		$data['main_content'] = 'users/pengukuran';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_pengukuran()
+	{
+		$data = array(
+				'kel_id' 	=> $this->input->post('kel_id'),
+				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
+				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
+				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
+				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
+				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
+			);
+
+		$result = $this->user_model->add_pengukuran($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Posyandu');
+				redirect('users/posyandu');
+
+			}
+	}
+
+	
+
+	
 }
