@@ -26,7 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>
@@ -38,7 +38,7 @@
                 <tbody>
                 <?php foreach ($jadwal as $rows) : ?>
                 <tr>
-                  <td></td>
+                  
                   <td><a href="jadwal/<?php echo $rows->jadwal_id;  ?>"><?php echo $rows->posyandu_nama ?></a></td>
                   <td><?php echo $rows->jadwal_bulan ?></td>
                   <td><?php echo $rows->jadwal_tahun ?></td>
@@ -50,7 +50,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>

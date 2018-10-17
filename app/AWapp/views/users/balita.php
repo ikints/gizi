@@ -26,7 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th></th>
+                  
                   <th>NIK</th>
                   <th>Nama Balita</th>
                   <th>Jenis Kelamin</th>
@@ -37,7 +37,7 @@
                 <tbody>
                     <?php foreach ($balita as $rows) : ?>
                     <tr>
-                      <td></td>
+                      
                       <td><a href="balita/<?php echo $rows->balita_id;  ?>"><?php echo $rows->balita_nik ?></a></td>
                       <td><?php echo $rows->balita_nama ?></td>
                       <td><?php echo $rows->balita_jk ?></td>

@@ -4,26 +4,20 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Jadwal
+        Edit Kader
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <?php foreach ($jadwal as $rows) : ?>
-      <?php 
-
-      $jadwal_bulan = $rows->jadwal_bulan;
-      $jadwal_tahun = $rows->jadwal_tahun;
-      $jadwal_tgl = date('d-m-Y', strtotime($rows->jadwal_tgl)); 
-
-      ?>
+      <?php foreach ($kader as $rows) : ?>
+      
       <div class="row">
         <div class="col-md-8">
           <div class="box box-primary">
           <?php $attributes = array('class' => 'form-horizontal'); ?>
-          <?php echo form_open('post_edit_jadwal', $attributes); ?>
-          <input type="hidden" name="jadwal_id" value="<?php echo $rows->jadwal_id; ?>">
+          <?php echo form_open('post_edit_kader', $attributes); ?>
+          <input type="hidden" name="kader_id" value="<?php echo $rows->kader_id; ?>">
               <div class="box-body">
                 <div class="form-group">
                   <label for="kelurahan" class="col-sm-2 control-label">Posyandu</label>
@@ -37,31 +31,19 @@
                             </select>
                           </div>
                 </div>
+                
+                
                 <div class="form-group">
-                  <label for="kelurahan" class="col-sm-2 control-label">Tanggal</label>
+                  <label for="kelurahan" class="col-sm-2 control-label">Nama Kader</label>
 
                   <div class="col-sm-10">
-                    <input type="type" class="form-control" id="datepicker" name="jadwal_tgl" placeholder="Tanggal" value="<?php echo $jadwal_tgl; ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="kelurahan" class="col-sm-2 control-label">Waktu</label>
-
-                  <div class="col-sm-10">
-                    <input type="type" class="form-control timepicker" id="kelurahan" name="jadwal_waktu" placeholder="Waktu" value="<?php echo $rows->jadwal_waktu ?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="kelurahan" class="col-sm-2 control-label">Kegiatan</label>
-
-                  <div class="col-sm-10">
-                    <input type="type" class="form-control" id="kelurahan" name="jadwal_kegiatan" placeholder="Kegiatan" value="<?php echo $rows->jadwal_kegiatan ?>">
+                    <input type="type" class="form-control" id="kelurahan" name="kader_nama" placeholder="Kegiatan" value="<?php echo $rows->kader_nama ?>">
                   </div>
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <a href="<?php echo base_url(); ?>jadwal" class="btn btn-info" role="button">Cancel</a>
+                <a href="<?php echo base_url(); ?>kader" class="btn btn-info" role="button">Cancel</a>
                 <button type="submit" class="btn btn-info pull-right">Edit</button>
               </div>
 

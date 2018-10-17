@@ -28,7 +28,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
@@ -37,7 +37,7 @@
                 <tbody>
                 <?php foreach ($pengukuran as $rows) : ?>
                 <tr>
-                  <td></td>
+                  
                   <td><a href="pengukuran/<?php echo $rows->ukur_id;  ?>"><?php echo $rows->balita_nama ?></a></td>
                   <td><?php echo $rows->jadwal_tgl ?></td>
                   <td><?php echo $rows->ukur_usia ?></td>
@@ -46,7 +46,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
@@ -54,14 +54,6 @@
                 </tfoot>
               </table>
             
-
-
-
-              <p><b>Selected rows data:</b></p>
-              <pre id="example-console-rows"></pre>
-
-              <p><b>Form data as submitted to the server:</b></p>
-              <pre id="example-console-form"></pre>
 
             </div>
             <!-- /.box-body -->
