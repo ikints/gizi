@@ -26,6 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>
@@ -37,7 +38,8 @@
                 <tbody>
                 <?php foreach ($jadwal as $rows) : ?>
                 <tr>
-                  <td><?php echo $rows->posyandu_nama ?></td>
+                  <td></td>
+                  <td><a href="jadwal/<?php echo $rows->jadwal_id;  ?>"><?php echo $rows->posyandu_nama ?></a></td>
                   <td><?php echo $rows->jadwal_bulan ?></td>
                   <td><?php echo $rows->jadwal_tahun ?></td>
                   <td><?php echo $rows->jadwal_tgl ?></td>
@@ -48,7 +50,10 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th></th>
                   <th>Nama Posyandu</th>
+                  <th>Bulan</th>
+                  <th>Tahun</th>
                   <th>Tanggal</th>
                   <th>Waktu</th>
                   <th>Kegiatan</th>
@@ -100,7 +105,7 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Tanggal</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="datepicker" id="datepicker" placeholder="Tanggal" name="jadwal_tgl" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="datepicker" placeholder="Tanggal" name="jadwal_tgl" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
 
                         </div>

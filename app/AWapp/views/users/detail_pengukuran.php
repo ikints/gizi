@@ -35,6 +35,9 @@
                   <b>Posyandu</b> <a class="pull-right"><?php echo $rows->posyandu_nama ?></a>
                 </li>
                 <li class="list-group-item">
+                  <b>Jadwal</b> <a class="pull-right"><?php echo date('d F Y', strtotime($rows->jadwal_tgl)); ?></a>
+                </li>
+                <li class="list-group-item">
                   <b>Nama Balita</b> <a class="pull-right"><?php echo $rows->balita_nama ?></a>
                 </li>
                 <li class="list-group-item">
@@ -66,7 +69,7 @@
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Edit</b></a>
+              <a href="<?php echo base_url(); ?>pengukuran/edit/<?php echo $rows->ukur_id;  ?>"class="btn btn-primary btn-block"><b>Edit</b></a>
             </div>
             <!-- /.box-body -->
           </div>

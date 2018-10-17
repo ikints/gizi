@@ -26,6 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Kode Kecamatan</th>
                   <th>Nama Kecamatan</th>
                 </tr>
@@ -33,8 +34,8 @@
                 <tbody>
                     <?php foreach ($kecamatan as $rows) : ?>
                     <tr>
-                      
-                      <td><?php echo $rows->kec_kode ?></td>
+                      <td></td>
+                      <td><a href="kecamatan/<?php echo $rows->kec_id;  ?>"><?php echo $rows->kec_kode ?></a></td>
                       <td><?php echo $rows->kec_nama ?></td>
                     </tr>
                     <?php endforeach; ?>

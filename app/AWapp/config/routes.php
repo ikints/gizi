@@ -58,25 +58,45 @@ $route['valid-login'] = 'home/valid_login_users';
 //---------------------USERS
 $route['users/profil'] = 'users';
 $route['users/logout'] = 'users/logout';
+
 $route['kecamatan'] = 'users/kecamatan';
 $route['add_kecamatan'] = 'users/add_kecamatan';
+$route['kecamatan/(:num)'] = 'users/edit_kecamatan/$1';
+$route['post_edit_kecamatan'] = 'users/post_edit_kecamatan';
+
 $route['kelurahan'] = 'users/kelurahan';
 $route['add_kelurahan'] = 'users/add_kelurahan';
+$route['kelurahan/(:num)'] = 'users/edit_kelurahan/$1';
+$route['post_edit_kelurahan'] = 'users/post_edit_kelurahan';
+
 $route['puskesmas'] = 'users/puskesmas';
 $route['add_puskesmas'] = 'users/add_puskesmas';
+$route['puskesmas/(:num)'] = 'users/edit_puskesmas/$1';
+$route['post_edit_puskesmas'] = 'users/post_edit_puskesmas';
 
 $route['balita'] = 'users/balita';
 $route['add_balita'] = 'users/add_balita';
 $route['balita/(:num)'] = 'users/detail_balita/$1';
+$route['balita/edit/(:num)'] = 'users/edit_balita/$1';
+$route['post_edit_balita'] = 'users/post_edit_balita';
 
 $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
+$route['posyandu/(:num)'] = 'users/edit_posyandu/$1';
+$route['post_edit_posyandu'] = 'users/post_edit_posyandu';
+
 $route['jadwal'] = 'users/jadwal';
 $route['add_jadwal'] = 'users/add_jadwal';
+$route['jadwal/(:num)'] = 'users/edit_jadwal/$1';
+$route['post_edit_jadwal'] = 'users/post_edit_jadwal';
 
 $route['pengukuran'] = 'users/pengukuran';
 $route['add_pengukuran'] = 'users/add_pengukuran';
 $route['pengukuran/(:num)'] = 'users/detail_pengukuran/$1';
+$route['pengukuran/edit/(:num)'] = 'users/edit_pengukuran/$1';
+$route['post_edit_pengukuran'] = 'users/post_edit_pengukuran';
 
 $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';
+$route['kader/(:num)'] = 'users/edit_kader/$1';
+$route['post_edit_kader'] = 'users/post_edit_kader';

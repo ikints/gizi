@@ -26,6 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Nama Kelurahan</th>
                   <th>Nama Posyandu</th>
                   <th>Alamat</th>
@@ -35,8 +36,9 @@
                 <tbody>
                 <?php foreach ($posyandu as $rows) : ?>
                 <tr>
+                  <td></td>
                   <td><?php echo $rows->kel_nama ?></td>
-                  <td><?php echo $rows->posyandu_nama ?></td>
+                  <td><a href="posyandu/<?php echo $rows->posyandu_id;  ?>"><?php echo $rows->posyandu_nama ?></a></td>
                   <td><?php echo $rows->posyandu_alamat ?> <?php echo $rows->posyandu_rt ?>/<?php echo $rows->posyandu_rw ?></td>
                   <td><?php echo $rows->puskesmas_nama ?></td>
                 </tr>
@@ -44,6 +46,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th></th>
                   <th>Nama Kelurahan</th>
                   <th>Nama Posyandu</th>
                   <th>Alamat</th>

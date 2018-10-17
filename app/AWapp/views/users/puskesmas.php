@@ -26,6 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Nama Kecamatan</th>
                   <th>Nama Puskemas</th>
                 </tr>
@@ -33,13 +34,15 @@
                 <tbody>
                 <?php foreach ($puskesmas as $rows) : ?>
                 <tr>
+                  <td></td>
                   <td><?php echo $rows->kec_nama ?></td>
-                  <td><?php echo $rows->puskesmas_nama ?></td>
+                  <td><a href="puskesmas/<?php echo $rows->puskesmas_id;  ?>"><?php echo $rows->puskesmas_nama ?></a></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th></th>
                   <th>Nama Kecamatan</th>
                   <th>Nama Puskemas</th>
                 </tr>

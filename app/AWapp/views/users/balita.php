@@ -123,11 +123,11 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="L">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="L">
                                 Laki-laki
                               </label>
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="P">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="P">
                                 Perempuan
                               </label>
                             </div>
@@ -180,10 +180,10 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Kelurahan</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="kel_id" data-validation="required" data-validation-error-msg="Harus diisi">
-                              <option value="">--Pilih kelurahan--</option>
+                              <option value="">--Pilih Kelurahan--</option>
                               <?php foreach ($kelurahan as $rows) : ?>
                                 <option value="<?php echo($rows->kel_id); ?>"><?php echo($rows->kel_nama); ?></option>
                               <?php endforeach; ?>
