@@ -17,7 +17,6 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
@@ -38,7 +37,15 @@
                 <tbody>
                 <?php foreach ($jadwal as $rows) : ?>
                 <tr>
-                  <td></td>
+                  <td>
+                    
+                    <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-jadwal', $attributes); ?>
+                              <input type="hidden" name="jadwal_id" value="<?php echo $rows->jadwal_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+
+                  </td>
                   <td><a href="jadwal/<?php echo $rows->jadwal_id;  ?>"><?php echo $rows->posyandu_nama ?></a></td>
                   <td><?php echo $rows->jadwal_bulan ?></td>
                   <td><?php echo $rows->jadwal_tahun ?></td>

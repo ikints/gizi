@@ -79,6 +79,7 @@ $route['add_balita'] = 'users/add_balita';
 $route['balita/(:num)'] = 'users/detail_balita/$1';
 $route['balita/edit/(:num)'] = 'users/edit_balita/$1';
 $route['post_edit_balita'] = 'users/post_edit_balita';
+$route['delete-balita'] = 'users/delete_balita';
 
 $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
@@ -89,12 +90,14 @@ $route['jadwal'] = 'users/jadwal';
 $route['add_jadwal'] = 'users/add_jadwal';
 $route['jadwal/(:num)'] = 'users/edit_jadwal/$1';
 $route['post_edit_jadwal'] = 'users/post_edit_jadwal';
+$route['delete-jadwal'] = 'users/delete_jadwal';
 
 $route['pengukuran'] = 'users/pengukuran';
 $route['add_pengukuran'] = 'users/add_pengukuran';
 $route['pengukuran/(:num)'] = 'users/detail_pengukuran/$1';
 $route['pengukuran/edit/(:num)'] = 'users/edit_pengukuran/$1';
 $route['post_edit_pengukuran'] = 'users/post_edit_pengukuran';
+$route['delete-pengukuran'] = 'users/delete_pengukuran';
 
 $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';

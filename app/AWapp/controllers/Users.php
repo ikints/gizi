@@ -252,7 +252,7 @@ class Users extends CI_Controller {
 		$data['balita'] = $this->user_model->balita();
 		$data['posyandu'] = $this->user_model->posyandu();
 		$data['kecamatan'] = $this->user_model->kecamatan();
-		$data['kelurahan'] = $this->user_model->kelurahan();			
+		$data['kelurahan'] = $this->user_model->kelurahan();		
 		$data['main_content'] = 'users/balita';
 		$this->load->view('template/user/view', $data);
 	}
@@ -328,6 +328,16 @@ class Users extends CI_Controller {
 				$this->session->set_flashdata('msg','Tambah Data Balita');
 				redirect('users/balita');
 		}
+	}
+
+	public function delete_balita()
+	{
+		$balita_id = $this->input->post('balita_id');
+		//hapus
+		$this->user_model->delete_balita($balita_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/balita');			
+	
 	}
 
 	public function detail_balita()
@@ -433,6 +443,16 @@ class Users extends CI_Controller {
 			}
 	}
 
+	public function delete_jadwal()
+	{
+		$jadwal_id = $this->input->post('jadwal_id');
+		//hapus
+		$this->user_model->delete_jadwal($jadwal_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/jadwal');			
+	
+	}
+
 	public function pengukuran()
 	{
 		$data['title'] = 'Kecamatan';		
@@ -495,9 +515,19 @@ class Users extends CI_Controller {
 				'ukur_pmt_uraian' 	=> $this->input->post('ukur_pmt_uraian'),
 				'ukur_catatan' 	=> $this->input->post('ukur_catatan'),
 				'ukur_status_gizi' 	=> $this->input->post('ukur_status_gizi')
+
 			);
 
 		$result = $this->user_model->add_pengukuran($data);
+		//update ukur status balita
+		$balita_id 	= $this->input->post('balita_id');
+		$data_ukur = array(
+				'ukur_status' 	=> 'Y'
+			);
+
+		$this->user_model->balita_update($data_ukur, $balita_id);
+
+
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Pengukuran');
@@ -515,6 +545,16 @@ class Users extends CI_Controller {
 		$data['pengukuran'] = $this->user_model->detail_pengukuran($ukur_id);		
 		$data['main_content'] = 'users/detail_pengukuran';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function delete_pengukuran()
+	{
+		$ukur_id = $this->input->post('ukur_id');
+		//hapus
+		$this->user_model->delete_pengukuran($ukur_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/pengukuran');			
+	
 	}
 
 	public function kader()

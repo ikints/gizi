@@ -157,7 +157,8 @@ function balita()
 				a.balita_alamat,
 				a.balita_rt,
 				a.balita_rw,
-				a.kel_id
+				a.kel_id,
+				a.ukur_status
 
 			')
 			
@@ -171,6 +172,12 @@ function post_edit_balita($balita_id,$data)
 	{
 		$this->db->where('balita_id', $balita_id);
 		$this->db->update('balita', $data);									
+	}
+//update ukur status
+function balita_update($data_ukur, $balita_id)
+	{
+		$this->db->where('balita_id', $balita_id);
+		$this->db->update('balita', $data_ukur);									
 	}
 
 function edit_balita($balita_id)
@@ -235,6 +242,13 @@ function detail_balita($balita_id)
 			$result = $q->get()->result();
 			return $result;
 		}
+
+//delete balita
+function delete_balita($balita_id)
+	{
+		$this->db->delete('balita', array('balita_id' => $balita_id));
+		return true;								
+	}
 
 //Puskesmas
 function puskesmas()
@@ -412,6 +426,14 @@ function add_jadwal($data)
 		return $insert;						
 	}
 
+//delete jadwal
+function delete_jadwal($jadwal_id)
+	{
+		$this->db->delete('jadwal', array('jadwal_id' => $jadwal_id));
+		return true;								
+	}
+
+
 //Pengukuran
 function pengukuran()
 	{					
@@ -516,6 +538,13 @@ function add_pengukuran($data)
 	{					
 		$insert = $this->db->insert('pengukuran', $data);
 		return $insert;						
+	}
+
+//delete pengukuran
+function delete_pengukuran($ukur_id)
+	{
+		$this->db->delete('pengukuran', array('ukur_id' => $ukur_id));
+		return true;								
 	}
 
 //kader

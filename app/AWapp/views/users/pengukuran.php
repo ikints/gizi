@@ -12,13 +12,11 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <form id="frm-info" action="#" method="POST">
           <div class="box box-primary">
             <div class="box-header">
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="submit" class="btn btn-primary"><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
@@ -28,7 +26,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th></th>
+                  <th>#</th>
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
@@ -37,7 +35,13 @@
                 <tbody>
                 <?php foreach ($pengukuran as $rows) : ?>
                 <tr>
-                  <td></td>
+                  <td>
+                    <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-pengukuran', $attributes); ?>
+                              <input type="hidden" name="ukur_id" value="<?php echo $rows->ukur_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+                  </td>
                   <td><a href="pengukuran/<?php echo $rows->ukur_id;  ?>"><?php echo $rows->balita_nama ?></a></td>
                   <td><?php echo $rows->jadwal_tgl ?></td>
                   <td><?php echo $rows->ukur_usia ?></td>
@@ -46,27 +50,17 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th></th>
+                  <th>#</th>
                   <th>Nama Balita</th>
                   <th>Jadwal Periksa</th>
                   <th>Usia</th>
                 </tr>
                 </tfoot>
               </table>
-            
-
-
-
-              <p><b>Selected rows data:</b></p>
-              <pre id="example-console-rows"></pre>
-
-              <p><b>Form data as submitted to the server:</b></p>
-              <pre id="example-console-form"></pre>
 
             </div>
             <!-- /.box-body -->
           </div>
-          </form>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -199,6 +193,3 @@
         </div>
         <!-- /.modal -->
 
-
-
-        
