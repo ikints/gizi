@@ -25,7 +25,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>
@@ -57,7 +57,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th></th>
+                  
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>

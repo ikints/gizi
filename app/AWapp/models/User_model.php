@@ -572,4 +572,29 @@ function add_kader($data)
 		return $insert;						
 	}
 
+	//detail_kader
+function edit_kader($kader_id)
+	{					
+			$q = $this->db->select('
+				a.posyandu_id,
+				a.kader_id as kader_id,
+				a.kader_nama as kader_nama,
+				b.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('kader a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->where('a.kader_id',$kader_id);
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+	function post_edit_kader($kader_id,$data)
+	{
+		$this->db->where('kader_id', $kader_id);
+		$this->db->update('kader', $data);									
+	}
+
 }

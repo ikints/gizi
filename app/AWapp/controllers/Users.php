@@ -559,7 +559,7 @@ class Users extends CI_Controller {
 
 	public function kader()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Kader';		
 		$data['name'] = $this->name_member["name"];	
 		$data['posyandu'] = $this->user_model->posyandu();	
 		$data['kader'] = $this->user_model->kader();
@@ -582,6 +582,36 @@ class Users extends CI_Controller {
 				redirect('users/kader');
 
 			}
+	}
+
+	
+	public function edit_kader()
+	{
+		$kader_id = $this->uri->segment(2);
+
+		$data['title'] = 'Puskesmas';		
+		$data['name'] = $this->name_member["name"];
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['kader'] = $this->user_model->edit_kader($kader_id);		
+		$data['main_content'] = 'users/edit_kader';
+		$this->load->view('template/user/view', $data);
+	}
+
+public function post_edit_kader()
+	{
+		$kader_id = $this->input->post('kader_id');
+		
+
+		$data = array(
+				
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'kader_nama' 	=> $this->input->post('kader_nama')
+							
+			);
+
+		$this->user_model->post_edit_kader($kader_id,$data);	
+		$this->session->set_flashdata('msg','Update Berhasil');	
+		redirect('kader');
 	}
 
 
