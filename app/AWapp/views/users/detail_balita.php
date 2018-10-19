@@ -65,20 +65,8 @@
                   <b>RT/RW</b> <a class="pull-right"><?php echo $rows->balita_rt ?>/<?php echo $rows->balita_rw ?></a>
                 </li>
               </ul>
-              <table class="table table-bordered text-center" style="width: 100%">
-                <tr>
-                  <td style="width: 50%">
-                      <a href="<?php echo base_url(); ?>balita/edit/<?php echo $rows->balita_id;  ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
-                  </td>
-                  <td style="width: 50%">
-                      <a href="<?php echo base_url(); ?>balita" class="btn btn-primary btn-block"><b>Close</b></a>
-                  </td>
-                  
-                </tr>
-              
-            </table>
 
-              
+              <a href="<?php echo base_url(); ?>balita/edit/<?php echo $rows->balita_id;  ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
             </div>
             <!-- /.box-body -->
           </div>

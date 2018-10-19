@@ -2,7 +2,7 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="<?php echo base_url(); ?>" class="navbar-brand"><b>TAGLINE</b></a>
+          <a href="<?php echo base_url(); ?>" class="navbar-brand"><b>GIZI</b></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master Data <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-bars"></i> Master Data <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="<?php echo base_url(); ?>kecamatan">Kecamatan</a></li>
                 <li><a href="<?php echo base_url(); ?>kelurahan">Kelurahan</a></li>
@@ -22,16 +22,16 @@
               </ul>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>balita">Balita</a>
+              <a href="<?php echo base_url(); ?>balita"><i class="fa fa-fw fa-child"></i> Balita</a>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>jadwal">Jadwal</a>
+              <a href="<?php echo base_url(); ?>jadwal"><i class="fa fa-fw fa-calendar-plus-o"></i> Jadwal</a>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>pengukuran">Pengukuran</a>
+              <a href="<?php echo base_url(); ?>pengukuran"><i class="fa fa-fw fa-calculator"></i> Pengukuran</a>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>kader">Kader</a>
+              <a href="<?php echo base_url(); ?>kader"><i class="fa fa-fw fa-users"></i> Kader</a>
             </li>
           </ul>
         </div>

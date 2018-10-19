@@ -26,25 +26,25 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Nama Kader</th>
+                  <th></th>
                   <th>Nama Posyandu</th>
-                  
+                  <th>Nama Kader</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($kader as $rows) : ?>
                 <tr>
-                  
-                  <td><a href="kader/<?php echo $rows->kader_id;  ?>"><?php echo $rows->kader_nama ?></a></td>
+                  <td></td>
                   <td><?php echo $rows->posyandu_nama ?></td>
+                  <td><?php echo $rows->kader_nama ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Nama Kader</th>
+                  <th></th>
                   <th>Nama Posyandu</th>
-                  
+                  <th>Nama Kader</th>
                 </tr>
                 </tfoot>
               </table>

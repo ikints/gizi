@@ -25,7 +25,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  
+                  <th></th>
                   <th>NIK</th>
                   <th>Nama Balita</th>
                   <th>Jenis Kelamin</th>
