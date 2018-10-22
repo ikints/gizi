@@ -17,7 +17,6 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
@@ -26,6 +25,7 @@
               <table id="info" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th></th>
                   <th>Nama Posyandu</th>
                   <th>Bulan</th>
                   <th>Tahun</th>
@@ -37,7 +37,16 @@
                 <tbody>
                 <?php foreach ($jadwal as $rows) : ?>
                 <tr>
-                  <td><?php echo $rows->posyandu_nama ?></td>
+                  <td>
+                    
+                    <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-jadwal', $attributes); ?>
+                              <input type="hidden" name="jadwal_id" value="<?php echo $rows->jadwal_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+
+                  </td>
+                  <td><a href="jadwal/<?php echo $rows->jadwal_id;  ?>"><?php echo $rows->posyandu_nama ?></a></td>
                   <td><?php echo $rows->jadwal_bulan ?></td>
                   <td><?php echo $rows->jadwal_tahun ?></td>
                   <td><?php echo $rows->jadwal_tgl ?></td>
@@ -48,7 +57,10 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th></th>
                   <th>Nama Posyandu</th>
+                  <th>Bulan</th>
+                  <th>Tahun</th>
                   <th>Tanggal</th>
                   <th>Waktu</th>
                   <th>Kegiatan</th>
@@ -100,7 +112,7 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Tanggal</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="datepicker" id="datepicker" placeholder="Tanggal" name="jadwal_tgl" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="datepicker" placeholder="Tanggal" name="jadwal_tgl" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
 
                         </div>

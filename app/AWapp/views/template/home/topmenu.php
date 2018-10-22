@@ -12,8 +12,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></a>
+            <li>
+              <a href="#"><i class="fa fa-fw fa-calendar-plus-o"></i> Jadwal</a>
             </li>
           </ul>
         </div>
@@ -61,7 +61,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="<?php echo base_url(); ?>users/profil" class="btn btn-default btn-flat">Profile</a>
+                    <a href="<?php echo base_url(); ?>users/profil" class="btn btn-default btn-flat">Dashboard</a>
                   </div>
                   <div class="pull-right">
                     <a href="<?php echo base_url(); ?>users/logout" class="btn btn-default btn-flat">Sign out</a>

@@ -44,6 +44,31 @@ function kecamatan()
 			$result = $q->get()->result();
 			return $result;					
 	}
+
+function edit_kecamatan($kec_id)
+	{
+			$q = $this->db->select('
+
+				a.kec_id as kec_id,			
+				a.kec_kode as kec_kode,
+				a.kec_nama as kec_nama
+
+			')
+			
+			->from('kecamatan a')
+			->where('a.kec_id', $kec_id);
+			
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
+
+function post_edit_kecamatan($kec_id,$data)
+	{
+		$this->db->where('kec_id', $kec_id);
+		$this->db->update('kecamatan', $data);									
+	}
+
 //Kelurahan
 function kelurahan()
 	{					
@@ -63,6 +88,32 @@ function kelurahan()
 			$result = $q->get()->result();
 			return $result;					
 	}	
+
+function edit_kelurahan($kel_id)
+	{
+			$q = $this->db->select('
+
+				a.kel_id as kel_id,	
+				a.kec_id as kec_id,		
+				a.kel_kode as kel_kode,
+				a.kel_nama as kel_nama
+
+			')
+			
+			->from('kelurahan a')
+			->where('a.kel_id', $kel_id);
+			
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
+
+function post_edit_kelurahan($kel_id,$data)
+	{
+		$this->db->where('kel_id', $kel_id);
+		$this->db->update('kelurahan', $data);									
+	}
+
 //tambah kelurahan
 function add_kelurahan($data)
 	{					
@@ -106,7 +157,8 @@ function balita()
 				a.balita_alamat,
 				a.balita_rt,
 				a.balita_rw,
-				a.kel_id
+				a.kel_id,
+				a.ukur_status
 
 			')
 			
@@ -115,6 +167,49 @@ function balita()
 			$result = $q->get()->result();
 			return $result;
 		}
+
+function post_edit_balita($balita_id,$data)
+	{
+		$this->db->where('balita_id', $balita_id);
+		$this->db->update('balita', $data);									
+	}
+//update ukur status
+function balita_update($data_ukur, $balita_id)
+	{
+		$this->db->where('balita_id', $balita_id);
+		$this->db->update('balita', $data_ukur);									
+	}
+
+function edit_balita($balita_id)
+	{
+			$q = $this->db->select('
+
+				a.balita_id,
+				a.posyandu_id,
+				a.balita_nik,
+				a.balita_nama,
+				a.balita_anak_ke,
+				a.balita_anak_dari,
+				a.balita_jk,
+				a.balita_tgl_lahir,
+				a.balita_berat_lahir,
+				a.balita_ortu_nama,
+				a.balita_ortu_nik,
+				a.balita_tlpn,
+				a.balita_alamat,
+				a.balita_rt,
+				a.balita_rw,
+				a.kel_id
+				
+			')
+			
+			->from('balita a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->where('a.balita_id', $balita_id);
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
 
 //detail balita
 function detail_balita($balita_id)
@@ -148,6 +243,13 @@ function detail_balita($balita_id)
 			return $result;
 		}
 
+//delete balita
+function delete_balita($balita_id)
+	{
+		$this->db->delete('balita', array('balita_id' => $balita_id));
+		return true;								
+	}
+
 //Puskesmas
 function puskesmas()
 	{					
@@ -167,8 +269,29 @@ function puskesmas()
 			return $result;					
 	}
 
+function edit_puskesmas($puskesmas_id)
+	{
+			$q = $this->db->select('
 
+				a.puskesmas_id as puskesmas_id,			
+				a.puskesmas_nama as puskesmas_nama,
+				a.kec_id as kec_id
+
+			')
+			
+			->from('puskesmas a')
+			->where('a.puskesmas_id', $puskesmas_id);
+			
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
 		
+function post_edit_puskesmas($puskesmas_id,$data)
+	{
+		$this->db->where('puskesmas_id', $puskesmas_id);
+		$this->db->update('puskesmas', $data);									
+	}
 
 //tambah puskesmas
 function add_puskesmas($data)
@@ -201,6 +324,37 @@ function posyandu()
 			
 			$result = $q->get()->result();
 			return $result;					
+	}
+
+function edit_posyandu($posyandu_id)
+	{
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,
+				a.kel_id as kel_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw,
+				b.kel_nama as kel_nama,
+				c.puskesmas_nama as puskesmas_nama
+
+			')
+			
+			->from('posyandu a')
+			->join('kelurahan b','b.kel_id = a.kel_id')
+			->join('puskesmas c','c.puskesmas_id = a.puskesmas_id')
+			->where('a.posyandu_id', $posyandu_id);
+			
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
+
+function post_edit_posyandu($posyandu_id,$data)
+	{
+		$this->db->where('posyandu_id', $posyandu_id);
+		$this->db->update('posyandu', $data);									
 	}
 
 
@@ -236,12 +390,49 @@ function jadwal()
 			return $result;					
 	}
 
+function edit_jadwal($jadwal_id)
+	{
+			$q = $this->db->select('
+
+				a.jadwal_id as jadwal_id,	
+				a.posyandu_id as posyandu_id,	
+				a.jadwal_bulan as jadwal_bulan,
+				a.jadwal_tahun as jadwal_tahun,
+				a.jadwal_tgl as jadwal_tgl,
+				a.jadwal_waktu as jadwal_waktu,
+				a.jadwal_kegiatan as jadwal_kegiatan,
+				b.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('jadwal a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->where('a.jadwal_id', $jadwal_id);
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
+
+function post_edit_jadwal($jadwal_id,$data)
+	{
+		$this->db->where('jadwal_id', $jadwal_id);
+		$this->db->update('jadwal', $data);									
+	}
+
 //tambah jadwal
 function add_jadwal($data)
 	{					
 		$insert = $this->db->insert('jadwal', $data);
 		return $insert;						
 	}
+
+//delete jadwal
+function delete_jadwal($jadwal_id)
+	{
+		$this->db->delete('jadwal', array('jadwal_id' => $jadwal_id));
+		return true;								
+	}
+
 
 //Pengukuran
 function pengukuran()
@@ -267,11 +458,44 @@ function pengukuran()
 			return $result;					
 	}
 
+function edit_pengukuran($ukur_id)
+	{
+			$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.jadwal_id as jadwal_id,
+				a.balita_id as balita_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				a.ukur_cara_ukur_tb as ukur_cara_ukur_tb,
+				a.ukur_vitamin as ukur_vitamin,
+				a.ukur_pmt_sts as ukur_pmt_sts,
+				a.ukur_pmt_uraian as ukur_pmt_uraian,
+				a.ukur_catatan as ukur_catatan,
+				a.ukur_status_gizi as ukur_status_gizi
+
+			')
+			
+			->from('pengukuran a')
+			->where('a.ukur_id', $ukur_id);
+			
+			$result = $q->get()->result();
+			return $result;	
+	}
+
+function post_edit_pengukuran($ukur_id,$data)
+	{
+		$this->db->where('ukur_id', $ukur_id);
+		$this->db->update('pengukuran', $data);									
+	}
+
 //Pengukuran
 function detail_pengukuran($ukur_id)
 	{					
 			$q = $this->db->select('
 
+				a.ukur_id as ukur_id,
 				a.ukur_usia as ukur_usia,
 				a.ukur_bb as ukur_bb,
 				a.ukur_tb as ukur_tb,
@@ -316,6 +540,13 @@ function add_pengukuran($data)
 		return $insert;						
 	}
 
+//delete pengukuran
+function delete_pengukuran($ukur_id)
+	{
+		$this->db->delete('pengukuran', array('ukur_id' => $ukur_id));
+		return true;								
+	}
+
 //kader
 function kader()
 	{					
@@ -339,6 +570,120 @@ function add_kader($data)
 	{					
 		$insert = $this->db->insert('kader', $data);
 		return $insert;						
+	}
+
+
+//--------------------------------------------------------LAPORAN
+//kelurahan
+function getKelurahan($kec_id)
+	{		
+
+		$q = $this->db->select('
+				a.kel_id as kel_id,			
+				a.kel_nama as kel_nama
+			')
+			
+			->from('kelurahan a')
+			->where('a.kec_id', $kec_id)
+			;			
+				
+			$result = $q->get()->result();
+			return $result;
+				
+	}
+
+//posyandu
+function getPosyandu($kel_id)
+	{		
+
+		$q = $this->db->select('
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama
+			')
+			
+			->from('posyandu a')
+			->where('a.kel_id', $kel_id)
+			;			
+				
+			$result = $q->get()->result();
+			return $result;
+				
+	}
+
+function rekap_pb()
+	{					
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_ortu_nama as balita_ortu_nama,
+				c.balita_alamat as balita_alamat,
+				d.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id');	
+
+		$result = $q->get()->result();
+		return $result;				
+	}
+
+function loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun)
+	{					
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_ortu_nama as balita_ortu_nama,
+				c.balita_alamat as balita_alamat,
+				d.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id')
+			->where('d.posyandu_id',$posyandu_id);	
+
+		$result = $q->get()->result();
+		return $result;				
+	}
+
+function resume_kp()
+	{					
+
+		$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,
+				a.posyandu_nama as posyandu_nama,
+				Sum( Case 
+				            When (b.balita_jk = "L") Then 1
+				            Else 0 End ) as jumlah_laki,
+				Sum( Case 
+				            When (b.balita_jk = "P") Then 1
+				            Else 0 End ) as jumlah_perempuan,
+				
+			')
+			
+			->from('posyandu a')
+			->join('balita b','b.posyandu_id = a.posyandu_id');
+
+		$result = $q->get()->result();
+		return $result;					
 	}
 
 }

@@ -17,7 +17,6 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
                 </div>
               </div>
             </div>
@@ -32,20 +31,41 @@
                   <th>Jenis Kelamin</th>
                   <th>Tanggal Lahir</th>
                   <th>Nama Orang Tua</th>
+                  <th>Pengukuran</th>
                 </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($balita as $rows) : ?>
                     <tr>
-                      <td></td>
+                      <td>
+                        <?php if($rows->ukur_status == 'N') : ?>
+                        <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-balita', $attributes); ?>
+                              <input type="hidden" name="balita_id" value="<?php echo $rows->balita_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+                        <?php endif; ?>
+                      </td>
                       <td><a href="balita/<?php echo $rows->balita_id;  ?>"><?php echo $rows->balita_nik ?></a></td>
                       <td><?php echo $rows->balita_nama ?></td>
                       <td><?php echo $rows->balita_jk ?></td>
                       <td><?php echo $rows->balita_tgl_lahir ?></td>
                       <td><?php echo $rows->balita_ortu_nama ?></td>
+                      <td><?php echo $rows->ukur_status ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
+                <tfoot>
+                <tr>
+                  <th></th>
+                  <th>NIK</th>
+                  <th>Nama Balita</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Tanggal Lahir</th>
+                  <th>Nama Orang Tua</th>
+                  <th>Pengukuran</th>
+                </tr>
+                </tfoot>
                 
               </table>
             </div>
@@ -123,11 +143,11 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="L">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="L">
                                 Laki-laki
                               </label>
                               <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="P">
+                                <input type="radio" name="balita_jk" id="optionsRadios1" value="P">
                                 Perempuan
                               </label>
                             </div>
@@ -137,7 +157,7 @@
                           <label for="inputPassword3" class="col-sm-2 control-label">Tanggal Lahir</label>
 
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="kecamatan" placeholder="Nama Kecamatan" name="balita_tgl_lahir" data-validation="required" data-validation-error-msg="Harus diisi">
+                            <input type="text" class="form-control" id="datepicker" placeholder="Tanggal Lahir" name="balita_tgl_lahir" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
 
@@ -180,10 +200,10 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Kecamatan</label>
+                        <label for="inputPassword3" class="col-sm-2 control-label">Kelurahan</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="kel_id" data-validation="required" data-validation-error-msg="Harus diisi">
-                              <option value="">--Pilih kelurahan--</option>
+                              <option value="">--Pilih Kelurahan--</option>
                               <?php foreach ($kelurahan as $rows) : ?>
                                 <option value="<?php echo($rows->kel_id); ?>"><?php echo($rows->kel_nama); ?></option>
                               <?php endforeach; ?>
