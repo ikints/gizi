@@ -33,6 +33,13 @@
             <li>
               <a href="<?php echo base_url(); ?>kader"><i class="fa fa-fw fa-users"></i> Kader</a>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-bars"></i> Laporan <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?php echo base_url(); ?>rekap_pb">Rekap Pengukuran Balita</a></li>
+                <li><a href="<?php echo base_url(); ?>resume_kp">Resume Kegiatan Posyandu</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->

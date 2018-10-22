@@ -422,7 +422,7 @@ class Users extends CI_Controller {
 
 		$jadwal_date = date('Y-m-d', strtotime($this->input->post('jadwal_tgl')));
 		$jadwal_tahun = date('Y', strtotime($this->input->post('jadwal_tgl')));
-		$jadwal_bulan = date('F', strtotime($this->input->post('jadwal_tgl')));
+		$jadwal_bulan = date('m', strtotime($this->input->post('jadwal_tgl')));
 
 		$data = array(
 				'jadwal_id' 	=> $this->input->post('jadwal_id'),
@@ -559,7 +559,7 @@ class Users extends CI_Controller {
 
 	public function kader()
 	{
-		$data['title'] = 'Kader';		
+		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];	
 		$data['posyandu'] = $this->user_model->posyandu();	
 		$data['kader'] = $this->user_model->kader();
@@ -584,34 +584,66 @@ class Users extends CI_Controller {
 			}
 	}
 
-	
-	public function edit_kader()
-	{
-		$kader_id = $this->uri->segment(2);
+	//Kelurahan
+	public function getKelurahan()
+	{	
+		$kec_id = $this->input->post('kec_id');
 
-		$data['title'] = 'Puskesmas';		
+		$result = $this->user_model->getKelurahan($kec_id);
+		if (count($result) > 0) {
+			foreach ($result AS $rows):
+				echo '<option value="'.$rows->kel_id.'">'.$rows->kel_nama.'</option>';
+			endforeach;
+		}
+	}
+
+	//Kelurahan
+	public function getPosyandu()
+	{	
+		$kel_id = $this->input->post('kel_id');
+
+		$result = $this->user_model->getPosyandu($kel_id);
+		if (count($result) > 0) {
+			foreach ($result AS $rows):
+				echo '<option value="'.$rows->posyandu_id.'">'.$rows->posyandu_nama.'</option>';
+			endforeach;
+		}
+	}
+
+	//--------------------------------------------------------LAPORAN
+
+	public function rekap_pb()
+	{
+		$data['title'] = 'Laporan Rekap PB';		
 		$data['name'] = $this->name_member["name"];
-		$data['posyandu'] = $this->user_model->posyandu();
-		$data['kader'] = $this->user_model->edit_kader($kader_id);		
-		$data['main_content'] = 'users/edit_kader';
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['rekap_pb'] = $this->user_model->rekap_pb();			
+		$data['main_content'] = 'users/rekap_pb';
 		$this->load->view('template/user/view', $data);
 	}
 
-public function post_edit_kader()
+	public function loadDataTableRekapPB()
 	{
-		$kader_id = $this->input->post('kader_id');
-		
+		$kec_id = $this->input->post('kec_id');
+		$kel_id = $this->input->post('kel_id');
+		$posyandu_id = $this->input->post('posyandu_id');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
 
-		$data = array(
-				
-				'posyandu_id' 	=> $this->input->post('posyandu_id'),
-				'kader_nama' 	=> $this->input->post('kader_nama')
-							
-			);
+		$data['title'] = 'Laporan Rekap PB';		
+		$data['rekap_pb'] = $this->user_model->loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
+		$data['main_content'] = 'users/rekap_pb_filter';
+		$this->load->view('template/user/noview', $data);
+	}
 
-		$this->user_model->post_edit_kader($kader_id,$data);	
-		$this->session->set_flashdata('msg','Update Berhasil');	
-		redirect('kader');
+	public function resume_kp()
+	{
+		$data['title'] = 'Laporan Resume KP';		
+		$data['name'] = $this->name_member["name"];
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['resume_kp'] = $this->user_model->resume_kp();			
+		$data['main_content'] = 'users/resume_kp';
+		$this->load->view('template/user/view', $data);
 	}
 
 

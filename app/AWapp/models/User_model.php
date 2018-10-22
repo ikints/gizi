@@ -572,29 +572,118 @@ function add_kader($data)
 		return $insert;						
 	}
 
-	//detail_kader
-function edit_kader($kader_id)
+
+//--------------------------------------------------------LAPORAN
+//kelurahan
+function getKelurahan($kec_id)
+	{		
+
+		$q = $this->db->select('
+				a.kel_id as kel_id,			
+				a.kel_nama as kel_nama
+			')
+			
+			->from('kelurahan a')
+			->where('a.kec_id', $kec_id)
+			;			
+				
+			$result = $q->get()->result();
+			return $result;
+				
+	}
+
+//posyandu
+function getPosyandu($kel_id)
+	{		
+
+		$q = $this->db->select('
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama
+			')
+			
+			->from('posyandu a')
+			->where('a.kel_id', $kel_id)
+			;			
+				
+			$result = $q->get()->result();
+			return $result;
+				
+	}
+
+function rekap_pb()
 	{					
-			$q = $this->db->select('
-				a.posyandu_id,
-				a.kader_id as kader_id,
-				a.kader_nama as kader_nama,
-				b.posyandu_nama as posyandu_nama
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_ortu_nama as balita_ortu_nama,
+				c.balita_alamat as balita_alamat,
+				d.posyandu_nama as posyandu_nama
 				
 			')
 			
-			->from('kader a')
-			->join('posyandu b','b.posyandu_id = a.posyandu_id')
-			->where('a.kader_id',$kader_id);
-			
-			$result = $q->get()->result();
-			return $result;					
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id');	
+
+		$result = $q->get()->result();
+		return $result;				
 	}
 
-	function post_edit_kader($kader_id,$data)
-	{
-		$this->db->where('kader_id', $kader_id);
-		$this->db->update('kader', $data);									
+function loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun)
+	{					
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_ortu_nama as balita_ortu_nama,
+				c.balita_alamat as balita_alamat,
+				d.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id')
+			->where('d.posyandu_id',$posyandu_id);	
+
+		$result = $q->get()->result();
+		return $result;				
+	}
+
+function resume_kp()
+	{					
+
+		$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,
+				a.posyandu_nama as posyandu_nama,
+				Sum( Case 
+				            When (b.balita_jk = "L") Then 1
+				            Else 0 End ) as jumlah_laki,
+				Sum( Case 
+				            When (b.balita_jk = "P") Then 1
+				            Else 0 End ) as jumlah_perempuan,
+				
+			')
+			
+			->from('posyandu a')
+			->join('balita b','b.posyandu_id = a.posyandu_id');
+
+		$result = $q->get()->result();
+		return $result;					
 	}
 
 }

@@ -103,3 +103,10 @@ $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';
 $route['kader/(:num)'] = 'users/edit_kader/$1';
 $route['post_edit_kader'] = 'users/post_edit_kader';
+
+//---------------------Laporan
+$route['list_kelurahan'] = 'users/getKelurahan';
+$route['list_posyandu'] = 'users/getPosyandu';
+$route['rekap_pb'] = 'users/rekap_pb';
+$route['loadDataTableRekapPB'] = 'users/loadDataTableRekapPB';
+$route['resume_kp'] = 'users/resume_kp';
