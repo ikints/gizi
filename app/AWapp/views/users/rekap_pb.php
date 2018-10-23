@@ -17,7 +17,7 @@
             <div class="box-body">
               
               <?php $attributes = array('class' => 'form-horizontal'); ?>
-              <?php echo form_open('lihat_rekap_pb', $attributes); ?>
+              <?php echo form_open('rekap_pb_filter', $attributes); ?>
                 <!-- Hide URL -->
                 <input type="hidden" id="url" value="<?php echo base_url();?>">
                 <div class="box-body">

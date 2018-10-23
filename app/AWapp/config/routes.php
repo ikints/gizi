@@ -108,5 +108,6 @@ $route['post_edit_kader'] = 'users/post_edit_kader';
 $route['list_kelurahan'] = 'users/getKelurahan';
 $route['list_posyandu'] = 'users/getPosyandu';
 $route['rekap_pb'] = 'users/rekap_pb';
-$route['loadDataTableRekapPB'] = 'users/loadDataTableRekapPB';
+$route['rekap_pb_filter'] = 'users/loadDataTableRekapPB';
 $route['resume_kp'] = 'users/resume_kp';
+$route['resume_kp_filter'] = 'users/loadDataTableResumeKP';

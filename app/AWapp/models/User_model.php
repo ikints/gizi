@@ -326,6 +326,32 @@ function posyandu()
 			return $result;					
 	}
 
+function detail_posyandu($posyandu_id)
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw,
+				b.kel_nama as kel_nama,
+				c.puskesmas_nama as puskesmas_nama
+
+
+			')
+			
+			->from('posyandu a')
+			->join('kelurahan b','b.kel_id = a.kel_id')
+			->join('puskesmas c','c.puskesmas_id = a.puskesmas_id')
+			->where('a.posyandu_id', $posyandu_id);
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
 function edit_posyandu($posyandu_id)
 	{
 			$q = $this->db->select('
@@ -657,7 +683,12 @@ function loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun)
 			->join('jadwal b','b.jadwal_id = a.jadwal_id')
 			->join('balita c','c.balita_id = a.balita_id')
 			->join('posyandu d','d.posyandu_id = c.posyandu_id')
-			->where('d.posyandu_id',$posyandu_id);	
+			->join('kelurahan e','e.kel_id = d.kel_id')
+			->where('e.kec_id',$kec_id)
+			->where('e.kel_id',$kel_id)
+			->where('d.posyandu_id',$posyandu_id)
+			->where('b.jadwal_bulan',$bulan)
+			->where('b.jadwal_tahun',$tahun);	
 
 		$result = $q->get()->result();
 		return $result;				
@@ -681,6 +712,33 @@ function resume_kp()
 			
 			->from('posyandu a')
 			->join('balita b','b.posyandu_id = a.posyandu_id');
+
+		$result = $q->get()->result();
+		return $result;					
+	}
+
+function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
+	{					
+
+		$q = $this->db->select('
+
+				a.posyandu_id as posyandu(_id,
+				a.posyandu_nama as posyandu_nama,
+				Sum( Case 
+				            When (b.balita_jk = "L") Then 1
+				            Else 0 End ) as jumlah_laki,
+				Sum( Case 
+				            When (b.balita_jk = "P") Then 1
+				            Else 0 End ) as jumlah_perempuan,
+				
+			')
+			
+			->from('posyandu a')
+			->join('balita b','b.posyandu_id = a.posyandu_id')
+			->join('kelurahan c','c.kel_id = b.kel_id')
+			->where('c.kec_id',$kec_id)
+			->where('c.kel_id',$kel_id)
+			->where("DATE_FORMAT(b.balita_date_entry, '%m-%Y') = ", $balita_date_entry);
 
 		$result = $q->get()->result();
 		return $result;					

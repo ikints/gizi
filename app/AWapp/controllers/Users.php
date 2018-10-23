@@ -291,6 +291,7 @@ class Users extends CI_Controller {
 				'balita_alamat' 		=> $this->input->post('balita_alamat'),
 				'balita_rt' 			=> $this->input->post('balita_rt'),
 				'balita_rw' 			=> $this->input->post('balita_rw'),
+				'balita_date_entry' 	=> date('Y-m-d'),
 				'kel_id' 				=> $this->input->post('kel_id')
 							
 			);
@@ -630,10 +631,15 @@ class Users extends CI_Controller {
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
 
-		$data['title'] = 'Laporan Rekap PB';		
+		$data['title'] = 'Laporan Rekap PB';
+		$data['name'] = $this->name_member["name"];	
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['posyandu'] = $this->user_model->detail_posyandu($posyandu_id);
+		$data['bulan'] = $bulan;
+		$data['tahun'] = $tahun;	
 		$data['rekap_pb'] = $this->user_model->loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
 		$data['main_content'] = 'users/rekap_pb_filter';
-		$this->load->view('template/user/noview', $data);
+		$this->load->view('template/user/view', $data);
 	}
 
 	public function resume_kp()
@@ -642,6 +648,22 @@ class Users extends CI_Controller {
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['resume_kp'] = $this->user_model->resume_kp();			
+		$data['main_content'] = 'users/resume_kp';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function loadDataTableResumeKP()
+	{	
+		$kec_id = $this->input->post('kec_id');
+		$kel_id = $this->input->post('kel_id');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$balita_date_entry = $bulan."-".$tahun;
+
+		$data['title'] = 'Laporan Resume KP';		
+		$data['name'] = $this->name_member["name"];
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['resume_kp'] = $this->user_model->loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry);
 		$data['main_content'] = 'users/resume_kp';
 		$this->load->view('template/user/view', $data);
 	}

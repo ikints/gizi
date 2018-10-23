@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: 12 Okt 2018 pada 11.34
+-- Generation Time: 23 Okt 2018 pada 12.52
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -44,15 +44,19 @@ CREATE TABLE `balita` (
   `balita_alamat` text,
   `balita_rt` char(3) DEFAULT NULL,
   `balita_rw` char(3) DEFAULT NULL,
-  `balita_tlpn` varchar(50) NOT NULL
+  `balita_tlpn` varchar(50) NOT NULL,
+  `balita_date_entry` date NOT NULL,
+  `ukur_status` enum('Y','N') NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `balita`
 --
 
-INSERT INTO `balita` (`balita_id`, `kel_id`, `posyandu_id`, `balita_nik`, `balita_nama`, `balita_anak_ke`, `balita_anak_dari`, `balita_jk`, `balita_tgl_lahir`, `balita_berat_lahir`, `balita_ortu_nama`, `balita_ortu_nik`, `balita_alamat`, `balita_rt`, `balita_rw`, `balita_tlpn`) VALUES
-(1, 2, 1, '090909', 'Agus', 1, 1, NULL, '0000-00-00', NULL, 'Margareta', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091');
+INSERT INTO `balita` (`balita_id`, `kel_id`, `posyandu_id`, `balita_nik`, `balita_nama`, `balita_anak_ke`, `balita_anak_dari`, `balita_jk`, `balita_tgl_lahir`, `balita_berat_lahir`, `balita_ortu_nama`, `balita_ortu_nik`, `balita_alamat`, `balita_rt`, `balita_rw`, `balita_tlpn`, `balita_date_entry`, `ukur_status`) VALUES
+(1, 2, 1, '090909', 'Agus', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-02', 'Y'),
+(3, 2, 1, '090909', 'Agus s', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-18', 'Y'),
+(4, 2, 1, '090909', 'Santi', 1, 1, 'P', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2017-09-04', 'Y');
 
 -- --------------------------------------------------------
 
@@ -89,12 +93,13 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`jadwal_id`, `posyandu_id`, `jadwal_bulan`, `jadwal_tahun`, `jadwal_tgl`, `jadwal_waktu`, `jadwal_kegiatan`) VALUES
-(1, 1, 'Octo', '2018', '2018-10-10', '03:30:00', 'a'),
-(2, 2, 'Octo', '2018', '1970-01-01', '03:45:00', 'ab'),
-(3, 1, 'Octo', '2018', '2018-10-09', '03:45:00', 'f'),
-(4, 1, 'Octo', '2018', '2018-10-17', '03:30:00', 'd'),
-(5, 1, 'Octo', '2018', '2018-10-16', '04:45:00', 's'),
-(6, 2, 'July', '2018', '2018-07-03', '03:45:00', 'g');
+(1, 2, '07', '2018', '2018-07-17', '03:45:00', 'aee'),
+(2, 2, '10', '2018', '1970-01-01', '03:45:00', 'ab'),
+(3, 2, '01', '1970', '1970-01-01', '03:45:00', 'fd'),
+(4, 2, '01', '1970', '1970-01-01', '04:30:00', 'dw'),
+(5, 1, '10', '2018', '2018-10-16', '04:45:00', 's'),
+(7, 1, '10', '2018', '2018-10-30', '05:00:00', 'd'),
+(8, 1, '01', '2018', '2018-01-09', '05:00:00', 'a');
 
 -- --------------------------------------------------------
 
@@ -119,6 +124,14 @@ CREATE TABLE `kader` (
   `posyandu_id` int(11) DEFAULT NULL,
   `kader_nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kader`
+--
+
+INSERT INTO `kader` (`kader_id`, `posyandu_id`, `kader_nama`) VALUES
+(1, 1, 'a'),
+(2, 2, 'b');
 
 -- --------------------------------------------------------
 
@@ -157,10 +170,11 @@ CREATE TABLE `kelurahan` (
 --
 
 INSERT INTO `kelurahan` (`kel_id`, `kec_id`, `kel_kode`, `kel_nama`) VALUES
-(1, 1, '32730900', 'CIJAURA'),
+(1, 1, '32730900', 'CIJAURA2'),
 (2, 1, '32730900', 'MARGASARI'),
 (3, 1, '32730900', 'SEKEJATI'),
-(4, 1, '32730900', 'JATISARI');
+(4, 1, '32730900', 'JATISARI'),
+(6, 1, '32730902', 'a');
 
 -- --------------------------------------------------------
 
@@ -182,6 +196,13 @@ CREATE TABLE `pengukuran` (
   `ukur_catatan` text,
   `ukur_status_gizi` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengukuran`
+--
+
+INSERT INTO `pengukuran` (`ukur_id`, `jadwal_id`, `balita_id`, `ukur_usia`, `ukur_bb`, `ukur_tb`, `ukur_cara_ukur_tb`, `ukur_vitamin`, `ukur_pmt_sts`, `ukur_pmt_uraian`, `ukur_catatan`, `ukur_status_gizi`) VALUES
+(3, 1, 1, 11, 11, 11, 33, 'd', 'a', 'a', 's', 'a');
 
 -- --------------------------------------------------------
 
@@ -214,8 +235,8 @@ CREATE TABLE `posyandu` (
 --
 
 INSERT INTO `posyandu` (`posyandu_id`, `kel_id`, `puskesmas_id`, `posyandu_nama`, `posyandu_alamat`, `posyandu_rt`, `posyandu_rw`) VALUES
-(1, 2, 1, 'Posyandu RW I', 'Jl. Pluto No. 90', '002', '001'),
-(2, 2, 1, 'Posyandu RW II', 'Jl. Saturnus No. 78', '009', '002');
+(1, 1, 1, 'Posyandu RW I', 'Jl. Pluto No. 90', '004', '001'),
+(2, 1, 2, 'Posyandu RW III', 'Jl. Saturnus No. 78', '002', '003');
 
 -- --------------------------------------------------------
 
@@ -234,7 +255,7 @@ CREATE TABLE `puskesmas` (
 --
 
 INSERT INTO `puskesmas` (`puskesmas_id`, `kec_id`, `puskesmas_nama`) VALUES
-(1, 1, 'UPT MARGAHAYU RAYA'),
+(1, 1, 'UPT MARGAHAYU RAYA2'),
 (2, 1, 'SEKEJATI');
 
 -- --------------------------------------------------------
@@ -355,7 +376,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `balita`
 --
 ALTER TABLE `balita`
-  MODIFY `balita_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `balita_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `bidan`
@@ -367,7 +388,7 @@ ALTER TABLE `bidan`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `jadwal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `jadwal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jadwal_pmt`
@@ -379,7 +400,7 @@ ALTER TABLE `jadwal_pmt`
 -- AUTO_INCREMENT for table `kader`
 --
 ALTER TABLE `kader`
-  MODIFY `kader_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kader_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kecamatan`
@@ -391,13 +412,13 @@ ALTER TABLE `kecamatan`
 -- AUTO_INCREMENT for table `kelurahan`
 --
 ALTER TABLE `kelurahan`
-  MODIFY `kel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pengukuran`
 --
 ALTER TABLE `pengukuran`
-  MODIFY `ukur_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ukur_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pmt`

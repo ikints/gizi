@@ -33,7 +33,7 @@ class Home extends CI_Controller {
 		{
 			$data['title'] = 'Login';						
 			$data['main_content'] = 'home/login';
-			$this->load->view('template/home/view', $data);
+			$this->load->view('template/home/aloneview', $data);
 		}
 		else
 		{

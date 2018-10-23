@@ -42,13 +42,9 @@
           <input type="password" name="password" class="form-control" placeholder="Password"  data-validation="required" data-validation-error-msg="Ini adalah kolom yang harus diisi">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="checkbox"> Ingatkan saya
-        </div>
         <div class="row">
           <div class="col-xs-8">
-            <a href="<?php echo base_url(); ?>lupa-password">Lupa Password</a><br>
-            <a href="<?php echo base_url(); ?>register" class="text-center">Daftar Member Baru</a>
+            <a href="<?php echo base_url(); ?>lupa-password">Lupa Password</a>
           </div>
           <!-- /.col -->
           <div class="col-xs-4">
@@ -64,6 +60,7 @@
     </div>
     <!-- /.login-box-body -->
   </div>
+  <center><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Home</a></center>
   <!-- /.login-box -->
 
     </div>
