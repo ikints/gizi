@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 //---------------------HOME
 $route['login'] = 'home/login';
 $route['valid-login'] = 'home/valid_login_users';
-//---------------------USERS
+//---------------------USER ADMIN
 $route['users/profil'] = 'users';
 $route['users/logout'] = 'users/logout';
 
@@ -111,3 +111,16 @@ $route['rekap_pb'] = 'users/rekap_pb';
 $route['rekap_pb_filter'] = 'users/loadDataTableRekapPB';
 $route['resume_kp'] = 'users/resume_kp';
 $route['resume_kp_filter'] = 'users/loadDataTableResumeKP';
+
+//---------------------PUSKESMAS
+$route['ipuskesmas'] = 'puskesmas';
+$route['ipuskesmas/logout'] = 'puskesmas/logout';
+$route['ipuskesmas/puskesmas'] = 'puskesmas/puskesmas';
+$route['ipuskesmas/balita'] = 'puskesmas/balita';
+$route['ipuskesmas/posyandu'] = 'puskesmas/posyandu';
+$route['ipuskesmas/jadwal'] = 'puskesmas/jadwal';
+$route['ipuskesmas/pengukuran'] = 'puskesmas/pengukuran';
+$route['ipuskesmas/kader'] = 'puskesmas/kader';
+//---------------------POSYANDU
+$route['iposyandu'] = 'posyandu';
+$route['iposyandu/logout'] = 'posyandu/logout';

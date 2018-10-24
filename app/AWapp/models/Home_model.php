@@ -10,7 +10,8 @@ function valid_login($username, $password)
 				a.username as Username,
 				a.password as Password,
 				a.status as Status,
-				a.name as Name
+				a.name as Name,
+				a.level as Level
 			')
 			
 			->from('users a')

@@ -86,7 +86,126 @@
             <div class="box-header">
               <div class="row">
                 <div class="col-md-12" align="center">
+                  <strong>
                   LAPORAN REKAPITULASI PENGUKURAN BALITA <br>
+                  <?php foreach ($kelurahan as $rows) : ?>
+                  <textarea id="header-title" style="display:none;">
+                      Kel/Desa: <?php echo $rows->kel_nama; ?> 
+                      BULAN : <?php 
+
+                        switch ($bulan) {
+                          case '01':
+                            echo 'Januari';
+                            break;
+                          
+                          case '02':
+                            echo 'Februari';
+                            break;
+
+                          case '03':
+                            echo 'Maret';
+                            break;
+
+                          case '04':
+                            echo 'April';
+                            break;
+
+                          case '05':
+                            echo 'Mei';
+                            break;
+
+                          case '06':
+                            echo 'Juni';
+                            break;
+
+                          case '07':
+                            echo 'Juli';
+                            break;
+
+                          case '08':
+                            echo 'Agustus';
+                            break;
+
+                          case '09':
+                            echo 'September';
+                            break;
+
+                          case '10':
+                            echo 'Oktober';
+                            break;
+
+                          case '11':
+                            echo 'November';
+                            break;
+
+                          case '12':
+                            echo 'Desember';
+                            break;
+                        }
+
+                         
+
+                        ?> TAHUN : <?php echo $tahun; ?> 
+                  </textarea>
+                  <!-- Alamat -->
+                  Kel/Desa: <?php echo $rows->kel_nama; ?> <br>
+                  <?php endforeach; ?>
+                  BULAN : <?php 
+
+                  switch ($bulan) {
+                    case '01':
+                      echo 'Januari';
+                      break;
+                    
+                    case '02':
+                      echo 'Februari';
+                      break;
+
+                    case '03':
+                      echo 'Maret';
+                      break;
+
+                    case '04':
+                      echo 'April';
+                      break;
+
+                    case '05':
+                      echo 'Mei';
+                      break;
+
+                    case '06':
+                      echo 'Juni';
+                      break;
+
+                    case '07':
+                      echo 'Juli';
+                      break;
+
+                    case '08':
+                      echo 'Agustus';
+                      break;
+
+                    case '09':
+                      echo 'September';
+                      break;
+
+                    case '10':
+                      echo 'Oktober';
+                      break;
+
+                    case '11':
+                      echo 'November';
+                      break;
+
+                    case '12':
+                      echo 'Desember';
+                      break;
+                  }
+
+                   
+
+                  ?> TAHUN : <?php echo $tahun; ?>  <br>
+                  </strong>
                 </div>
               </div>
             </div>

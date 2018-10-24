@@ -121,7 +121,27 @@ function add_kelurahan($data)
 		return $insert;						
 	}
 
+//detail kelurahan
+function detail_kelurahan($kel_id)
+	{					
+			$q = $this->db->select('
 
+				a.kel_id as kel_id,			
+				a.kel_kode as kel_kode,
+				a.kel_nama as kel_nama,
+				b.kec_nama as kec_nama
+
+			')
+			
+			->from('kelurahan a')
+			->join('kecamatan b','b.kec_id = a.kec_id')
+			->where('a.kel_id', $kel_id);
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
 
 	//tambah kecamatan
 function add_kecamatan($data)
@@ -158,12 +178,16 @@ function balita()
 				a.balita_rt,
 				a.balita_rw,
 				a.kel_id,
-				a.ukur_status
+				IFNULL(c.j_balita,0) as jumlah_balita,
 
 			')
 			
 			->from('balita a')
-			->join('posyandu b','b.posyandu_id = a.posyandu_id');
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->join('(SELECT c.balita_id,
+					      count(*) as j_balita
+					    from pengukuran c
+					    group by c.balita_id) c', 'c.balita_id = a.balita_id', 'left');
 			$result = $q->get()->result();
 			return $result;
 		}
@@ -722,7 +746,7 @@ function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
 
 		$q = $this->db->select('
 
-				a.posyandu_id as posyandu(_id,
+				a.posyandu_id as posyandu_id,
 				a.posyandu_nama as posyandu_nama,
 				Sum( Case 
 				            When (b.balita_jk = "L") Then 1

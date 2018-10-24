@@ -520,15 +520,6 @@ class Users extends CI_Controller {
 			);
 
 		$result = $this->user_model->add_pengukuran($data);
-		//update ukur status balita
-		$balita_id 	= $this->input->post('balita_id');
-		$data_ukur = array(
-				'ukur_status' 	=> 'Y'
-			);
-
-		$this->user_model->balita_update($data_ukur, $balita_id);
-
-
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Pengukuran');
@@ -663,8 +654,11 @@ class Users extends CI_Controller {
 		$data['title'] = 'Laporan Resume KP';		
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['kelurahan'] = $this->user_model->detail_kelurahan($kel_id);
+		$data['bulan'] = $bulan;
+		$data['tahun'] = $tahun;
 		$data['resume_kp'] = $this->user_model->loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry);
-		$data['main_content'] = 'users/resume_kp';
+		$data['main_content'] = 'users/resume_kp_filter';
 		$this->load->view('template/user/view', $data);
 	}
 

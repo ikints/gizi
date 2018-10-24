@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: 23 Okt 2018 pada 12.52
+-- Generation Time: 24 Okt 2018 pada 11.48
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -45,18 +45,16 @@ CREATE TABLE `balita` (
   `balita_rt` char(3) DEFAULT NULL,
   `balita_rw` char(3) DEFAULT NULL,
   `balita_tlpn` varchar(50) NOT NULL,
-  `balita_date_entry` date NOT NULL,
-  `ukur_status` enum('Y','N') NOT NULL DEFAULT 'N'
+  `balita_date_entry` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `balita`
 --
 
-INSERT INTO `balita` (`balita_id`, `kel_id`, `posyandu_id`, `balita_nik`, `balita_nama`, `balita_anak_ke`, `balita_anak_dari`, `balita_jk`, `balita_tgl_lahir`, `balita_berat_lahir`, `balita_ortu_nama`, `balita_ortu_nik`, `balita_alamat`, `balita_rt`, `balita_rw`, `balita_tlpn`, `balita_date_entry`, `ukur_status`) VALUES
-(1, 2, 1, '090909', 'Agus', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-02', 'Y'),
-(3, 2, 1, '090909', 'Agus s', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-18', 'Y'),
-(4, 2, 1, '090909', 'Santi', 1, 1, 'P', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2017-09-04', 'Y');
+INSERT INTO `balita` (`balita_id`, `kel_id`, `posyandu_id`, `balita_nik`, `balita_nama`, `balita_anak_ke`, `balita_anak_dari`, `balita_jk`, `balita_tgl_lahir`, `balita_berat_lahir`, `balita_ortu_nama`, `balita_ortu_nik`, `balita_alamat`, `balita_rt`, `balita_rw`, `balita_tlpn`, `balita_date_entry`) VALUES
+(1, 2, 1, '090909', 'Agus', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-02'),
+(3, 2, 1, '090909', 'Agus s', 1, 1, 'L', '1980-01-17', NULL, 'Margaretaa', NULL, 'Jl. Mars Timur No.90', '006', '001', '081320009091', '2018-10-18');
 
 -- --------------------------------------------------------
 
@@ -269,15 +267,18 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `level` varchar(2) NOT NULL COMMENT '1: Dinkes, 2:Puskesmas, 3:Posyandu'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `status`, `name`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Y', 'Ali');
+INSERT INTO `users` (`id_user`, `username`, `password`, `status`, `name`, `level`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Y', 'Ali', '1'),
+(2, 'puskesmas', '62c6e242d0e465524d998b4bba153b3b', 'Y', 'Anggi', '2'),
+(3, 'posyandu', 'cc267064b7018c98a0b09f7556fa8dc9', 'Y', 'Susan', '3');
 
 --
 -- Indexes for dumped tables
@@ -442,7 +443,7 @@ ALTER TABLE `puskesmas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

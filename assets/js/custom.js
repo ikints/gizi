@@ -1,3 +1,14 @@
+    //global variable
+    var base_url = $("#url").val();
+
+    $("#buttons-pdf").click(function(){
+      //var rekap pb
+      var posyandu_nama = $('#posyandu_nama').val();
+      var posyandu_alamat = $('#posyandu_alamat').val();
+      //var resume kp
+
+    });
+    
 
     $.validate({
       modules : 'location, date, security, file',
@@ -39,23 +50,26 @@
                         title: '',
                         orientation: 'potrait',
                         pageSize: 'A4',
-                        messageTop: 'LAPORAN REKAPITULASI PENGUKURAN BALITA'
+                        messageTop : 'LAPORAN REKAPITULASI PENGUKURAN BALITA'
                     },
                     {
                         text: 'PDF',
                         extend: 'pdfHtml5',
-                        title: 'PB',
+                        title: '',
                         orientation: 'potrait',
                         pageSize: 'A4',
+                        messageTop : function () {
+                                    return $('#header-title').val();
+                                },
                         customize: function (doc) {
                           doc['header']=(function() {
                           return {
                             columns: [
                               {
                                 alignment: 'center',
-                                fontSize: 14,
-                                text: 'LAPORAN REKAPITULASI PENGUKURAN BALITA',
-                                text: 'REKAPITULASI PENGUKURAN BALITA'
+                                fontSize: 12,
+                                text: 'LAPORAN REKAPITULASI PENGUKURAN BALITA'
+                              
                               }
                             ],
                             margin: 20
@@ -90,14 +104,18 @@
                         title: '',
                         orientation: 'potrait',
                         pageSize: 'A4',
+                        messageTop : function () {
+                                    return $('#header-title').val();
+                                },
                         customize: function (doc) {
                           doc['header']=(function() {
                           return {
                             columns: [
                               {
                                 alignment: 'center',
-                                fontSize: 14,
-                                text: 'LAPORAN RESUME KEGIATAN POSYANDU'
+                                fontSize: 12,
+                                text: 'LAPORAN REKAPITULASI PENGUKURAN BALITA'
+                              
                               }
                             ],
                             margin: 20

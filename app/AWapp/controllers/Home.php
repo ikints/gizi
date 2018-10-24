@@ -77,6 +77,7 @@ class Home extends CI_Controller {
 					$password_user = $rows->Password;
 					$name = $rows->Name;
 					$status = $rows->Status;
+					$level = $rows->Level;
 				
 				
 				
@@ -105,7 +106,7 @@ class Home extends CI_Controller {
 					$this->load->view('home/view', $data);
 
 				}						
-				elseif ( ($username_user == $username) and ($password_user == $password) and ($status == 'Y') )
+				elseif ( ($username_user == $username) and ($password_user == $password) and ($status == 'Y') and ($level == '1') )
 				{
 					
 					$data = array(
@@ -118,7 +119,34 @@ class Home extends CI_Controller {
 					
 					$this->session->set_userdata('is_user_logged_in', $data);			
 					redirect('users');
+				}elseif ( ($username_user == $username) and ($password_user == $password) and ($status == 'Y') and ($level == '2') )
+				{
+					
+					$data = array(
+						'username_login' => $username_user,
+						'name' => $name,	
+						'date' => $date,
+						'id_user' => $id_user,			
+						'is_ps_logged_in' => true
+					);
+					
+					$this->session->set_userdata('is_ps_logged_in', $data);			
+					redirect('ipuskesmas');
+				}elseif ( ($username_user == $username) and ($password_user == $password) and ($status == 'Y') and ($level == '3') )
+				{
+					
+					$data = array(
+						'username_login' => $username_user,
+						'name' => $name,	
+						'date' => $date,
+						'id_user' => $id_user,			
+						'is_py_logged_in' => true
+					);
+					
+					$this->session->set_userdata('is_py_logged_in', $data);			
+					redirect('iposyandu');
 				}
+
 
 				endforeach;
 				

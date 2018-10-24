@@ -1,4 +1,3 @@
-Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="container">
     <!-- Content Header (Page header) -->
@@ -97,9 +96,68 @@ Content Wrapper. Contains page content -->
                   <strong>
                   LAPORAN REKAPITULASI PENGUKURAN BALITA <br>
                   <?php foreach ($posyandu as $rows) : ?>
-                  POSYANDU <?php echo $rows->posyandu_nama; ?> <br>
+                  <textarea id="header-title" style="display:none;">
+                      POSYANDU : <?php echo $rows->posyandu_nama; ?> 
+                      <?php echo $rows->posyandu_alamat; ?> RT: <?php echo $rows->posyandu_rt; ?>  RW: <?php echo $rows->posyandu_rw; ?> Kel/Desa: <?php echo $rows->kel_nama; ?> 
+                      BULAN : <?php 
+
+                        switch ($bulan) {
+                          case '01':
+                            echo 'Januari';
+                            break;
+                          
+                          case '02':
+                            echo 'Februari';
+                            break;
+
+                          case '03':
+                            echo 'Maret';
+                            break;
+
+                          case '04':
+                            echo 'April';
+                            break;
+
+                          case '05':
+                            echo 'Mei';
+                            break;
+
+                          case '06':
+                            echo 'Juni';
+                            break;
+
+                          case '07':
+                            echo 'Juli';
+                            break;
+
+                          case '08':
+                            echo 'Agustus';
+                            break;
+
+                          case '09':
+                            echo 'September';
+                            break;
+
+                          case '10':
+                            echo 'Oktober';
+                            break;
+
+                          case '11':
+                            echo 'November';
+                            break;
+
+                          case '12':
+                            echo 'Desember';
+                            break;
+                        }
+
+                         
+
+                        ?> TAHUN : <?php echo $tahun; ?> 
+                  </textarea>
+                  POSYANDU : <?php echo $rows->posyandu_nama; ?> <br>
                   <!-- Alamat -->
-                  <?php echo $rows->posyandu_alamat; ?> <?php echo $rows->posyandu_rt; ?>  <?php echo $rows->posyandu_rw; ?> <?php echo $rows->kel_nama; ?> <br>
+                  <?php echo $rows->posyandu_alamat; ?> RT: <?php echo $rows->posyandu_rt; ?>  RW: <?php echo $rows->posyandu_rw; ?> Kel/Desa: <?php echo $rows->kel_nama; ?> <br>
                   <?php endforeach; ?>
                   BULAN : <?php 
 
@@ -157,6 +215,7 @@ Content Wrapper. Contains page content -->
 
                   ?> TAHUN : <?php echo $tahun; ?>  <br>
                   </strong>
+                  
                 </div>
               </div>
             </div>
