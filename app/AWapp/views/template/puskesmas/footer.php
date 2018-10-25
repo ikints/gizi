@@ -60,8 +60,6 @@
 <script src="<?php echo base_url("assets/theme/"); ?>plugins/iCheck/icheck.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?php echo base_url("assets/theme/"); ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- Datatable Checkbox JS -->
-<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
 <!-- Morris.js charts -->
 <script src="<?php echo base_url("assets/theme/"); ?>bower_components/raphael/raphael.min.js"></script>
 <script src="<?php echo base_url("assets/theme/"); ?>bower_components/morris.js/morris.min.js"></script>

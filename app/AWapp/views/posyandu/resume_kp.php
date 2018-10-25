@@ -17,28 +17,10 @@
             <div class="box-body">
               
               <?php $attributes = array('class' => 'form-horizontal'); ?>
-              <?php echo form_open('resume_kp_filter', $attributes); ?>
+              <?php echo form_open('iposyandu/resume_kp_filter', $attributes); ?>
               <!-- Hide URL -->
               <input type="hidden" id="url" value="<?php echo base_url();?>">
                 <div class="box-body">
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Kecamatan</label>
-                    <div class="col-sm-10">
-                      <select class="form-control" name="kec_id" data-validation="required" data-validation-error-msg="Harus diisi" id="kecamatan">
-                        <option value="">--Pilih Kecamatan--</option>
-                        <?php foreach ($kecamatan as $rows) : ?>
-                        <option value="<?php echo($rows->kec_id); ?>"><?php echo($rows->kec_nama); ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Kelurahan</label>
-                    <div class="col-sm-10">
-                      <select class="form-control" name="kel_id" data-validation="required" data-validation-error-msg="Harus diisi" id="kelurahan">
-                      </select>
-                    </div>
-                  </div>
                   <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Bulan/Tahun</label>
 

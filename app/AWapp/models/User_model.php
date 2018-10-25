@@ -27,6 +27,14 @@ function profil_member()
 		}
 
 	}
+
+//tambah users
+function add_users($data_l_puskesmas)
+	{					
+		$insert = $this->db->insert('users', $data_l_puskesmas);
+		return $insert;						
+	}
+
 //kecamatan
 function kecamatan()
 	{					
@@ -321,7 +329,8 @@ function post_edit_puskesmas($puskesmas_id,$data)
 function add_puskesmas($data)
 	{					
 		$insert = $this->db->insert('puskesmas', $data);
-		return $insert;						
+		$id = $this->db->insert_id();
+		return (isset($id)) ? $id : FALSE;								
 	}
 
 //Posyandu
@@ -412,7 +421,8 @@ function post_edit_posyandu($posyandu_id,$data)
 function add_posyandu($data)
 	{					
 		$insert = $this->db->insert('posyandu', $data);
-		return $insert;						
+		$id = $this->db->insert_id();
+		return (isset($id)) ? $id : FALSE;					
 	}
 
 

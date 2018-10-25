@@ -17,25 +17,18 @@
             <div class="box-body">
               
               <?php $attributes = array('class' => 'form-horizontal'); ?>
-              <?php echo form_open('resume_kp_filter', $attributes); ?>
+              <?php echo form_open('ipuskesmas/resume_kp_filter', $attributes); ?>
               <!-- Hide URL -->
               <input type="hidden" id="url" value="<?php echo base_url();?>">
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Kecamatan</label>
-                    <div class="col-sm-10">
-                      <select class="form-control" name="kec_id" data-validation="required" data-validation-error-msg="Harus diisi" id="kecamatan">
-                        <option value="">--Pilih Kecamatan--</option>
-                        <?php foreach ($kecamatan as $rows) : ?>
-                        <option value="<?php echo($rows->kec_id); ?>"><?php echo($rows->kec_nama); ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Kelurahan</label>
                     <div class="col-sm-10">
                       <select class="form-control" name="kel_id" data-validation="required" data-validation-error-msg="Harus diisi" id="kelurahan">
+                        <option value="">--Pilih Kelurahan--</option>
+                        <?php foreach ($listkelurahan as $rows) : ?>
+                        <option value="<?php echo($rows->kel_id); ?>"><?php echo($rows->kel_nama); ?></option>
+                        <?php endforeach; ?>
                       </select>
                     </div>
                   </div>
@@ -86,7 +79,126 @@
             <div class="box-header">
               <div class="row">
                 <div class="col-md-12" align="center">
+                  <strong>
                   LAPORAN REKAPITULASI PENGUKURAN BALITA <br>
+                  <?php foreach ($kelurahan as $rows) : ?>
+                  <textarea id="header-title" style="display:none;">
+                      Kel/Desa: <?php echo $rows->kel_nama; ?> 
+                      BULAN : <?php 
+
+                        switch ($bulan) {
+                          case '01':
+                            echo 'Januari';
+                            break;
+                          
+                          case '02':
+                            echo 'Februari';
+                            break;
+
+                          case '03':
+                            echo 'Maret';
+                            break;
+
+                          case '04':
+                            echo 'April';
+                            break;
+
+                          case '05':
+                            echo 'Mei';
+                            break;
+
+                          case '06':
+                            echo 'Juni';
+                            break;
+
+                          case '07':
+                            echo 'Juli';
+                            break;
+
+                          case '08':
+                            echo 'Agustus';
+                            break;
+
+                          case '09':
+                            echo 'September';
+                            break;
+
+                          case '10':
+                            echo 'Oktober';
+                            break;
+
+                          case '11':
+                            echo 'November';
+                            break;
+
+                          case '12':
+                            echo 'Desember';
+                            break;
+                        }
+
+                         
+
+                        ?> TAHUN : <?php echo $tahun; ?> 
+                  </textarea>
+                  <!-- Alamat -->
+                  Kel/Desa: <?php echo $rows->kel_nama; ?> <br>
+                  <?php endforeach; ?>
+                  BULAN : <?php 
+
+                  switch ($bulan) {
+                    case '01':
+                      echo 'Januari';
+                      break;
+                    
+                    case '02':
+                      echo 'Februari';
+                      break;
+
+                    case '03':
+                      echo 'Maret';
+                      break;
+
+                    case '04':
+                      echo 'April';
+                      break;
+
+                    case '05':
+                      echo 'Mei';
+                      break;
+
+                    case '06':
+                      echo 'Juni';
+                      break;
+
+                    case '07':
+                      echo 'Juli';
+                      break;
+
+                    case '08':
+                      echo 'Agustus';
+                      break;
+
+                    case '09':
+                      echo 'September';
+                      break;
+
+                    case '10':
+                      echo 'Oktober';
+                      break;
+
+                    case '11':
+                      echo 'November';
+                      break;
+
+                    case '12':
+                      echo 'Desember';
+                      break;
+                  }
+
+                   
+
+                  ?> TAHUN : <?php echo $tahun; ?>  <br>
+                  </strong>
                 </div>
               </div>
             </div>

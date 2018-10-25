@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'home/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //---------------------HOME
@@ -121,6 +121,26 @@ $route['ipuskesmas/posyandu'] = 'puskesmas/posyandu';
 $route['ipuskesmas/jadwal'] = 'puskesmas/jadwal';
 $route['ipuskesmas/pengukuran'] = 'puskesmas/pengukuran';
 $route['ipuskesmas/kader'] = 'puskesmas/kader';
+//---------------------Laporan
+$route['ipuskesmas/list_kelurahan'] = 'puskesmas/getKelurahan';
+$route['ipuskesmas/list_posyandu'] = 'puskesmas/getPosyandu';
+$route['ipuskesmas/rekap_pb'] = 'puskesmas/rekap_pb';
+$route['ipuskesmas/rekap_pb_filter'] = 'puskesmas/loadDataTableRekapPB';
+$route['ipuskesmas/resume_kp'] = 'puskesmas/resume_kp';
+$route['ipuskesmas/resume_kp_filter'] = 'puskesmas/loadDataTableResumeKP';
 //---------------------POSYANDU
 $route['iposyandu'] = 'posyandu';
 $route['iposyandu/logout'] = 'posyandu/logout';
+$route['iposyandu/puskesmas'] = 'posyandu/puskesmas';
+$route['iposyandu/balita'] = 'posyandu/balita';
+$route['iposyandu/posyandu'] = 'posyandu/posyandu';
+$route['iposyandu/jadwal'] = 'posyandu/jadwal';
+$route['iposyandu/pengukuran'] = 'posyandu/pengukuran';
+$route['iposyandu/kader'] = 'posyandu/kader';
+//---------------------Laporan
+$route['iposyandu/list_kelurahan'] = 'posyandu/getKelurahan';
+$route['iposyandu/list_posyandu'] = 'posyandu/getPosyandu';
+$route['iposyandu/rekap_pb'] = 'posyandu/rekap_pb';
+$route['iposyandu/rekap_pb_filter'] = 'posyandu/loadDataTableRekapPB';
+$route['iposyandu/resume_kp'] = 'posyandu/resume_kp';
+$route['iposyandu/resume_kp_filter'] = 'posyandu/loadDataTableResumeKP';

@@ -36,7 +36,7 @@
     });
 
     $('#info_pb').DataTable({
-      'paging'      : false,
+      'paging'      : true,
       'lengthChange': true,
       'searching'   : false,
       'ordering'    : false,

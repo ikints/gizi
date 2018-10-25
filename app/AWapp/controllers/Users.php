@@ -180,6 +180,17 @@ class Users extends CI_Controller {
 			);
 
 		$result = $this->user_model->add_puskesmas($data);
+
+		//add akun puskesmas
+		$data_l_puskesmas = array(
+				'id_user' 		=> $result,
+				'name' 	=> $this->input->post('puskesmas_nama'),
+				'username' 	=> $this->input->post('username'),
+				'password' 	=> md5($this->input->post('password')),
+				'level' 	=> '2'
+			);
+		$result_l_puskesmas = $this->user_model->add_users($data_l_puskesmas);
+
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Puskesmas');
@@ -211,6 +222,38 @@ class Users extends CI_Controller {
 		$data['posyandu'] = $this->user_model->posyandu();			
 		$data['main_content'] = 'users/posyandu';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_posyandu()
+	{
+		$data = array(
+				'kel_id' 	=> $this->input->post('kel_id'),
+				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
+				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
+				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
+				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
+				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
+			);
+
+		$result = $this->user_model->add_posyandu($data);
+
+		//add akun posyandu
+		$data_l_posyandu = array(
+				'id_user' 		=> $result,
+				'name' 	=> $this->input->post('posyandu_nama'),
+				'username' 	=> $this->input->post('username'),
+				'password' 	=> md5($this->input->post('password')),
+				'level' 	=> '3'
+			);
+		$result_l_posyandu = $this->user_model->add_users($data_l_posyandu);
+
+		
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Posyandu');
+				redirect('users/posyandu');
+
+			}
 	}
 
 	public function edit_posyandu()
@@ -350,26 +393,6 @@ class Users extends CI_Controller {
 		$data['balita'] = $this->user_model->detail_balita($balita_id);		
 		$data['main_content'] = 'users/detail_balita';
 		$this->load->view('template/user/view', $data);
-	}
-
-	public function add_posyandu()
-	{
-		$data = array(
-				'kel_id' 	=> $this->input->post('kel_id'),
-				'puskesmas_id' 	=> $this->input->post('puskesmas_id'),
-				'posyandu_nama' 	=> $this->input->post('posyandu_nama'),
-				'posyandu_alamat' 	=> $this->input->post('posyandu_alamat'),
-				'posyandu_rt' 	=> $this->input->post('posyandu_rt'),
-				'posyandu_rw' 	=> $this->input->post('posyandu_rw')
-			);
-
-		$result = $this->user_model->add_posyandu($data);
-		if ($result) 
-			{	
-				$this->session->set_flashdata('msg','Tambah Posyandu');
-				redirect('users/posyandu');
-
-			}
 	}
 
 
@@ -576,6 +599,8 @@ class Users extends CI_Controller {
 			}
 	}
 
+	//-------------------------------------------------------Laporan
+
 	//Kelurahan
 	public function getKelurahan()
 	{	
@@ -588,7 +613,7 @@ class Users extends CI_Controller {
 			endforeach;
 		}
 	}
-
+	
 	//Kelurahan
 	public function getPosyandu()
 	{	

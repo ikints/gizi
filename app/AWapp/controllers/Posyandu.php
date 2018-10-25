@@ -50,51 +50,106 @@ class Posyandu extends CI_Controller {
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		$data['puskesmas'] = $this->posyandu_model->puskesmas();
-		$data['posyandu'] = $this->posyandu_model->posyandu();			
-		$data['main_content'] = 'puskesmas/posyandu';
-		$this->load->view('template/puskesmas/view', $data);
+		$id_user = $this->name_member["id_user"];
+		$data['posyandu'] = $this->posyandu_model->posyandu($id_user);			
+		$data['main_content'] = 'posyandu/posyandu';
+		$this->load->view('template/posyandu/view', $data);
 	}
 
 	public function balita()
 	{
 		$data['title'] = 'Balita';		
 		$data['name'] = $this->name_member["name"];
-		$data['balita'] = $this->posyandu_model->balita();
-		$data['posyandu'] = $this->posyandu_model->posyandu();	
-		$data['main_content'] = 'puskesmas/balita';
-		$this->load->view('template/puskesmas/view', $data);
+		$id_user = $this->name_member["id_user"];
+		$data['balita'] = $this->posyandu_model->balita($id_user);
+		$data['main_content'] = 'posyandu/balita';
+		$this->load->view('template/posyandu/view', $data);
 	}
 
 	public function jadwal()
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];		
-		$data['jadwal'] = $this->posyandu_model->jadwal();
-		$data['posyandu'] = $this->posyandu_model->posyandu();
-		$data['main_content'] = 'puskesmas/jadwal';
-		$this->load->view('template/puskesmas/view', $data);
+		$id_user = $this->name_member["id_user"];
+		$data['jadwal'] = $this->posyandu_model->jadwal($id_user);
+		$data['main_content'] = 'posyandu/jadwal';
+		$this->load->view('template/posyandu/view', $data);
 	}
 
 	public function pengukuran()
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];
-		$data['pengukuran'] = $this->posyandu_model->pengukuran();
-		$data['jadwal'] = $this->posyandu_model->jadwal();	
-		$data['balita'] = $this->posyandu_model->balita();		
-		$data['main_content'] = 'puskesmas/pengukuran';
-		$this->load->view('template/puskesmas/view', $data);
+		$id_user = $this->name_member["id_user"];
+		$data['pengukuran'] = $this->posyandu_model->pengukuran($id_user);	
+		$data['main_content'] = 'posyandu/pengukuran';
+		$this->load->view('template/posyandu/view', $data);
 	}
 
 	public function kader()
 	{
 		$data['title'] = 'Kecamatan';		
 		$data['name'] = $this->name_member["name"];	
-		$data['posyandu'] = $this->posyandu_model->posyandu();	
-		$data['kader'] = $this->posyandu_model->kader();
-		$data['main_content'] = 'puskesmas/kader';
-		$this->load->view('template/puskesmas/view', $data);
+		$id_user = $this->name_member["id_user"];	
+		$data['kader'] = $this->posyandu_model->kader($id_user);
+		$data['main_content'] = 'posyandu/kader';
+		$this->load->view('template/posyandu/view', $data);
+	}
+	//--------------------------------------------------------LAPORAN
+
+	public function rekap_pb()
+	{
+		$data['title'] = 'Laporan Rekap PB';		
+		$data['name'] = $this->name_member["name"];
+		$data['rekap_pb'] = $this->posyandu_model->rekap_pb();			
+		$data['main_content'] = 'posyandu/rekap_pb';
+		$this->load->view('template/posyandu/view', $data);
+	}
+
+	public function loadDataTableRekapPB()
+	{
+		$kec_id = $this->input->post('kec_id');
+		$kel_id = $this->input->post('kel_id');
+		$posyandu_id = $this->input->post('posyandu_id');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+
+		$data['title'] = 'Laporan Rekap PB';
+		$data['name'] = $this->name_member["name"];	
+		$data['kecamatan'] = $this->posyandu_model->kecamatan();
+		$data['posyandu'] = $this->posyandu_model->detail_posyandu($posyandu_id);
+		$data['bulan'] = $bulan;
+		$data['tahun'] = $tahun;	
+		$data['rekap_pb'] = $this->posyandu_model->loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
+		$data['main_content'] = 'posyandu/rekap_pb_filter';
+		$this->load->view('template/posyandu/view', $data);
+	}
+
+	public function resume_kp()
+	{
+		$data['title'] = 'Laporan Resume KP';		
+		$data['name'] = $this->name_member["name"];
+		$data['resume_kp'] = $this->posyandu_model->resume_kp();			
+		$data['main_content'] = 'posyandu/resume_kp';
+		$this->load->view('template/posyandu/view', $data);
+	}
+
+	public function loadDataTableResumeKP()
+	{	
+		$kec_id = $this->input->post('kec_id');
+		$kel_id = $this->input->post('kel_id');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$balita_date_entry = $bulan."-".$tahun;
+
+		$data['title'] = 'Laporan Resume KP';		
+		$data['name'] = $this->name_member["name"];
+		$data['kelurahan'] = $this->posyandu_model->detail_kelurahan($kel_id);
+		$data['bulan'] = $bulan;
+		$data['tahun'] = $tahun;
+		$data['resume_kp'] = $this->posyandu_model->loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry);
+		$data['main_content'] = 'posyandu/resume_kp_filter';
+		$this->load->view('template/posyandu/view', $data);
 	}
 
 }

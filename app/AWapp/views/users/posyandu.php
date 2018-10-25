@@ -134,6 +134,20 @@
                             <input type="text" class="form-control" id="kelurahan" placeholder="RW" name="posyandu_rw" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">Username</label>
+
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username" data-validation="required" data-validation-error-msg="Harus diisi">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                          <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" data-validation="required" data-validation-error-msg="Harus diisi">
+                          </div>
+                        </div>
                       </div>
   
                     </div>
