@@ -728,6 +728,28 @@ function loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun)
 		return $result;				
 	}
 
+function grafik_pb()
+	{					
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.balita_nama as balita_nama,
+				b.balita_ortu_nama as balita_ortu_nama,
+				b.balita_alamat as balita_alamat
+				
+			')
+			
+			->from('pengukuran a')
+			->join('balita b','b.balita_id = a.balita_id');	
+
+		$result = $q->get()->result();
+		return $result;				
+	}
+
 function resume_kp()
 	{					
 

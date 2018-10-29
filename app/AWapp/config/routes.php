@@ -109,6 +109,7 @@ $route['list_kelurahan'] = 'users/getKelurahan';
 $route['list_posyandu'] = 'users/getPosyandu';
 $route['rekap_pb'] = 'users/rekap_pb';
 $route['rekap_pb_filter'] = 'users/loadDataTableRekapPB';
+$route['grafik_pb'] = 'users/grafik_pb';
 $route['resume_kp'] = 'users/resume_kp';
 $route['resume_kp_filter'] = 'users/loadDataTableResumeKP';
 

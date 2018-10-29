@@ -647,7 +647,7 @@ class Users extends CI_Controller {
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
 
-		$data['title'] = 'Laporan Rekap PB';
+		$data['title'] = 'Laporan Rekap Pengukuran Balita';
 		$data['name'] = $this->name_member["name"];	
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['posyandu'] = $this->user_model->detail_posyandu($posyandu_id);
@@ -655,6 +655,16 @@ class Users extends CI_Controller {
 		$data['tahun'] = $tahun;	
 		$data['rekap_pb'] = $this->user_model->loadDataTableRekapPB($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
 		$data['main_content'] = 'users/rekap_pb_filter';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function grafik_pb()
+	{
+		$data['title'] = 'Laporan Grafik Pengukuran Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['grafik_pb'] = $this->user_model->grafik_pb();			
+		$data['main_content'] = 'users/grafik_pb';
 		$this->load->view('template/user/view', $data);
 	}
 

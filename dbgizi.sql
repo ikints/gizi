@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: 24 Okt 2018 pada 11.48
+-- Generation Time: 29 Okt 2018 pada 11.46
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -234,7 +234,9 @@ CREATE TABLE `posyandu` (
 
 INSERT INTO `posyandu` (`posyandu_id`, `kel_id`, `puskesmas_id`, `posyandu_nama`, `posyandu_alamat`, `posyandu_rt`, `posyandu_rw`) VALUES
 (1, 1, 1, 'Posyandu RW I', 'Jl. Pluto No. 90', '004', '001'),
-(2, 1, 2, 'Posyandu RW III', 'Jl. Saturnus No. 78', '002', '003');
+(2, 1, 2, 'Posyandu RW III', 'Jl. Saturnus No. 78', '002', '003'),
+(4, 1, 2, 'Biru', 'Jl. Saturnus No. 71', '002', '001'),
+(5, 3, 3, 'Merah', 'Jl. Pluto No. 92', '002', '003');
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,9 @@ CREATE TABLE `puskesmas` (
 
 INSERT INTO `puskesmas` (`puskesmas_id`, `kec_id`, `puskesmas_nama`) VALUES
 (1, 1, 'UPT MARGAHAYU RAYA2'),
-(2, 1, 'SEKEJATI');
+(2, 1, 'SEKEJATI'),
+(3, 1, 'Mawar Merah'),
+(4, 1, 'Jingga');
 
 -- --------------------------------------------------------
 
@@ -263,6 +267,7 @@ INSERT INTO `puskesmas` (`puskesmas_id`, `kec_id`, `puskesmas_nama`) VALUES
 --
 
 CREATE TABLE `users` (
+  `ID` int(10) NOT NULL,
   `id_user` int(10) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -275,10 +280,14 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `status`, `name`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Y', 'Ali', '1'),
-(2, 'puskesmas', '62c6e242d0e465524d998b4bba153b3b', 'Y', 'Anggi', '2'),
-(3, 'posyandu', 'cc267064b7018c98a0b09f7556fa8dc9', 'Y', 'Susan', '3');
+INSERT INTO `users` (`ID`, `id_user`, `username`, `password`, `status`, `name`, `level`) VALUES
+(1, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Y', 'Ali', '1'),
+(2, 1, 'puskesmas', '62c6e242d0e465524d998b4bba153b3b', 'Y', 'Anggi', '2'),
+(3, 1, 'posyandu', 'cc267064b7018c98a0b09f7556fa8dc9', 'Y', 'Susan', '3'),
+(4, 3, 'mawar', 'bd117502364227fd8c09098d31e11313', 'Y', 'Mawar Merah', '2'),
+(5, 4, 'jingga', '1f08ce2f4af61ccee8fe9b52cd8428df', 'Y', 'Jingga', '2'),
+(7, 4, 'biru', 'bffc68f8f0052cc5b8e0affaa651acb5', 'Y', 'Biru', '3'),
+(8, 5, 'merah', '10586f5a4bb968d3ab8e952e3cd9afe7', 'Y', 'Merah', '3');
 
 --
 -- Indexes for dumped tables
@@ -367,7 +376,8 @@ ALTER TABLE `puskesmas`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -431,19 +441,19 @@ ALTER TABLE `pmt`
 -- AUTO_INCREMENT for table `posyandu`
 --
 ALTER TABLE `posyandu`
-  MODIFY `posyandu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `posyandu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `puskesmas`
 --
 ALTER TABLE `puskesmas`
-  MODIFY `puskesmas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `puskesmas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
