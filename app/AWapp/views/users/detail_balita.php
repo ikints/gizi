@@ -21,6 +21,8 @@
               <h3 class="profile-username text-center"><?php echo $rows->balita_nama ?></h3>
 
               <p class="text-muted text-center"><?php echo $rows->balita_jk ?></p>
+
+              <p class="text-muted text-center"><a href="<?php echo base_url(); ?>balita/grafik/<?php echo $rows->balita_id;  ?>">Lihat Grafik</a></p>
             </div>
             <!-- /.box-body -->
           </div>

@@ -395,6 +395,17 @@ class Users extends CI_Controller {
 		$this->load->view('template/user/view', $data);
 	}
 
+	public function grafik_balita()
+	{
+		$balita_id = $this->uri->segment(3);
+
+		$data['title'] = 'Balita';		
+		$data['name'] = $this->name_member["name"];
+		$data['balita'] = $this->user_model->grafik_balita($balita_id);		
+		$data['main_content'] = 'users/grafik_balita';
+		$this->load->view('template/user/view', $data);
+	}
+
 
 	public function jadwal()
 	{

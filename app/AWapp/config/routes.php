@@ -77,6 +77,7 @@ $route['post_edit_puskesmas'] = 'users/post_edit_puskesmas';
 $route['balita'] = 'users/balita';
 $route['add_balita'] = 'users/add_balita';
 $route['balita/(:num)'] = 'users/detail_balita/$1';
+$route['balita/grafik/(:num)'] = 'users/grafik_balita/$1';
 $route['balita/edit/(:num)'] = 'users/edit_balita/$1';
 $route['post_edit_balita'] = 'users/post_edit_balita';
 $route['delete-balita'] = 'users/delete_balita';
