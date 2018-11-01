@@ -63,19 +63,16 @@ $route['kecamatan'] = 'users/kecamatan';
 $route['add_kecamatan'] = 'users/add_kecamatan';
 $route['kecamatan/(:num)'] = 'users/edit_kecamatan/$1';
 $route['post_edit_kecamatan'] = 'users/post_edit_kecamatan';
-$route['delete-kecamatan'] = 'users/delete_kecamatan';
 
 $route['kelurahan'] = 'users/kelurahan';
 $route['add_kelurahan'] = 'users/add_kelurahan';
 $route['kelurahan/(:num)'] = 'users/edit_kelurahan/$1';
 $route['post_edit_kelurahan'] = 'users/post_edit_kelurahan';
-$route['delete-kelurahan'] = 'users/delete_kelurahan';
 
 $route['puskesmas'] = 'users/puskesmas';
 $route['add_puskesmas'] = 'users/add_puskesmas';
 $route['puskesmas/(:num)'] = 'users/edit_puskesmas/$1';
 $route['post_edit_puskesmas'] = 'users/post_edit_puskesmas';
-$route['delete-puskesmas'] = 'users/delete_puskesmas';
 
 $route['balita'] = 'users/balita';
 $route['add_balita'] = 'users/add_balita';
@@ -89,7 +86,6 @@ $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
 $route['posyandu/(:num)'] = 'users/edit_posyandu/$1';
 $route['post_edit_posyandu'] = 'users/post_edit_posyandu';
-$route['delete-posyandu'] = 'users/delete_posyandu';
 
 $route['jadwal'] = 'users/jadwal';
 $route['add_jadwal'] = 'users/add_jadwal';
@@ -108,7 +104,6 @@ $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';
 $route['kader/(:num)'] = 'users/edit_kader/$1';
 $route['post_edit_kader'] = 'users/post_edit_kader';
-$route['delete-kader'] = 'users/delete_kader';
 
 //---------------------Laporan
 $route['list_kelurahan'] = 'users/getKelurahan';
@@ -118,6 +113,29 @@ $route['rekap_pb_filter'] = 'users/loadDataTableRekapPB';
 $route['grafik_pb'] = 'users/grafik_pb';
 $route['resume_kp'] = 'users/resume_kp';
 $route['resume_kp_filter'] = 'users/loadDataTableResumeKP';
+$route['persediaan_bahan'] = 'users/persediaan_bahan';
+$route['penyuluhan'] = 'users/penyuluhan';
+//---------------------Jumlah Balita
+$route['jb_ukur_bulan_ini'] = 'users/jb_ukur_bulan_ini';
+$route['jb_kms'] = 'users/jb_kms';
+$route['jb_naik_bb'] = 'users/jb_naik_bb';
+$route['jb_tidak_naik_bb'] = 'users/jb_tidak_naik_bb';
+$route['jb_abses_bulan_lalu'] = 'users/jb_abses_bulan_lalu';
+$route['jb_pertama'] = 'users/jb_pertama';
+$route['jb_ditimbang'] = 'users/jb_ditimbang';
+$route['jb_absen_bulan_ini'] = 'users/jb_absen_bulan_ini';
+$route['jb_absen_vitamin'] = 'users/jb_absen_vitamin';
+$route['jb_asi_eksklusif'] = 'users/jb_asi_eksklusif';
+$route['jb_lulus_asi_eksklusif'] = 'users/jb_lulus_asi_eksklusif';
+$route['jb_gakin'] = 'users/jb_gakin';
+$route['jb_gizi'] = 'users/jb_gizi';
+$route['jb_status_gizi'] = 'users/jb_status_gizi';
+$route['jb_gizi_buruk'] = 'users/jb_gizi_buruk';
+$route['jb_oralit'] = 'users/jb_oralit';
+$route['jb_kematian'] = 'users/jb_kematian';
+
+
+
 
 //---------------------PUSKESMAS
 $route['ipuskesmas'] = 'puskesmas';

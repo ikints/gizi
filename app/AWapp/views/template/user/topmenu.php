@@ -39,6 +39,26 @@
                 <li><a href="<?php echo base_url(); ?>rekap_pb">Rekap Pengukuran Balita</a></li>
                 <li><a href="<?php echo base_url(); ?>grafik_pb">Grafik Pengukuran Balita</a></li>
                 <li><a href="<?php echo base_url(); ?>resume_kp">Resume Kegiatan Posyandu</a></li>
+                <li><a href="<?php echo base_url(); ?>persediaan_bahan">Persediaan Bahan</a></li>
+                <li><a href="<?php echo base_url(); ?>penyuluhan">Penyuluhan</a></li>
+
+                <li><a href="<?php echo base_url(); ?>jb_ukur_bulan_ini">Jumlah Bayi Penimbangan Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_kms">Jumlah Bayi KMS Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_naik_bb">Jumlah Bayi Berat Badan Naik Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_tidak_naik_bb">Jumlah Bayi  Berat Badan Tidak Naik Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_abses_bulan_lalu">Jumlah Bayi Absesn Timbang Bulan Lalu</li>
+                <li><a href="<?php echo base_url(); ?>jb_pertama">Jumlah Bayi Pertama Hadir Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_ditimbang">Jumlah Bayi Ditimbang Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_absen_bulan_ini">Jumlah Bayi Absen Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_absen_vitamin">Jumlah Bayi Menerima Vitamin Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_asi_eksklusif">Jumlah Bayi Asi Eksklusif</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_lulus_asi_eksklusif">Jumlah Bayi Lulus Asi Eksklusif</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_gakin">Jumlah Balita GAKIN</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_gizi">Jumlah GIZI</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_status_gizi">Jumlah Status GIZI</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_gizi_buruk">Jumlah GIZI Buruk</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_oralit">Jumlah Bayi Mendapatkan Oralit</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_kematian">Jumlah Kematian</a></li>
               </ul>
             </li>
           </ul>
