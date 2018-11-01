@@ -43,15 +43,18 @@ function kecamatan()
 				a.kec_id as kec_id,			
 				a.kec_kode as kec_kode,
 				a.kec_nama as kec_nama,
-				IFNULL(c.j_kec,0) as jumlah_kecamatan,
+
+				IFNULL(b.j_kel,0) as jumlah_kel
 
 			')
 			
 			->from('kecamatan a')
-			->join('(SELECT c.kec_id,
-					      count(*) as j_kec
-					    from kelurahan c
-					    group by c.kec_id) c', 'c.kec_id = a.kec_id', 'left');
+
+			->join('(SELECT b.kec_id,
+					      count(*) as j_kel
+					    from kelurahan b
+					    group by b.kec_id) b', 'b.kec_id = a.kec_id', 'left');
+
 			
 			
 			$result = $q->get()->result();
@@ -290,28 +293,16 @@ function grafik_balita($balita_id)
 	{					
 			$q = $this->db->select('
 
-				a.balita_id,
-				a.posyandu_id,
-				a.balita_nik,
-				a.balita_nama,
-				a.balita_anak_ke,
-				a.balita_anak_dari,
-				a.balita_jk,
-				a.balita_tgl_lahir,
-				a.balita_berat_lahir,
-				a.balita_ortu_nama,
-				a.balita_ortu_nik,
-				a.balita_tlpn,
-				a.balita_alamat,
-				a.balita_rt,
-				a.balita_rw,
-				a.kel_id,
-				b.posyandu_nama
+				a.balita_id as balita_id,
+				a.balita_nama as balita_nama,
+				a.balita_jk as balita_jk,
+				b.ukur_usia as ukur_usia,
+				b.ukur_bb as ukur_bb
 
 			')
 			
 			->from('balita a')
-			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->join('pengukuran b','b.balita_id = a.balita_id')
 			->where('a.balita_id', $balita_id);
 			$result = $q->get()->result();
 			return $result;

@@ -401,7 +401,8 @@ class Users extends CI_Controller {
 
 		$data['title'] = 'Balita';		
 		$data['name'] = $this->name_member["name"];
-		$data['balita'] = $this->user_model->grafik_balita($balita_id);		
+		$data['balita'] = $this->user_model->detail_balita($balita_id);	
+		$data['grafik'] = $this->user_model->grafik_balita($balita_id);		
 		$data['main_content'] = 'users/grafik_balita';
 		$this->load->view('template/user/view', $data);
 	}

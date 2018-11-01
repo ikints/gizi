@@ -81,13 +81,13 @@
 
 
 
-  <div class="modal modal-info fade" id="modal-info">
+  <div class="modal fade" id="modal-info">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kecamatan</h4>
+                <h4 class="modal-title">Tambah Balita</h4>
               </div>
               <?php $attributes = array('class' => 'form-horizontal'); ?>
               <?php echo form_open('add_balita', $attributes); ?>
@@ -110,7 +110,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Nama Balita</label>
 
-                          <div class="col-sm-10">
+                          <div class="col-sm-8">
                             <input type="text" class="form-control" id="kecamatan" placeholder="Nama Balita" name="balita_nama" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
                         </div>
@@ -212,8 +212,8 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-outline">Save</button>
+                  <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
                 </div>
               </form>
               </div>

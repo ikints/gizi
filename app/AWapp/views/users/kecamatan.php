@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button> -->
+
                 </div>
               </div>
             </div>
@@ -35,13 +35,19 @@
                     <?php foreach ($kecamatan as $rows) : ?>
                     <tr>
                       <td>
-                        <?php if($rows->jumlah_kecamatan < '1') : ?>
+
+                        <?php if($rows->jumlah_kel == '0') { ?>
+
                         <?php $attributes = array('class' => 'form-horizontal'); ?>
                             <?php echo form_open('delete-kecamatan', $attributes); ?>
                               <input type="hidden" name="kec_id" value="<?php echo $rows->kec_id; ?>" class="form-control">
                               <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
                           </form>
-                        <?php endif; ?>
+
+                        <?php }else{ ?>
+                              <button type="submit" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-remove"></i> Hapus</button>
+                        <?php } ?>
+
                       </td>
                       <td><a href="kecamatan/<?php echo $rows->kec_id;  ?>"><?php echo $rows->kec_kode ?></a></td>
                       <td><?php echo $rows->kec_nama ?></td>
@@ -66,7 +72,7 @@
 
 
 
-  <div class="modal modal-info fade" id="modal-info">
+  <div class="modal fade" id="modal-info">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -93,22 +99,37 @@
                           <div class="col-sm-10">
                             <input type="text" class="form-control" id="kecamatan" placeholder="Nama Kecamatan" name="kec_nama" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
-                        
                       
-  
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-outline">Save</button>
+                  <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
                 </div>
               </form>
               </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+      </div>
 
 
-
-
+<div class="modal modal-danger fade" id="modal-delete">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Hapus Kecamatan</h4>
+              </div>
+              <div class="modal-body">
+                Tidak bisa dihapus
+              </div>
+              </div>
             </div>
             <!-- /.modal-content -->
           </div>
