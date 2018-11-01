@@ -183,3 +183,50 @@
             });
 
     });
+
+
+    $('#info_penyuluhan').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : false,
+      dom: 'lBfrtip',
+                buttons: [
+
+                    {   
+                        extend: 'excelHtml5',
+                        title: '',
+                        orientation: 'potrait',
+                        pageSize: 'A4',
+                        messageTop : 'LAPORAN PENYULUHAN'
+                    },
+                    {
+                        text: 'PDF',
+                        extend: 'pdfHtml5',
+                        title: '',
+                        orientation: 'potrait',
+                        pageSize: 'A4',
+                        messageTop : function () {
+                                    return $('#header-title').val();
+                                },
+                        customize: function (doc) {
+                          doc['header']=(function() {
+                          return {
+                            columns: [
+                              {
+                                alignment: 'center',
+                                fontSize: 12,
+                                text: 'LAPORAN PENYULUHAN'
+                              
+                              }
+                            ],
+                            margin: 20
+                          }
+                        });
+                        }
+                    }
+
+                    ]
+    });

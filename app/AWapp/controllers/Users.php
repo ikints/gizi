@@ -788,5 +788,33 @@ class Users extends CI_Controller {
 	
 	}
 
+	public function penyuluhan()
+	{
+		$data['title'] = 'Laporan Penyuluhan';		
+		$data['name'] = $this->name_member["name"];
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['rekap_pb'] = $this->user_model->rekap_pb();			
+		$data['main_content'] = 'users/penyuluhan';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function loadDataTablePenyuluhan()
+	{
+		$kec_id = $this->input->post('kec_id');
+		$kel_id = $this->input->post('kel_id');
+		$posyandu_id = $this->input->post('posyandu_id');
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+
+		$data['title'] = 'Laporan Penyuluhan';
+		$data['name'] = $this->name_member["name"];	
+		$data['kecamatan'] = $this->user_model->kecamatan();
+		$data['posyandu'] = $this->user_model->detail_posyandu($posyandu_id);
+		$data['bulan'] = $bulan;
+		$data['tahun'] = $tahun;	
+		$data['rekap_pb'] = $this->user_model->loadDataTablePenyuluhan($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
+		$data['main_content'] = 'users/rekap_penyuluhan_filter';
+		$this->load->view('template/user/view', $data);
+	}
 
 }
