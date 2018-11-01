@@ -48,7 +48,7 @@ class Posyandu extends CI_Controller {
 
 	public function posyandu()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Posyandu';		
 		$data['name'] = $this->name_member["name"];
 		$id_user = $this->name_member["id_user"];
 		$data['posyandu'] = $this->posyandu_model->posyandu($id_user);			
@@ -68,7 +68,7 @@ class Posyandu extends CI_Controller {
 
 	public function jadwal()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Jadwal';		
 		$data['name'] = $this->name_member["name"];		
 		$id_user = $this->name_member["id_user"];
 		$data['jadwal'] = $this->posyandu_model->jadwal($id_user);
@@ -78,7 +78,7 @@ class Posyandu extends CI_Controller {
 
 	public function pengukuran()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Pengukuran';		
 		$data['name'] = $this->name_member["name"];
 		$id_user = $this->name_member["id_user"];
 		$data['pengukuran'] = $this->posyandu_model->pengukuran($id_user);	
@@ -88,7 +88,7 @@ class Posyandu extends CI_Controller {
 
 	public function kader()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Kader';		
 		$data['name'] = $this->name_member["name"];	
 		$id_user = $this->name_member["id_user"];	
 		$data['kader'] = $this->posyandu_model->kader($id_user);

@@ -130,7 +130,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Kecamatan');
-				redirect('users/kecamatan');
+				redirect('kecamatan');
 			}
 	}
 
@@ -146,7 +146,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Kelurahan');
-				redirect('users/kelurahan');
+				redirect('kelurahan');
 			}
 	}
 
@@ -194,7 +194,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Puskesmas');
-				redirect('users/puskesmas');
+				redirect('puskesmas');
 			}
 	}
 
@@ -370,7 +370,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Data Balita');
-				redirect('users/balita');
+				redirect('balita');
 		}
 	}
 
@@ -380,7 +380,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_balita($balita_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/balita');			
+		redirect('balita');			
 	
 	}
 
@@ -474,7 +474,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Jadwal');
-				redirect('users/jadwal');
+				redirect('jadwal');
 
 			}
 	}
@@ -485,7 +485,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_jadwal($jadwal_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/jadwal');			
+		redirect('jadwal');			
 	
 	}
 
@@ -558,7 +558,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Pengukuran');
-				redirect('users/pengukuran');
+				redirect('pengukuran');
 
 			}
 	}
@@ -580,7 +580,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_pengukuran($ukur_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/pengukuran');			
+		redirect('pengukuran');			
 	
 	}
 
@@ -606,7 +606,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Kader');
-				redirect('users/kader');
+				redirect('kader');
 
 			}
 	}
@@ -744,7 +744,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_kader($kader_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/kader');			
+		redirect('kader');			
 	
 	}
 
@@ -754,7 +754,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_kecamatan($kec_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/kecamatan');			
+		redirect('kecamatan');			
 	
 	}
 
@@ -764,7 +764,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_kelurahan($kel_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/kelurahan');			
+		redirect('kelurahan');			
 	
 	}
 
@@ -774,7 +774,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_puskesmas($puskesmas_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/puskesmas');			
+		redirect('puskesmas');			
 	
 	}
 
@@ -784,7 +784,7 @@ class Users extends CI_Controller {
 		//hapus
 		$this->user_model->delete_posyandu($posyandu_id);	
 		$this->session->set_flashdata('msg','Hapus Berhasil');							
-		redirect('users/posyandu');			
+		redirect('posyandu');			
 	
 	}
 
