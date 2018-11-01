@@ -42,11 +42,16 @@ function kecamatan()
 
 				a.kec_id as kec_id,			
 				a.kec_kode as kec_kode,
-				a.kec_nama as kec_nama
+				a.kec_nama as kec_nama,
+				IFNULL(b.j_kel,0) as jumlah_kel
 
 			')
 			
-			->from('kecamatan a');
+			->from('kecamatan a')
+			->join('(SELECT b.kec_id,
+					      count(*) as j_kel
+					    from kelurahan b
+					    group by b.kec_id) b', 'b.kec_id = a.kec_id', 'left');
 			
 			
 			$result = $q->get()->result();
