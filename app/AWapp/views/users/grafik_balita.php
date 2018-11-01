@@ -32,14 +32,39 @@
           <div class="box box-primary">
             <div class="box-body box-profile">
               <div class="box-body chart-responsive">
+                  <div class="caption">Grafik Pengukuran Balita</div>
                   <div class="chart" id="grafikbalita" style="height: 300px;"></div>
+                  <div class="caption-bottom">Usia Balita</div>
                 </div>
             </div>
+
+            <div id="legend"></div>
             <!-- /.box-body -->
           </div>
         </div>
         <!-- /.col -->
         <?php endforeach; ?>
+
+        <?php $outp = ""; foreach ($grafik as $rows) : ?>
+
+          <?php
+
+          $usia = $rows->ukur_usia;
+          $berat = $rows->ukur_bb; 
+
+          if ($outp != "") {$outp .= ",";}
+
+          $outp .= '{';
+          $outp .= '"usia":"'  . $usia . '",';
+          $outp .= '"berat":"'  . $berat . '"';
+          $outp .= '}'; 
+
+          ?>
+
+        <?php endforeach; ?>
+
+        <?php $outp ='['.$outp.']'; ?>
+        <?php //echo $outp; ?>
       </div>
       <!-- /.row -->
     </section>
@@ -48,30 +73,29 @@
 </div>
   <!-- /.content-wrapper -->
 
+  
+
+
   <script>
   $(function () {
     
     //--------------------------------------------------Laporan Grafik
     var line = new Morris.Line({
       // ID of the element in which to draw the chart.
+      parseTime: false,
       element: 'grafikbalita',
       // Chart data records -- each entry in this array corresponds to a point on
       // the chart.
-      data: [
-        { bulan: '1', berat: 4 },
-        { bulan: '2', berat: 5 },
-        { bulan: '3', berat: 7 },
-        { bulan: '4', berat: 8 },
-        { bulan: '5', berat: 10 }
-      ],
+      data: <?php echo $outp; ?>,
       // The name of the data record attribute that contains x-values.
-      xkey: 'bulan',
+      xkey: 'usia',
       // A list of names of data record attributes that contain y-values.
       ykeys: ['berat'],
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
       labels: ['Berat Badan (kg)']
     });
+
     
   });
 </script>

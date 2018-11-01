@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 align="center">
-        Laporan Rekapitulasi Pengukuran Balita
+        Grafik Pengukuran Balita
       </h1>
     </section>
 
