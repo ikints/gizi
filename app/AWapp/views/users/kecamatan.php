@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
+                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button> -->
                 </div>
               </div>
             </div>
@@ -34,7 +34,15 @@
                 <tbody>
                     <?php foreach ($kecamatan as $rows) : ?>
                     <tr>
-                      <td></td>
+                      <td>
+                        <?php if($rows->jumlah_kecamatan < '1') : ?>
+                        <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-kecamatan', $attributes); ?>
+                              <input type="hidden" name="kec_id" value="<?php echo $rows->kec_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+                        <?php endif; ?>
+                      </td>
                       <td><a href="kecamatan/<?php echo $rows->kec_id;  ?>"><?php echo $rows->kec_kode ?></a></td>
                       <td><?php echo $rows->kec_nama ?></td>
                     </tr>

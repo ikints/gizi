@@ -69,6 +69,7 @@
               </ul>
 
               <a href="<?php echo base_url(); ?>balita/edit/<?php echo $rows->balita_id;  ?>" class="btn btn-primary btn-block"><b>Edit</b></a>
+              <a href="<?php echo base_url(); ?>balita" class="btn btn-primary btn-block"><b>Cancel</b></a>
             </div>
             <!-- /.box-body -->
           </div>

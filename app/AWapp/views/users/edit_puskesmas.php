@@ -40,6 +40,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
+                <a href="<?php echo base_url(); ?>puskesmas" class="btn btn-info" role="button">Cancel</a>
                 <button type="submit" class="btn btn-info pull-right">Edit</button>
               </div>
               <!-- /.box-footer -->

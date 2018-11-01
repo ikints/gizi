@@ -37,7 +37,7 @@
                   <label for="kelurahan" class="col-sm-2 control-label">Nama Kader</label>
 
                   <div class="col-sm-10">
-                    <input type="type" class="form-control" id="kelurahan" name="kader_nama" placeholder="Kegiatan" value="<?php echo $rows->kader_nama ?>">
+                    <input type="type" class="form-control" id="kelurahan" name="kader_nama" placeholder="Nama Kader" value="<?php echo $rows->kader_nama ?>">
                   </div>
                 </div>
               </div>

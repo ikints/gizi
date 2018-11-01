@@ -42,11 +42,16 @@ function kecamatan()
 
 				a.kec_id as kec_id,			
 				a.kec_kode as kec_kode,
-				a.kec_nama as kec_nama
+				a.kec_nama as kec_nama,
+				IFNULL(c.j_kec,0) as jumlah_kecamatan,
 
 			')
 			
-			->from('kecamatan a');
+			->from('kecamatan a')
+			->join('(SELECT c.kec_id,
+					      count(*) as j_kec
+					    from kelurahan c
+					    group by c.kec_id) c', 'c.kec_id = a.kec_id', 'left');
 			
 			
 			$result = $q->get()->result();
@@ -85,12 +90,17 @@ function kelurahan()
 				a.kel_id as kel_id,			
 				a.kel_kode as kel_kode,
 				a.kel_nama as kel_nama,
-				b.kec_nama as kec_nama
+				b.kec_nama as kec_nama,
+				IFNULL(c.j_kel,0) as jumlah_kelurahan
 
 			')
 			
 			->from('kelurahan a')
-			->join('kecamatan b','b.kec_id = a.kec_id');
+			->join('kecamatan b','b.kec_id = a.kec_id')
+			->join('(SELECT c.kel_id,
+					      count(*) as j_kel
+					    from posyandu c
+					    group by c.kel_id) c', 'c.kel_id = a.kel_id', 'left');
 			
 			
 			$result = $q->get()->result();
@@ -321,12 +331,17 @@ function puskesmas()
 
 				a.puskesmas_id as puskesmas_id,			
 				a.puskesmas_nama as puskesmas_nama,
-				b.kec_nama as kec_nama
+				b.kec_nama as kec_nama,
+				IFNULL(c.j_puskesmas,0) as jumlah_puskesmas
 
 			')
 			
 			->from('puskesmas a')
-			->join('kecamatan b','b.kec_id = a.kec_id');
+			->join('kecamatan b','b.kec_id = a.kec_id')
+			->join('(SELECT c.puskesmas_id,
+					      count(*) as j_puskesmas
+					    from posyandu c
+					    group by c.puskesmas_id) c', 'c.puskesmas_id = a.puskesmas_id', 'left');
 			
 			
 			$result = $q->get()->result();
@@ -376,14 +391,19 @@ function posyandu()
 				a.posyandu_rt as posyandu_rt,
 				a.posyandu_rw as posyandu_rw,
 				b.kel_nama as kel_nama,
-				c.puskesmas_nama as puskesmas_nama
+				c.puskesmas_nama as puskesmas_nama,
+				IFNULL(c.j_posyandu,0)as jumlah_posyandu
 
 
 			')
 			
 			->from('posyandu a')
 			->join('kelurahan b','b.kel_id = a.kel_id')
-			->join('puskesmas c','c.puskesmas_id = a.puskesmas_id');
+			->join('puskesmas c','c.puskesmas_id = a.puskesmas_id')
+			->join('(SELECT c.posyandu_id,
+					      count(*) as j_posyandu
+					    from balita c
+					    group by c.posyandu_id) c', 'c.posyandu_id = a.posyandu_id', 'left');
 
 
 			
@@ -830,6 +850,66 @@ function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
 
 		$result = $q->get()->result();
 		return $result;					
+	}
+
+	//detail_kader
+	function edit_kader($kader_id)
+	{					
+			$q = $this->db->select('
+				a.posyandu_id,
+				a.kader_id as kader_id,
+				a.kader_nama as kader_nama,
+				b.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('kader a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->where('a.kader_id',$kader_id);
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+	function post_edit_kader($kader_id,$data)
+	{
+		$this->db->where('kader_id', $kader_id);
+		$this->db->update('kader', $data);									
+	}
+
+	//delete kader
+	function delete_kader($kader_id)
+	{
+		$this->db->delete('kader', array('kader_id' => $kader_id));
+		return true;								
+	}
+
+	//delete kecamatan
+	function delete_kecamatan($kec_id)
+	{
+		$this->db->delete('kecamatan', array('kec_id' => $kec_id));
+		return true;								
+	}
+
+	//delete kelurahan
+	function delete_kelurahan($kel_id)
+	{
+		$this->db->delete('kelurahan', array('kel_id' => $kel_id));
+		return true;								
+	}
+
+	//delete puskesmas
+	function delete_puskesmas($puskesmas_id)
+	{
+		$this->db->delete('puskesmas', array('puskesmas_id' => $puskesmas_id));
+		return true;								
+	}
+
+	//delete posyandu
+	function delete_posyandu($posyandu_id)
+	{
+		$this->db->delete('posyandu', array('posyandu_id' => $posyandu_id));
+		return true;								
 	}
 
 }

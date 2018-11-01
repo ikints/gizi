@@ -63,16 +63,19 @@ $route['kecamatan'] = 'users/kecamatan';
 $route['add_kecamatan'] = 'users/add_kecamatan';
 $route['kecamatan/(:num)'] = 'users/edit_kecamatan/$1';
 $route['post_edit_kecamatan'] = 'users/post_edit_kecamatan';
+$route['delete-kecamatan'] = 'users/delete_kecamatan';
 
 $route['kelurahan'] = 'users/kelurahan';
 $route['add_kelurahan'] = 'users/add_kelurahan';
 $route['kelurahan/(:num)'] = 'users/edit_kelurahan/$1';
 $route['post_edit_kelurahan'] = 'users/post_edit_kelurahan';
+$route['delete-kelurahan'] = 'users/delete_kelurahan';
 
 $route['puskesmas'] = 'users/puskesmas';
 $route['add_puskesmas'] = 'users/add_puskesmas';
 $route['puskesmas/(:num)'] = 'users/edit_puskesmas/$1';
 $route['post_edit_puskesmas'] = 'users/post_edit_puskesmas';
+$route['delete-puskesmas'] = 'users/delete_puskesmas';
 
 $route['balita'] = 'users/balita';
 $route['add_balita'] = 'users/add_balita';
@@ -86,6 +89,7 @@ $route['posyandu'] = 'users/posyandu';
 $route['add_posyandu'] = 'users/add_posyandu';
 $route['posyandu/(:num)'] = 'users/edit_posyandu/$1';
 $route['post_edit_posyandu'] = 'users/post_edit_posyandu';
+$route['delete-posyandu'] = 'users/delete_posyandu';
 
 $route['jadwal'] = 'users/jadwal';
 $route['add_jadwal'] = 'users/add_jadwal';
@@ -104,6 +108,7 @@ $route['kader'] = 'users/kader';
 $route['add_kader'] = 'users/add_kader';
 $route['kader/(:num)'] = 'users/edit_kader/$1';
 $route['post_edit_kader'] = 'users/post_edit_kader';
+$route['delete-kader'] = 'users/delete_kader';
 
 //---------------------Laporan
 $route['list_kelurahan'] = 'users/getKelurahan';

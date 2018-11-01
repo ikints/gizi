@@ -68,8 +68,9 @@
                   <b>Status Gizi</b> <a class="pull-right"><?php echo $rows->ukur_status_gizi ?></a>
                 </li>
               </ul>
-
+              
               <a href="<?php echo base_url(); ?>pengukuran/edit/<?php echo $rows->ukur_id;  ?>"class="btn btn-primary btn-block"><b>Edit</b></a>
+              <a href="<?php echo base_url(); ?>pengukuran"class="btn btn-primary btn-block"><b>Cancel</b></a>
             </div>
             <!-- /.box-body -->
           </div>

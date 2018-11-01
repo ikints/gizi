@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button>
+                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-remove"></i> Hapus</button> -->
                 </div>
               </div>
             </div>
@@ -35,7 +35,16 @@
                 <tbody>
                 <?php foreach ($kelurahan as $rows) : ?>
                 <tr>
-                  <td></td>
+                  <tr>
+                      <td>
+                        <?php if($rows->jumlah_kelurahan < '1') : ?>
+                        <?php $attributes = array('class' => 'form-horizontal'); ?>
+                            <?php echo form_open('delete-kelurahan', $attributes); ?>
+                              <input type="hidden" name="kel_id" value="<?php echo $rows->kel_id; ?>" class="form-control">
+                              <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
+                          </form>
+                        <?php endif; ?>
+                      </td>
                   <td><?php echo $rows->kec_nama ?></td>
                   <td><a href="kelurahan/<?php echo $rows->kel_id;  ?>"><?php echo $rows->kel_kode ?></a></td>
                   <td><?php echo $rows->kel_nama ?></td>

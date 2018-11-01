@@ -152,7 +152,7 @@ class Users extends CI_Controller {
 
 	public function puskesmas()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Puskesmas';		
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['puskesmas'] = $this->user_model->puskesmas();		
@@ -164,7 +164,7 @@ class Users extends CI_Controller {
 	{
 		$puskesmas_id = $this->uri->segment(2);
 
-		$data['title'] = 'Puskesmas';		
+		$data['title'] = 'Edit Puskesmas';		
 		$data['name'] = $this->name_member["name"];
 		$data['kecamatan'] = $this->user_model->kecamatan();
 		$data['puskesmas'] = $this->user_model->edit_puskesmas($puskesmas_id);		
@@ -215,7 +215,7 @@ class Users extends CI_Controller {
 
 	public function posyandu()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Posyandu';		
 		$data['name'] = $this->name_member["name"];
 		$data['kelurahan'] = $this->user_model->kelurahan();
 		$data['puskesmas'] = $this->user_model->puskesmas();
@@ -251,7 +251,7 @@ class Users extends CI_Controller {
 		if ($result) 
 			{	
 				$this->session->set_flashdata('msg','Tambah Posyandu');
-				redirect('users/posyandu');
+				redirect('posyandu');
 
 			}
 	}
@@ -260,7 +260,7 @@ class Users extends CI_Controller {
 	{
 		$posyandu_id = $this->uri->segment(2);
 
-		$data['title'] = 'Puskesmas';		
+		$data['title'] = 'Edit Posyandu';		
 		$data['name'] = $this->name_member["name"];
 		$data['kelurahan'] = $this->user_model->kelurahan();
 		$data['puskesmas'] = $this->user_model->puskesmas();
@@ -409,7 +409,7 @@ class Users extends CI_Controller {
 
 	public function jadwal()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Jadwal';		
 		$data['name'] = $this->name_member["name"];		
 		$data['jadwal'] = $this->user_model->jadwal();
 		$data['posyandu'] = $this->user_model->posyandu();
@@ -421,7 +421,7 @@ class Users extends CI_Controller {
 	{
 		$jadwal_id = $this->uri->segment(2);
 
-		$data['title'] = 'Puskesmas';		
+		$data['title'] = 'Edit Jadwal';		
 		$data['name'] = $this->name_member["name"];
 		$data['posyandu'] = $this->user_model->posyandu();
 		$data['jadwal'] = $this->user_model->edit_jadwal($jadwal_id);		
@@ -490,7 +490,7 @@ class Users extends CI_Controller {
 
 	public function pengukuran()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Pengukuran';		
 		$data['name'] = $this->name_member["name"];
 		$data['pengukuran'] = $this->user_model->pengukuran();
 		$data['jadwal'] = $this->user_model->jadwal();	
@@ -502,7 +502,7 @@ class Users extends CI_Controller {
 	public function edit_pengukuran()
 	{
 		$ukur_id = $this->uri->segment(3);
-		$data['title'] = 'Puskesmas';		
+		$data['title'] = 'Edit Pengukuran';		
 		$data['name'] = $this->name_member["name"];
 		$data['jadwal'] = $this->user_model->jadwal();	
 		$data['balita'] = $this->user_model->balita();	
@@ -566,7 +566,7 @@ class Users extends CI_Controller {
 	{
 		$ukur_id = $this->uri->segment(2);
 
-		$data['title'] = 'Balita';		
+		$data['title'] = 'Detail Pengukuran';		
 		$data['name'] = $this->name_member["name"];
 		$data['pengukuran'] = $this->user_model->detail_pengukuran($ukur_id);		
 		$data['main_content'] = 'users/detail_pengukuran';
@@ -585,7 +585,7 @@ class Users extends CI_Controller {
 
 	public function kader()
 	{
-		$data['title'] = 'Kecamatan';		
+		$data['title'] = 'Kader';		
 		$data['name'] = $this->name_member["name"];	
 		$data['posyandu'] = $this->user_model->posyandu();	
 		$data['kader'] = $this->user_model->kader();
@@ -706,6 +706,85 @@ class Users extends CI_Controller {
 		$data['resume_kp'] = $this->user_model->loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry);
 		$data['main_content'] = 'users/resume_kp_filter';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function edit_kader()
+	{
+		$kader_id = $this->uri->segment(2);
+
+		$data['title'] = 'Edit Kader';		
+		$data['name'] = $this->name_member["name"];
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['kader'] = $this->user_model->edit_kader($kader_id);		
+		$data['main_content'] = 'users/edit_kader';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function post_edit_kader()
+	{
+		$kader_id = $this->input->post('kader_id');
+		
+
+		$data = array(
+				
+				'posyandu_id' 	=> $this->input->post('posyandu_id'),
+				'kader_nama' 	=> $this->input->post('kader_nama')
+							
+			);
+
+		$this->user_model->post_edit_kader($kader_id,$data);	
+		$this->session->set_flashdata('msg','Update Berhasil');	
+		redirect('kader');
+	}
+
+	public function delete_kader()
+	{
+		$kader_id = $this->input->post('kader_id');
+		//hapus
+		$this->user_model->delete_kader($kader_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/kader');			
+	
+	}
+
+	public function delete_kecamatan()
+	{
+		$kec_id = $this->input->post('kec_id');
+		//hapus
+		$this->user_model->delete_kecamatan($kec_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/kecamatan');			
+	
+	}
+
+	public function delete_kelurahan()
+	{
+		$kel_id = $this->input->post('kel_id');
+		//hapus
+		$this->user_model->delete_kelurahan($kel_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/kelurahan');			
+	
+	}
+
+	public function delete_puskesmas()
+	{
+		$puskesmas_id = $this->input->post('puskesmas_id');
+		//hapus
+		$this->user_model->delete_puskesmas($puskesmas_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/puskesmas');			
+	
+	}
+
+	public function delete_posyandu()
+	{
+		$posyandu_id = $this->input->post('posyandu_id');
+		//hapus
+		$this->user_model->delete_posyandu($posyandu_id);	
+		$this->session->set_flashdata('msg','Hapus Berhasil');							
+		redirect('users/posyandu');			
+	
 	}
 
 
