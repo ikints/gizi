@@ -817,4 +817,141 @@ class Users extends CI_Controller {
 		$this->load->view('template/user/view', $data);
 	}
 
+	public function jb_ukur_bulan_ini()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_ukur_bulan_ini';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_kms()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_kms';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_naik_bb()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_naik_bb';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_tidak_naik_bb()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_tidak_naik_bb';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_abses_bulan_lalu()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_abses_bulan_lalu';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_pertama()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_pertama';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_ditimbang()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_ditimbang';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_absen_bulan_ini()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_absen_bulan_ini';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_vitamin()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_vitamin';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_asi_eksklusif()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_asi_eksklusif';
+		$this->load->view('template/user/view', $data);
+	}
+
+
+	public function jb_lulus_asi_eksklusif()
+	{
+		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_lulus_asi_eksklusif';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_gakin()
+	{
+		$data['title'] = 'Laporan GAKIN';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_gakin';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_gizi()
+	{
+		$data['title'] = 'Laporan GIZI';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_gizi';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_status_gizi()
+	{
+		$data['title'] = 'Laporan Jumlah Status Gizi';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_status_gizi';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_gizi_buruk()
+	{
+		$data['title'] = 'Laporan Jumlah Gizi Buruk';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_gizi_buruk';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_oralit()
+	{
+		$data['title'] = 'Laporan Jumlah Pemberian Oralit';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_oralit';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function jb_kematian()
+	{
+		$data['title'] = 'Laporan Jumlah Kematian';		
+		$data['name'] = $this->name_member["name"];		
+		$data['main_content'] = 'users/jb_kematian';
+		$this->load->view('template/user/view', $data);
+	}
+
 }

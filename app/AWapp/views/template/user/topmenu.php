@@ -50,7 +50,7 @@
                 <li><a href="<?php echo base_url(); ?>jb_pertama">Jumlah Bayi Pertama Hadir Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_ditimbang">Jumlah Bayi Ditimbang Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_absen_bulan_ini">Jumlah Bayi Absen Bulan Ini</a></li>
-                <li><a href="<?php echo base_url(); ?>jb_absen_vitamin">Jumlah Bayi Menerima Vitamin Bulan Ini</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_vitamin">Jumlah Bayi Menerima Vitamin Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_asi_eksklusif">Jumlah Bayi Asi Eksklusif</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_lulus_asi_eksklusif">Jumlah Bayi Lulus Asi Eksklusif</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_gakin">Jumlah Balita GAKIN</a></li>
