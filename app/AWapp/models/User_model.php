@@ -936,5 +936,363 @@ function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
 	}
 
 
+//---------------------------------------------------LAPORAN
+function jb_kematian()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_oralit()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_gizi_buruk()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_status_gizi()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_gizi()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_gakin()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_lulus_asi_eksklusif()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_asi_eksklusif()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_vitamin()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_absen_bulan_ini()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_ditimbang()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_pertama()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_abses_bulan_lalu()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_tidak_naik_bb()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_naik_bb()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_kms()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function jb_ukur_bulan_ini()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}														
+
+
 
 }
