@@ -969,7 +969,7 @@ function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
 		return $result;				
 	}
 
-=======
+
 //---------------------------------------------------LAPORAN
 function jb_kematian()
 	{					
