@@ -820,7 +820,8 @@ class Users extends CI_Controller {
 	public function jb_ukur_bulan_ini()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_ukur_bulan_ini'] = $this->user_model->jb_ukur_bulan_ini();	
 		$data['main_content'] = 'users/jb_ukur_bulan_ini';
 		$this->load->view('template/user/view', $data);
 	}
@@ -828,7 +829,8 @@ class Users extends CI_Controller {
 	public function jb_kms()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_kms'] = $this->user_model->jb_kms();	
 		$data['main_content'] = 'users/jb_kms';
 		$this->load->view('template/user/view', $data);
 	}
@@ -836,7 +838,8 @@ class Users extends CI_Controller {
 	public function jb_naik_bb()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_naik_bb'] = $this->user_model->jb_naik_bb();	
 		$data['main_content'] = 'users/jb_naik_bb';
 		$this->load->view('template/user/view', $data);
 	}
@@ -845,6 +848,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_tidak_naik_bb'] = $this->user_model->jb_tidak_naik_bb();
 		$data['main_content'] = 'users/jb_tidak_naik_bb';
 		$this->load->view('template/user/view', $data);
 	}
@@ -853,6 +857,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_abses_bulan_lalu'] = $this->user_model->jb_abses_bulan_lalu();
 		$data['main_content'] = 'users/jb_abses_bulan_lalu';
 		$this->load->view('template/user/view', $data);
 	}
@@ -860,7 +865,8 @@ class Users extends CI_Controller {
 	public function jb_pertama()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_pertama'] = $this->user_model->jb_pertama();	
 		$data['main_content'] = 'users/jb_pertama';
 		$this->load->view('template/user/view', $data);
 	}
@@ -869,6 +875,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_ditimbang'] = $this->user_model->jb_ditimbang();
 		$data['main_content'] = 'users/jb_ditimbang';
 		$this->load->view('template/user/view', $data);
 	}
@@ -876,7 +883,8 @@ class Users extends CI_Controller {
 	public function jb_absen_bulan_ini()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_absen_bulan_ini'] = $this->user_model->jb_absen_bulan_ini();	
 		$data['main_content'] = 'users/jb_absen_bulan_ini';
 		$this->load->view('template/user/view', $data);
 	}
@@ -884,7 +892,8 @@ class Users extends CI_Controller {
 	public function jb_vitamin()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_vitamin'] = $this->user_model->jb_vitamin();	
 		$data['main_content'] = 'users/jb_vitamin';
 		$this->load->view('template/user/view', $data);
 	}
@@ -892,7 +901,8 @@ class Users extends CI_Controller {
 	public function jb_asi_eksklusif()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
-		$data['name'] = $this->name_member["name"];		
+		$data['name'] = $this->name_member["name"];	
+		$data['jb_asi_eksklusif'] = $this->user_model->jb_asi_eksklusif();	
 		$data['main_content'] = 'users/jb_asi_eksklusif';
 		$this->load->view('template/user/view', $data);
 	}
@@ -902,6 +912,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_lulus_asi_eksklusif'] = $this->user_model->jb_lulus_asi_eksklusif();
 		$data['main_content'] = 'users/jb_lulus_asi_eksklusif';
 		$this->load->view('template/user/view', $data);
 	}
@@ -910,6 +921,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan GAKIN';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_gakin'] = $this->user_model->jb_gakin();
 		$data['main_content'] = 'users/jb_gakin';
 		$this->load->view('template/user/view', $data);
 	}
@@ -918,6 +930,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan GIZI';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_gizi'] = $this->user_model->jb_gizi();
 		$data['main_content'] = 'users/jb_gizi';
 		$this->load->view('template/user/view', $data);
 	}
@@ -926,6 +939,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Jumlah Status Gizi';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_status_gizi'] = $this->user_model->jb_status_gizi();
 		$data['main_content'] = 'users/jb_status_gizi';
 		$this->load->view('template/user/view', $data);
 	}
@@ -934,6 +948,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Jumlah Gizi Buruk';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_gizi_buruk'] = $this->user_model->jb_gizi_buruk();
 		$data['main_content'] = 'users/jb_gizi_buruk';
 		$this->load->view('template/user/view', $data);
 	}
@@ -942,6 +957,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Jumlah Pemberian Oralit';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_oralit'] = $this->user_model->jb_oralit();
 		$data['main_content'] = 'users/jb_oralit';
 		$this->load->view('template/user/view', $data);
 	}
@@ -950,6 +966,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Jumlah Kematian';		
 		$data['name'] = $this->name_member["name"];		
+		$data['jb_kematian'] = $this->user_model->jb_kematian();
 		$data['main_content'] = 'users/jb_kematian';
 		$this->load->view('template/user/view', $data);
 	}
