@@ -992,7 +992,7 @@ function jb_kematian()
 			return $result;					
 	}
 
-function balita_data($balita_id)
+function balita_data($data_id)
 	{					
 			$q = $this->db->select('
 
@@ -1002,7 +1002,7 @@ function balita_data($balita_id)
 			')
 			
 			->from('balita a')
-			->where_not_in('a.balita_id', $balita_id);;
+			->where('a.balita_id NOT IN ('.$data_id.')' );
 			$result = $q->get()->result();
 			return $result;
 		}
