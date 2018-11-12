@@ -936,6 +936,40 @@ function loadDataTableResumeKP($kec_id,$kel_id,$balita_date_entry)
 	}
 
 
+
+	function loadDataTablePersediaan($kec_id,$kel_id,$posyandu_id,$bulan,$tahun)
+	{					
+
+		$q = $this->db->select('
+
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
+				a.ukur_bb as ukur_bb,
+				a.ukur_tb as ukur_tb,
+				b.jadwal_tgl as jadwal_tgl,
+				c.balita_nama as balita_nama,
+				c.balita_ortu_nama as balita_ortu_nama,
+				c.balita_alamat as balita_alamat,
+				d.posyandu_nama as posyandu_nama
+				
+			')
+			
+			->from('pengukuran a')
+			->join('jadwal b','b.jadwal_id = a.jadwal_id')
+			->join('balita c','c.balita_id = a.balita_id')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id')
+			->join('kelurahan e','e.kel_id = d.kel_id')
+			->where('e.kec_id',$kec_id)
+			->where('e.kel_id',$kel_id)
+			->where('d.posyandu_id',$posyandu_id)
+			->where('b.jadwal_bulan',$bulan)
+			->where('b.jadwal_tahun',$tahun);	
+
+		$result = $q->get()->result();
+		return $result;				
+	}
+
+
 //---------------------------------------------------LAPORAN
 function jb_kematian()
 	{					
@@ -1350,6 +1384,7 @@ function jb_ukur_bulan_ini()
 			$result = $q->get()->result();
 			return $result;					
 	}														
+
 
 
 
