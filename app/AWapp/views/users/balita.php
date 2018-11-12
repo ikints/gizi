@@ -7,7 +7,6 @@
         Daftar Balita
       </h1>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -16,7 +15,9 @@
             <div class="box-header">
               <div class="row">
                 <div class="col-md-3">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i> Tambah</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info">
+                    <i class="fa fa-plus"></i> Tambah
+                  </button>
                 </div>
               </div>
             </div>

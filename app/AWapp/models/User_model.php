@@ -958,6 +958,64 @@ function jb_kematian()
 			return $result;					
 	}
 
+function balita_data($balita_id)
+	{					
+			$q = $this->db->select('
+
+				a.balita_id,
+				a.balita_nama
+
+			')
+			
+			->from('balita a')
+			->where_not_in('a.balita_id', $balita_id);;
+			$result = $q->get()->result();
+			return $result;
+		}
+
+function jb_kematian_data()
+	{					
+			$q = $this->db->select('
+
+				a.kematian_id as kematian_id,
+				a.kematian_tgl as kematian_tgl,
+				a.kematian_usia as kematian_usia,
+				b.balita_id as balita_id,
+				b.balita_nama as balita_nama,
+				b.balita_tgl_lahir as balita_tgl_lahir
+
+			')
+			
+			->from('kematian a')
+			->join('balita b', 'b.balita_id = a.balita_id');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
+
+function balita_usia($balita_id)
+	{					
+			$q = $this->db->select('
+
+				a.balita_id as balita_id,
+				a.balita_tgl_lahir as balita_tgl_lahir,
+
+			')
+			
+			->from('balita a')
+			->where('a.balita_id', $balita_id);
+			$result = $q->get()->result();
+			return $result;
+		}
+
+function add_kematian($data)
+	{					
+		$insert = $this->db->insert('kematian', $data);
+		return $insert;						
+	}
+
 function jb_oralit()
 	{					
 			$q = $this->db->select('

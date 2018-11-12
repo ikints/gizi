@@ -967,8 +967,47 @@ class Users extends CI_Controller {
 		$data['title'] = 'Laporan Jumlah Kematian';		
 		$data['name'] = $this->name_member["name"];		
 		$data['jb_kematian'] = $this->user_model->jb_kematian();
+		$data['jb_kematian_data'] = $this->user_model->jb_kematian_data();
+		$data_kematian_balita = $this->user_model->jb_kematian_data();
+		foreach($data_kematian_balita as $rows):
+			$balita_id = ($rows->balita_id.",");
+		endforeach;
+		
+		//print($balita_id);
+		$data['balita'] = $this->user_model->balita_data($balita_id);
 		$data['main_content'] = 'users/jb_kematian';
 		$this->load->view('template/user/view', $data);
+	}
+
+	public function add_kematian()
+	{	
+		$balita_id = $this->input->post('balita_id');
+		$kematian_tgl = date('Y-m-d', strtotime($this->input->post('kematian_tgl')));
+		//check tanggal kelahiran balita
+		$result_balita = $this->user_model->balita_usia($balita_id);
+
+		foreach($result_balita as $rows) :
+
+			$tgl_lahir = date('Y-m-d', strtotime($rows->balita_tgl_lahir));
+			$date_lahir = new DateTime($tgl_lahir);
+			$date_kematian = new DateTime($kematian_tgl);
+			$interval_kematian = date_diff($date_lahir, $date_kematian);
+			$kematian_usia = $interval_kematian->m + ($interval_kematian->y * 12);
+
+		endforeach;
+
+		$data = array(
+				'balita_id' 	=> $this->input->post('balita_id'),
+				'kematian_tgl' 	=> $kematian_tgl,
+				'kematian_usia' 	=> $kematian_usia
+			);
+
+		$result = $this->user_model->add_kematian($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Kematian');
+				redirect('jb_kematian');
+			}
 	}
 
 }

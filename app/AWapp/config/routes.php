@@ -135,6 +135,7 @@ $route['jb_status_gizi'] = 'users/jb_status_gizi';
 $route['jb_gizi_buruk'] = 'users/jb_gizi_buruk';
 $route['jb_oralit'] = 'users/jb_oralit';
 $route['jb_kematian'] = 'users/jb_kematian';
+$route['add_kematian'] = 'users/add_kematian';
 
 
 
