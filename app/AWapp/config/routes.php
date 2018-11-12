@@ -116,6 +116,8 @@ $route['resume_kp_filter'] = 'users/loadDataTableResumeKP';
 $route['persediaan_bahan'] = 'users/persediaan_bahan';
 $route['penyuluhan'] = 'users/penyuluhan';
 $route['rekap_penyuluhan_filter'] = 'users/loadDataTablePenyuluhan';
+$route['persediaan'] = 'users/persediaan';
+$route['rekap_persediaan_filter'] = 'users/loadDataTablePersediaan';
 
 //---------------------Jumlah Balita
 $route['jb_ukur_bulan_ini'] = 'users/jb_ukur_bulan_ini';
