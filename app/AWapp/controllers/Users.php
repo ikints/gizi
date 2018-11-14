@@ -1041,14 +1041,36 @@ class Users extends CI_Controller {
 		$data['jb_kematian'] = $this->user_model->jb_kematian();
 		$data['jb_kematian_data'] = $this->user_model->jb_kematian_data();
 		$data_kematian_balita = $this->user_model->jb_kematian_data();
+		$outp = "";
 		foreach($data_kematian_balita as $rows):
-			$balita_id = ($rows->balita_id.",");
+			$balita_id = $rows->balita_id;
+			if ($outp != "") {$outp .= ",";}
+
+	          $outp .= $balita_id;
+
 		endforeach;
-		
-		//print($balita_id);
-		$data['balita'] = $this->user_model->balita_data($balita_id);
+			$data_id = $outp;
+
+		$data['balita'] = $this->user_model->balita_data($data_id);
 		$data['main_content'] = 'users/jb_kematian';
 		$this->load->view('template/user/view', $data);
+
+		/*$result_dewasa = array(); // create array 
+          $i = 0;
+
+          foreach($jumlah_dewasa as $key => $row)
+          {
+            $result_dewasa[$i]['title_dewasa'] = $title_dewasa[$i];
+            $result_dewasa[$i]['nama_peserta_dewasa'] = $nama_peserta_dewasa[$i];
+            $result_dewasa[$i]['tanda_pengenal_dewasa'] = $tanda_pengenal_dewasa[$i];
+            $result_dewasa[$i]['nomor_pengenal_dewasa'] = $nomor_pengenal_dewasa[$i];
+            $i++;
+          }
+                    
+          $responses_dewasa['results']= $result_dewasa;
+          $nm_peserta_dewasa = json_encode($responses_dewasa);
+          $datapage[ 'peserta_dewasa' ] = json_decode($nm_peserta_dewasa);*/
+
 	}
 
 	public function add_kematian()
@@ -1081,6 +1103,8 @@ class Users extends CI_Controller {
 				redirect('jb_kematian');
 			}
 		}
+
+	}
 
 	public function persediaan_bahan()
 	{

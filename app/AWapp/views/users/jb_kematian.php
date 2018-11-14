@@ -76,11 +76,11 @@
                             <tr>
                               <td><?php echo $i; ?></td>
                               <td><?php echo $rows->posyandu_nama; ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><?php echo $rows->jumlah_kematian_06; ?></td>
+                              <td><?php echo $rows->jumlah_kematian_612; ?></td>
+                              <td><?php echo $rows->jumlah_kematian_1224; ?></td>
+                              <td><?php echo $rows->jumlah_kematian_2436; ?></td>
+                              <td><?php echo $rows->jumlah_kematian_3648; ?></td>
                             </tr>
                           <?php endforeach; ?>
                         </tbody>  
@@ -98,7 +98,24 @@
                               <div class="chart" id="grafikkematian" style="height: 300px;"></div>
                             </div>
                         </div>
-                      </div>
+                        <div class="chart-legend text-center">
+                          <span><br>
+                            <span style="background-color: #00a65a; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (0-6) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #f56954; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (6-12) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #12a91c; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (12-24) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #4a2ad7; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (24-36) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #1745c0; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (36-48) Bulan
+                          </span>
+                        </div>
+                      </div> 
             </div>
 
     </section>
@@ -152,45 +169,40 @@
         </div>
         <!-- /.modal -->
       </div>
-    
+<?php $data_k = ""; 
+      foreach ($jb_kematian as $rows) : ?>
+<?php
+      //Grafik Kematian    
+      if ($data_k != "") {$data_k .= ",";}
 
+          $data_k .= '{';
+          $data_k .= '"posyandu_nama":"'  . $rows->posyandu_nama . '",';
+          $data_k .= '"jumlah_kematian_06":"'  . $rows->jumlah_kematian_06 . '",';
+          $data_k .= '"jumlah_kematian_612":"'  . $rows->jumlah_kematian_612 . '",';
+          $data_k .= '"jumlah_kematian_1224":"'  . $rows->jumlah_kematian_1224 . '",';
+          $data_k .= '"jumlah_kematian_2436":"'  . $rows->jumlah_kematian_2436 . '",';
+          $data_k .= '"jumlah_kematian_3648":"'  . $rows->jumlah_kematian_3648 . '"';
+          $data_k .= '}'; 
+?>
+<?php endforeach; ?>
+      <?php $data_k ='['.$data_k.']'; ?>
 <script>
   $(function () {
     
     //--------------------------------------------------Laporan Grafik
-    /*var line = new Morris.Line({
-      // ID of the element in which to draw the chart.
-      parseTime: false,
-      element: 'grafikkematian',
-      // Chart data records -- each entry in this array corresponds to a point on
-      // the chart.
-      data: <?php echo $outp; ?>,
-      // The name of the data record attribute that contains x-values.
-      xkey: 'usia',
-      // A list of names of data record attributes that contain y-values.
-      ykeys: ['berat'],
-      // Labels for the ykeys -- will be displayed when you hover over the
-      // chart.
-      labels: ['Berat Badan (kg)']
-    });*/
 
-    var bar = new Morris.Bar({
+    var barChart = new Morris.Bar({
       element: 'grafikkematian',
       resize: true,
-      data: [
-        {y: '2006', a: 100, b: 90},
-        {y: '2007', a: 75, b: 65},
-        {y: '2008', a: 50, b: 40},
-        {y: '2009', a: 75, b: 65},
-        {y: '2010', a: 50, b: 40},
-        {y: '2011', a: 75, b: 65},
-        {y: '2012', a: 100, b: 90}
-      ],
-      barColors: ['#00a65a', '#f56954'],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['CPU', 'DISK'],
-      hideHover: 'auto'
+      parseTime: false,
+      data: <?php echo $data_k; ?>,
+      barColors: ['#00a65a', '#f56954', '#12a91c', '#4a2ad7', '#1745c0'],
+      xkey: 'posyandu_nama',
+      ykeys: ['jumlah_kematian_06', 'jumlah_kematian_612','jumlah_kematian_1224', 'jumlah_kematian_2436', 'jumlah_kematian_3648'],
+      labels: ['Usia 0-6', 'Usia 6-12','Usia 12-24', 'Usia 24-36', , 'Usia 36-48'],
+      hideHover: 'auto',
+      xLabelAngle: 60,
+      redraw: true
     });
 
     
