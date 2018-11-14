@@ -977,14 +977,19 @@ function jb_kematian()
 
 				a.posyandu_id as posyandu_id,			
 				a.posyandu_nama as posyandu_nama,
-				a.posyandu_alamat as posyandu_alamat,
-				a.posyandu_rt as posyandu_rt,
-				a.posyandu_rw as posyandu_rw
+				SUM( Case When (c.kematian_usia >= 0 AND c.kematian_usia < 6 ) Then 1 Else 0 End) as jumlah_kematian_06,
+				SUM( Case When (c.kematian_usia >= 6 AND c.kematian_usia < 12 ) Then 1 Else 0 End) as jumlah_kematian_612,
+				SUM( Case When (c.kematian_usia >= 12 AND c.kematian_usia < 24 ) Then 1 Else 0 End) as jumlah_kematian_1224
+				,SUM( Case When (c.kematian_usia >= 24 AND c.kematian_usia < 36 ) Then 1 Else 0 End) as jumlah_kematian_2436
+				,SUM( Case When (c.kematian_usia >= 36 AND c.kematian_usia <= 48 ) Then 1 Else 0 End) as jumlah_kematian_3648
 
 
 			')
 			
-			->from('posyandu a');
+			->from('posyandu a')
+			->join('balita b','b.posyandu_id = a.posyandu_id' , 'left')
+			->join('kematian c','c.balita_id = b.balita_id' , 'left')
+			->group_by('a.posyandu_id');
 
 
 			
