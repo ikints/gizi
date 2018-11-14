@@ -1383,9 +1383,49 @@ function jb_ukur_bulan_ini()
 			
 			$result = $q->get()->result();
 			return $result;					
-	}														
+	}	
+
+function jb_ukur_bulan_ini_data()
+	{					
+			$q = $this->db->select('
+
+				a.timbang_id as timbang_id,
+				a.timbang_tgl as timbang_tgl,
+				b.balita_id as balita_id,
+				b.balita_nama as balita_nama,
+				b.balita_tgl_lahir as balita_tgl_lahir
+
+			')
+			
+			->from('timbang a')
+			->join('balita b', 'b.balita_id = a.balita_id');
 
 
+			
+			$result = $q->get()->result();
+			return $result;					
+	}													
+
+function add_timbang_bln_ini($data)
+	{					
+		$insert = $this->db->insert('timbang', $data);
+		return $insert;						
+	}
+
+function tgl_jadwal($jadwal_id)
+	{					
+			$q = $this->db->select('
+
+				a.jadwal_id as jadwal_id,
+				a.jadwal_tgl as jadwal_tgl,
+
+			')
+			
+			->from('jadwal a')
+			->where('a.jadwal_id', $jadwal_id);
+			$result = $q->get()->result();
+			return $result;
+		}
 
 
 }
