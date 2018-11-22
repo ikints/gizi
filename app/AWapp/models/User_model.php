@@ -1459,5 +1459,102 @@ function tgl_jadwal($jadwal_id)
 			return $result;
 		}
 
+	function balita_list()
+	{					
+			$q = $this->db->select('
+
+				a.balita_id,
+				a.posyandu_id,
+				a.balita_nik,
+				a.balita_nama,
+				a.balita_anak_ke,
+				a.balita_anak_dari,
+				a.balita_jk,
+				a.balita_tgl_lahir,
+				a.balita_berat_lahir,
+				a.balita_ortu_nama,
+				a.balita_ortu_nik,
+				a.balita_tlpn,
+				a.balita_alamat,
+				a.balita_rt,
+				a.balita_rw,
+				a.kel_id,
+				(CASE WHEN a.balita_jk = "L" THEN "Laki-laki" ELSE "Perempuan" END)AS jk,
+				(CASE WHEN a.balita_id = "1" THEN "01-11-2018" ELSE "03-11-2018" END)AS mulai_pmt,
+				(CASE WHEN a.balita_id = "1" THEN "17 Hari" ELSE "15 Hari" END)AS jml_pmt
+
+			')
+			
+			->from('balita a')
+			->join('posyandu b','b.posyandu_id = a.posyandu_id')
+			->join('pmt c','c.balita_id=a.balita_id','left');
+			$result = $q->get()->result();
+			return $result;
+		}
+
+
+		function detail_pemulihan($balita_id)
+	{					
+			/*$q = $this->db->select('
+
+				
+				c.balita_nama as balita_nama,
+				c.balita_nama,
+				c.balita_anak_ke,
+				c.balita_anak_dari,
+				c.balita_jk,
+				c.balita_tgl_lahir,
+				c.balita_berat_lahir,
+				c.balita_ortu_nama,
+				c.balita_ortu_nik,
+				c.balita_tlpn,
+				c.balita_alamat,
+				c.balita_rt,
+				c.balita_rw,
+				d.posyandu_nama as posyandu_nama,
+				(CASE WHEN c.balita_jk = "L" THEN "Laki-laki" ELSE "Perempuan" END)AS jk,
+				(CASE WHEN c.balita_id = "1" THEN "01-11-2018" ELSE "03-11-2018" END)AS mulai_pmt,
+				(CASE WHEN c.balita_id = "1" THEN "30-01-2019" ELSE "01-02-2019" END)AS akhir_pmt
+				
+			')
+			
+			->from('balita c')
+			->join('posyandu d','d.posyandu_id = c.posyandu_id')
+			->where('c.balita_id', $balita_id);*/
+			$sql = "SELECT * FROM (
+					SELECT '1'AS balita_id,'Dahlia' AS posyandu,'Nama Balita 1'AS nama_balita,'Laki-laki'AS jk,'01-11-2018'AS mulai_pmt,'29-01-2019'AS akhir_pmt
+					UNION
+					SELECT '2'AS balita_id,'Dahlia' AS posyandu,'Nama Balita 2'AS nama_balita,'Perempuan'AS jk,'03-11-2018'AS mulai_pmt,'31-01-2019'AS akhir_pmt
+					UNION
+					SELECT '3'AS balita_id,'Dahlia' AS posyandu,'Nama Balita 3'AS nama_balita,'Laki-laki'AS jk,'05-11-2018'AS mulai_pmt,'02-02-2019'AS akhir_pmt
+					UNION
+					SELECT '4'AS balita_id,'Dahlia' AS posyandu,'Nama Balita 4'AS nama_balita,'Perempuan'AS jk,'05-11-2018'AS mulai_pmt,'02-02-2019'AS akhir_pmt
+					UNION
+					SELECT '5'AS balita_id,'Dahlia' AS posyandu,'Nama Balita 5'AS nama_balita,'Laki-laki'AS jk,'10-11-2018'AS mulai_pmt,'07-02-2019'AS akhir_pmt
+					)z WHERE balita_id='$balita_id'";
+			$query = $this->db->query($sql);
+			
+			/*$result = $q->get()->result();
+			return $result;		*/	
+			$result = array();
+				  $ii = 0;
+				  foreach($query->result_array() as $resulte)
+				  { 
+
+				    $result[] = array(
+				      'id' 			=> $ii,        
+				      'balita_id' 	=> $resulte['balita_id'],  
+				      'posyandu' 	=> $resulte['posyandu'],
+				      'nama_balita' => $resulte['nama_balita'],
+				      'jk' 			=> $resulte['jk'],
+				      'mulai_pmt' 	=> $resulte['mulai_pmt'],
+				      'akhir_pmt'   => $resulte['akhir_pmt']
+				      );
+				    $ii++;
+				}
+
+				return $result;		
+	}
+
 
 }

@@ -175,3 +175,7 @@ $route['iposyandu/rekap_pb'] = 'posyandu/rekap_pb';
 $route['iposyandu/rekap_pb_filter'] = 'posyandu/loadDataTableRekapPB';
 $route['iposyandu/resume_kp'] = 'posyandu/resume_kp';
 $route['iposyandu/resume_kp_filter'] = 'posyandu/loadDataTableResumeKP';
+
+//----------------PMT Pemulihan
+$route['pemulihan'] = 'users/pemulihan';
+$route['pemulihan/(:num)'] = 'users/detail_pemulihan/$1';

@@ -1161,4 +1161,26 @@ class Users extends CI_Controller {
 			}
 		}
 
+
+		public function pemulihan()
+	{
+		$data['title'] = 'PMT Pemulihan';		
+		$data['name'] = $this->name_member["name"];	
+		$data['balita_list'] = $this->user_model->balita_list();	
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['main_content'] = 'users/pemulihan';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function detail_pemulihan()
+	{
+		$balita_id = $this->uri->segment(2);
+
+		$data['title'] = 'Detail pemulihan';		
+		$data['name'] = $this->name_member["name"];
+		$data['pemulihan'] = $this->user_model->detail_pemulihan($balita_id);		
+		$data['main_content'] = 'users/detail_pemulihan';
+		$this->load->view('template/user/view', $data);
+	}
+
 }

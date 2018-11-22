@@ -41,10 +41,10 @@
                   <b>Nama Balita</b> <a class="pull-right"><?php echo $rows->balita_nama ?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Usia</b> <a class="pull-right"><?php echo $rows->balita_nama ?></a>
+                  <b>Usia</b> <a class="pull-right"><?php echo $rows->ukur_usia ?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Berat Badan</b> <a class="pull-right"><?php echo $rows->balita_nama ?></a>
+                  <b>Berat Badan</b> <a class="pull-right"><?php echo $rows->ukur_bb ?></a>
                 </li>
                 <li class="list-group-item">
                   <b>Tinggi Badan</b> <a class="pull-right"><?php echo $rows->ukur_tb ?></a>
