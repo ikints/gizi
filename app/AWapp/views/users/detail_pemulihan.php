@@ -16,13 +16,19 @@ Content Wrapper. Contains page content -->
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url("assets/"); ?>images/avatar.png" alt="User profile picture">
+
+              <h3 class="profile-username text-center"><?php echo $rows['nama_balita'] ?></h3>
+
+              <p class="text-muted text-center"><?php echo $rows['jk'] ?></p>
+
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b>Posyandu</b> <a class="pull-right"><?php echo $rows['posyandu'] ?></a>
                 </li>
-                <li class="list-group-item">
+                <!-- <li class="list-group-item">
                   <b>Nama Balita</b> <a class="pull-right"><?php echo $rows['nama_balita'] ?></a>
-                </li>
+                </li> -->
                 <li class="list-group-item">
                   <b>Tanggal Mulai PMT</b> <a class="pull-right"><?php echo $rows['mulai_pmt'] ?></a>
                 </li>
