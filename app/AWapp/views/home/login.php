@@ -43,9 +43,6 @@
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
-          <div class="col-xs-8">
-            <a href="<?php echo base_url(); ?>lupa-password">Lupa Password</a>
-          </div>
           <!-- /.col -->
           <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Masuk</button>

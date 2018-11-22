@@ -199,7 +199,7 @@
       barColors: ['#00a65a', '#f56954', '#12a91c', '#4a2ad7', '#1745c0'],
       xkey: 'posyandu_nama',
       ykeys: ['jumlah_kematian_06', 'jumlah_kematian_612','jumlah_kematian_1224', 'jumlah_kematian_2436', 'jumlah_kematian_3648'],
-      labels: ['Usia 0-6', 'Usia 6-12','Usia 12-24', 'Usia 24-36', , 'Usia 36-48'],
+      labels: ['Usia 0-6', 'Usia 6-12','Usia 12-24', 'Usia 24-36', 'Usia 36-48'],
       hideHover: 'auto',
       xLabelAngle: 60,
       redraw: true

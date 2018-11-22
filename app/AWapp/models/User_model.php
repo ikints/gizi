@@ -28,6 +28,25 @@ function profil_member()
 
 	}
 
+//index grafik
+//--------------------------------------Balita Grafik
+function balita_grafik()
+	{					
+			$q = $this->db->select('
+
+				a.balita_id as balita_id,
+				a.balita_nama as balita_nama,
+				a.balita_jk as balita_jk,
+				b.ukur_usia as ukur_usia,
+				b.ukur_bb as ukur_bb
+			')
+			
+			->from('balita a')
+			->join('pengukuran b','b.balita_id = a.balita_id');
+			$result = $q->get()->result();
+			return $result;
+		}
+
 //tambah users
 function add_users($data_l_puskesmas)
 	{					

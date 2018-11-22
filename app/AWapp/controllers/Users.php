@@ -32,7 +32,8 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Page Users Profil';		
 		$data['name'] = $this->name_member["name"];
-		$data['profil'] = $this->user_model->profil_member();			
+		$data['profil'] = $this->user_model->profil_member();	
+		$data['balita_grafik'] = $this->user_model->balita_grafik();		
 		$data['main_content'] = 'users/index';
 		$this->load->view('template/user/view', $data);
 	}
