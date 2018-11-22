@@ -112,13 +112,13 @@
                             </select>
                           </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Usia</label>
 
                           <div class="col-sm-10">
                             <input type="text" class="form-control" id="ukur_usia" placeholder="Usia" name="ukur_usia" data-validation="required" data-validation-error-msg="Harus diisi">
                           </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Berat Badan</label>
 

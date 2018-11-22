@@ -515,22 +515,53 @@ class Users extends CI_Controller {
 
 	public function post_edit_pengukuran()
 	{
-		$ukur_id = $this->input->post('ukur_id');
+		$ukur_id 			= $this->input->post('ukur_id');
+		$jadwal_id	 		= $this->input->post('jadwal_id');
+		$balita_id	 		= $this->input->post('balita_id');
+		$ukur_bb	 		= $this->input->post('ukur_bb');
+		$ukur_tb	 		= $this->input->post('ukur_tb');
+		$ukur_cara_ukur_tb	= $this->input->post('ukur_cara_ukur_tb');
+		$ukur_vitamin	 	= $this->input->post('ukur_vitamin');
+		$ukur_pmt_sts	 	= $this->input->post('ukur_pmt_sts');
+		$ukur_pmt_uraian	= $this->input->post('ukur_pmt_uraian');
+		$ukur_catatan	 	= $this->input->post('ukur_catatan');
+		$ukur_status_gizi	= $this->input->post('ukur_status_gizi');
+		
+				
+		//cek tgl pengukuran
+		$result_jadwal = $this->user_model->tgl_jadwal($jadwal_id);
+
+		foreach($result_jadwal as $row) :
+
+			//$jadwal_tgl = date('Y-m-d', strtotime($row->jadwal_tgl));
+			$date_jadwal = new DateTime($row->jadwal_tgl);
+
+		endforeach;
+
+		//check tanggal kelahiran balita
+		$result_balita = $this->user_model->balita_usia($balita_id);
+
+		foreach($result_balita as $rows) :
+
+			$tgl_lahir = date('Y-m-d', strtotime($rows->balita_tgl_lahir));
+			$date_lahir = new DateTime($tgl_lahir);
+			$interval_usia = date_diff($date_lahir, $date_jadwal);
+			$usia = $interval_usia->m + ($interval_usia->y * 12);
+
+		endforeach;
 
 		$data = array(
-				
-				'jadwal_id' 	=> $this->input->post('jadwal_id'),
-				'balita_id' 	=> $this->input->post('balita_id'),
-				'ukur_usia' 	=> $this->input->post('ukur_usia'),
-				'ukur_bb' 	=> $this->input->post('ukur_bb'),
-				'ukur_tb' 	=> $this->input->post('ukur_tb'),
-				'ukur_cara_ukur_tb' 	=> $this->input->post('ukur_cara_ukur_tb'),
-				'ukur_vitamin' 	=> $this->input->post('ukur_vitamin'),
-				'ukur_pmt_sts' 	=> $this->input->post('ukur_pmt_sts'),
-				'ukur_pmt_uraian' 	=> $this->input->post('ukur_pmt_uraian'),
-				'ukur_catatan' 	=> $this->input->post('ukur_catatan'),
-				'ukur_status_gizi' 	=> $this->input->post('ukur_status_gizi')
-							
+				'jadwal_id' 		=> $jadwal_id,
+				'balita_id' 		=> $balita_id,
+				'ukur_usia' 		=> $usia,
+				'ukur_bb' 			=> $ukur_bb,
+				'ukur_tb' 			=> $ukur_tb,
+				'ukur_cara_ukur_tb' => $ukur_cara_ukur_tb,
+				'ukur_vitamin' 		=> $ukur_vitamin,
+				'ukur_pmt_sts' 		=> $ukur_pmt_sts,
+				'ukur_pmt_uraian' 	=> $ukur_pmt_uraian,
+				'ukur_catatan' 		=> $ukur_catatan,
+				'ukur_status_gizi' 	=> $ukur_status_gizi
 			);
 
 		$this->user_model->post_edit_pengukuran($ukur_id,$data);	
@@ -539,20 +570,54 @@ class Users extends CI_Controller {
 	}
 
 	public function add_pengukuran()
-	{
-		$data = array(
-				'jadwal_id' 	=> $this->input->post('jadwal_id'),
-				'balita_id' 	=> $this->input->post('balita_id'),
-				'ukur_usia' 	=> $this->input->post('ukur_usia'),
-				'ukur_bb' 	=> $this->input->post('ukur_bb'),
-				'ukur_tb' 	=> $this->input->post('ukur_tb'),
-				'ukur_cara_ukur_tb' 	=> $this->input->post('ukur_cara_ukur_tb'),
-				'ukur_vitamin' 	=> $this->input->post('ukur_vitamin'),
-				'ukur_pmt_sts' 	=> $this->input->post('ukur_pmt_sts'),
-				'ukur_pmt_uraian' 	=> $this->input->post('ukur_pmt_uraian'),
-				'ukur_catatan' 	=> $this->input->post('ukur_catatan'),
-				'ukur_status_gizi' 	=> $this->input->post('ukur_status_gizi')
+	{	
 
+		$jadwal_id	 		= $this->input->post('jadwal_id');
+		$balita_id	 		= $this->input->post('balita_id');
+		$ukur_bb	 		= $this->input->post('ukur_bb');
+		$ukur_tb	 		= $this->input->post('ukur_tb');
+		$ukur_cara_ukur_tb	= $this->input->post('ukur_cara_ukur_tb');
+		$ukur_vitamin	 	= $this->input->post('ukur_vitamin');
+		$ukur_pmt_sts	 	= $this->input->post('ukur_pmt_sts');
+		$ukur_pmt_uraian	= $this->input->post('ukur_pmt_uraian');
+		$ukur_catatan	 	= $this->input->post('ukur_catatan');
+		$ukur_status_gizi	= $this->input->post('ukur_status_gizi');
+		
+				
+		//cek tgl pengukuran
+		$result_jadwal = $this->user_model->tgl_jadwal($jadwal_id);
+
+		foreach($result_jadwal as $row) :
+
+			//$jadwal_tgl = date('Y-m-d', strtotime($row->jadwal_tgl));
+			$date_jadwal = new DateTime($row->jadwal_tgl);
+
+		endforeach;
+
+		//check tanggal kelahiran balita
+		$result_balita = $this->user_model->balita_usia($balita_id);
+
+		foreach($result_balita as $rows) :
+
+			$tgl_lahir = date('Y-m-d', strtotime($rows->balita_tgl_lahir));
+			$date_lahir = new DateTime($tgl_lahir);
+			$interval_usia = date_diff($date_lahir, $date_jadwal);
+			$usia = $interval_usia->m + ($interval_usia->y * 12);
+
+		endforeach;
+
+		$data = array(
+				'jadwal_id' 		=> $jadwal_id,
+				'balita_id' 		=> $balita_id,
+				'ukur_usia' 		=> $usia,
+				'ukur_bb' 			=> $ukur_bb,
+				'ukur_tb' 			=> $ukur_tb,
+				'ukur_cara_ukur_tb' => $ukur_cara_ukur_tb,
+				'ukur_vitamin' 		=> $ukur_vitamin,
+				'ukur_pmt_sts' 		=> $ukur_pmt_sts,
+				'ukur_pmt_uraian' 	=> $ukur_pmt_uraian,
+				'ukur_catatan' 		=> $ukur_catatan,
+				'ukur_status_gizi' 	=> $ukur_status_gizi
 			);
 
 		$result = $this->user_model->add_pengukuran($data);
@@ -560,9 +625,10 @@ class Users extends CI_Controller {
 			{	
 				$this->session->set_flashdata('msg','Tambah Pengukuran');
 				redirect('pengukuran');
-
 			}
-	}
+		}
+
+	
 
 	public function detail_pengukuran()
 	{
@@ -822,7 +888,19 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];	
-		$data['jb_ukur_bulan_ini'] = $this->user_model->jb_ukur_bulan_ini();	
+		$data['jb_ukur_bulan_ini'] = $this->user_model->jb_ukur_bulan_ini();
+		$data['jb_ukur_bulan_ini_data'] = $this->user_model->jb_ukur_bulan_ini_data();
+		$data_timbang_balita = $this->user_model->jb_ukur_bulan_ini_data();
+		$outp = "";
+		foreach($data_timbang_balita as $rows):
+			$balita_id = $rows->balita_id;
+			if ($outp != "") {$outp .= ",";}
+
+	          $outp .= $balita_id;
+
+		endforeach;
+			$data_id = $outp;
+		$data['balita'] = $this->user_model->balita_data($data_id);	
 		$data['main_content'] = 'users/jb_ukur_bulan_ini';
 		$this->load->view('template/user/view', $data);
 	}
@@ -1031,8 +1109,9 @@ class Users extends CI_Controller {
 				$this->session->set_flashdata('msg','Tambah Kematian');
 				redirect('jb_kematian');
 			}
+		}
 
-	}
+	
 
 	public function persediaan_bahan()
 	{
@@ -1060,6 +1139,48 @@ class Users extends CI_Controller {
 		$data['tahun'] = $tahun;	
 		$data['rekap_pb'] = $this->user_model->loadDataTablePersediaan($kec_id,$kel_id,$posyandu_id,$bulan,$tahun);			
 		$data['main_content'] = 'users/rekap_persediaan_filter';
+		$this->load->view('template/user/view', $data);
+	}
+
+
+	public function add_timbang_bln_ini()
+	{	
+		$balita_id = $this->input->post('balita_id');
+		$timbang_tgl = date('Y-m-d', strtotime($this->input->post('timbang_tgl')));
+		
+
+		$data = array(
+				'balita_id' 	=> $this->input->post('balita_id'),
+				'timbang_tgl' 	=> $timbang_tgl
+			);
+
+		$result = $this->user_model->add_timbang_bln_ini($data);
+		if ($result) 
+			{	
+				$this->session->set_flashdata('msg','Tambah Timbang');
+				redirect('jb_ukur_bulan_ini');
+			}
+		}
+
+
+		public function pemulihan()
+	{
+		$data['title'] = 'PMT Pemulihan';		
+		$data['name'] = $this->name_member["name"];	
+		$data['balita_list'] = $this->user_model->balita_list();	
+		$data['posyandu'] = $this->user_model->posyandu();
+		$data['main_content'] = 'users/pemulihan';
+		$this->load->view('template/user/view', $data);
+	}
+
+	public function detail_pemulihan()
+	{
+		$balita_id = $this->uri->segment(2);
+
+		$data['title'] = 'Detail pemulihan';		
+		$data['name'] = $this->name_member["name"];
+		$data['pemulihan'] = $this->user_model->detail_pemulihan($balita_id);		
+		$data['main_content'] = 'users/detail_pemulihan';
 		$this->load->view('template/user/view', $data);
 	}
 

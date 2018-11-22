@@ -138,6 +138,7 @@ $route['jb_gizi_buruk'] = 'users/jb_gizi_buruk';
 $route['jb_oralit'] = 'users/jb_oralit';
 $route['jb_kematian'] = 'users/jb_kematian';
 $route['add_kematian'] = 'users/add_kematian';
+$route['add_timbang_bln_ini'] = 'users/add_timbang_bln_ini';
 
 
 
@@ -174,3 +175,7 @@ $route['iposyandu/rekap_pb'] = 'posyandu/rekap_pb';
 $route['iposyandu/rekap_pb_filter'] = 'posyandu/loadDataTableRekapPB';
 $route['iposyandu/resume_kp'] = 'posyandu/resume_kp';
 $route['iposyandu/resume_kp_filter'] = 'posyandu/loadDataTableResumeKP';
+
+//----------------PMT Pemulihan
+$route['pemulihan'] = 'users/pemulihan';
+$route['pemulihan/(:num)'] = 'users/detail_pemulihan/$1';

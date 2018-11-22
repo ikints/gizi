@@ -33,6 +33,9 @@
             <li>
               <a href="<?php echo base_url(); ?>kader"><i class="fa fa-fw fa-users"></i> Kader</a>
             </li>
+            <li>
+              <a href="<?php echo base_url(); ?>pemulihan"><i class="fa fa-first-order"></i> PMT Pemulihan</a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-bars"></i> Laporan <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
