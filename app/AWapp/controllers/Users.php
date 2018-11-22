@@ -890,10 +890,16 @@ class Users extends CI_Controller {
 		$data['jb_ukur_bulan_ini'] = $this->user_model->jb_ukur_bulan_ini();
 		$data['jb_ukur_bulan_ini_data'] = $this->user_model->jb_ukur_bulan_ini_data();
 		$data_timbang_balita = $this->user_model->jb_ukur_bulan_ini_data();
+		$outp = "";
 		foreach($data_timbang_balita as $rows):
-			$balita_id = ($rows->balita_id.",");
+			$balita_id = $rows->balita_id;
+			if ($outp != "") {$outp .= ",";}
+
+	          $outp .= $balita_id;
+
 		endforeach;
-		$data['balita'] = $this->user_model->balita_data($balita_id);	
+			$data_id = $outp;
+		$data['balita'] = $this->user_model->balita_data($data_id);	
 		$data['main_content'] = 'users/jb_ukur_bulan_ini';
 		$this->load->view('template/user/view', $data);
 	}
@@ -1104,7 +1110,7 @@ class Users extends CI_Controller {
 			}
 		}
 
-	}
+	
 
 	public function persediaan_bahan()
 	{

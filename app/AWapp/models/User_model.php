@@ -1370,7 +1370,7 @@ function jb_kms()
 			return $result;					
 	}
 
-function jb_ukur_bulan_ini()
+/*function jb_ukur_bulan_ini()
 	{					
 			$q = $this->db->select('
 
@@ -1388,21 +1388,48 @@ function jb_ukur_bulan_ini()
 			
 			$result = $q->get()->result();
 			return $result;					
-	}	
+	}*/	
+
+	function jb_ukur_bulan_ini()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				SUM( Case When (c.ukur_usia >= 0 AND c.ukur_usia < 6 ) Then 1 Else 0 End) as jumlah_ukur_06,
+				SUM( Case When (c.ukur_usia >= 6 AND c.ukur_usia < 12 ) Then 1 Else 0 End) as jumlah_ukur_612,
+				SUM( Case When (c.ukur_usia >= 12 AND c.ukur_usia < 24 ) Then 1 Else 0 End) as jumlah_ukur_1224
+				,SUM( Case When (c.ukur_usia >= 24 AND c.ukur_usia < 36 ) Then 1 Else 0 End) as jumlah_ukur_2436
+				,SUM( Case When (c.ukur_usia >= 36 AND c.ukur_usia <= 48 ) Then 1 Else 0 End) as jumlah_ukur_3648
+
+
+			')
+			
+			->from('posyandu a')
+			->join('balita b','b.posyandu_id = a.posyandu_id' , 'left')
+			->join('pengukuran c','c.balita_id = b.balita_id' , 'left')
+			->join('jadwal d','c.jadwal_id=d.jadwal_id','left')
+			->group_by('a.posyandu_id');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
 
 function jb_ukur_bulan_ini_data()
 	{					
 			$q = $this->db->select('
 
-				a.timbang_id as timbang_id,
-				a.timbang_tgl as timbang_tgl,
+				a.ukur_id as ukur_id,
+				a.ukur_usia as ukur_usia,
 				b.balita_id as balita_id,
 				b.balita_nama as balita_nama,
 				b.balita_tgl_lahir as balita_tgl_lahir
 
 			')
 			
-			->from('timbang a')
+			->from('pengukuran a')
 			->join('balita b', 'b.balita_id = a.balita_id');
 
 
