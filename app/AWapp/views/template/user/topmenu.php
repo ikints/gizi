@@ -49,7 +49,7 @@
                 <li><a href="<?php echo base_url(); ?>jb_kms">Jumlah Bayi KMS Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_naik_bb">Jumlah Bayi Berat Badan Naik Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_tidak_naik_bb">Jumlah Bayi  Berat Badan Tidak Naik Bulan Ini</a></li>
-                <li><a href="<?php echo base_url(); ?>jb_abses_bulan_lalu">Jumlah Bayi Absen Timbang Bulan Lalu</a></li>
+                <li><a href="<?php echo base_url(); ?>jb_absen_bulan_lalu">Jumlah Bayi Absen Timbang Bulan Lalu</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_pertama">Jumlah Bayi Pertama Hadir Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_ditimbang">Jumlah Bayi Ditimbang Bulan Ini</a></li>
                 <li><a href="<?php echo base_url(); ?>jb_absen_bulan_ini">Jumlah Bayi Absen Bulan Ini</a></li>

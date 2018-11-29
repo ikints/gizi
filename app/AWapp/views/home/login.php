@@ -25,6 +25,7 @@
 
       <div class="login-box">
     <div class="login-logo">
+      <img src="<?php echo base_url() ?>assets/images/logo.png"><br>
       <a href="#"><b>Login</b></a>
     </div>
     <!-- /.login-logo -->
@@ -57,8 +58,6 @@
     </div>
     <!-- /.login-box-body -->
   </div>
-  <center><a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Home</a></center>
-  <!-- /.login-box -->
 
     </div>
 </div>

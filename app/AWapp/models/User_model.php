@@ -1305,7 +1305,7 @@ function jb_pertama()
 			return $result;					
 	}
 
-function jb_abses_bulan_lalu()
+function jb_absen_bulan_lalu()
 	{					
 			$q = $this->db->select('
 
@@ -1389,7 +1389,7 @@ function jb_kms()
 			return $result;					
 	}
 
-/*function jb_ukur_bulan_ini()
+	function persediaan()
 	{					
 			$q = $this->db->select('
 
@@ -1399,6 +1399,7 @@ function jb_kms()
 				a.posyandu_rt as posyandu_rt,
 				a.posyandu_rw as posyandu_rw
 
+
 			')
 			
 			->from('posyandu a');
@@ -1407,7 +1408,28 @@ function jb_kms()
 			
 			$result = $q->get()->result();
 			return $result;					
-	}*/	
+	}
+
+	function penyuluhan()
+	{					
+			$q = $this->db->select('
+
+				a.posyandu_id as posyandu_id,			
+				a.posyandu_nama as posyandu_nama,
+				a.posyandu_alamat as posyandu_alamat,
+				a.posyandu_rt as posyandu_rt,
+				a.posyandu_rw as posyandu_rw
+
+
+			')
+			
+			->from('posyandu a');
+
+
+			
+			$result = $q->get()->result();
+			return $result;					
+	}
 
 	function jb_ukur_bulan_ini()
 	{					

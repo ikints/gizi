@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Jumlah Balita Berat Badan Tidan Naik
+        Jumlah Balita Absen Bulan lalu
       </h1>
     </section>
 
@@ -15,8 +15,8 @@
             <div class="box-body">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab_1" data-toggle="tab">Data Balita Berat Badan Tidak Naik</a></li>
-                  <li><a href="#tab_2" data-toggle="tab">Jumlah Balita Berat Badan Tidak Naik</a></li>
+                  <li class="active"><a href="#tab_1" data-toggle="tab">Data Balita Absen Bulan lalu</a></li>
+                  <li><a href="#tab_2" data-toggle="tab">Jumlah Balita Absen Bulan lalu</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
@@ -76,7 +76,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                          <?php $i=0; foreach ($jb_tidak_naik_bb as $rows) : $i++; ?>
+                          <?php $i=0; foreach ($jb_absen_bulan_lalu as $rows) : $i++; ?>
                             <tr>
                               <td><?php echo $i; ?></td>
                               <td><?php echo $rows->posyandu_nama; ?></td>
@@ -157,4 +157,3 @@
     
   });
 </script>
-        

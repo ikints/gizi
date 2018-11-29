@@ -40,9 +40,19 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>1</td>
+                                <td>Irwan Nasution</td>
+                                <td>2</td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Budiman Ahmad</td>
+                                <td>3</td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>Wati Maulidiah</td>
+                                <td>4</td>
                               </tr>
                             </tbody>  
                           </table>
@@ -70,11 +80,11 @@
                             <tr>
                               <td><?php echo $i; ?></td>
                               <td><?php echo $rows->posyandu_nama; ?></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>1</td>
+                              <td>2</td>
                             </tr>
                           <?php endforeach; ?>
                         </tbody>  
@@ -90,9 +100,60 @@
                 <!-- /.tab-content -->
               </div>
 
+              <div class="box-body">
+                  <div class="box box-primary">
+                        <div class="box-body box-profile">
+                          <div class="box-body chart-responsive">
+                              <div class="chart" id="grafikkms" style="height: 300px;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-legend text-center">
+                          <span><br>
+                            <span style="background-color: #00a65a; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (0-6) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #f56954; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (6-12) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #12a91c; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (12-24) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #4a2ad7; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (24-36) Bulan
+                          </span>
+                          <span><br>
+                            <span style="background-color: #1745c0; width: 20px; display: inline-block; margin: 5px;">&nbsp;</span>Usia (36-48) Bulan
+                          </span>
+                        </div>
+                  </div> 
+            </div>
+
     </section>
   </div>
 </div>
   <!-- /.content-wrapper -->
 
-        
+<script>
+  $(function () {
+    
+    //--------------------------------------------------Laporan Grafik
+
+    var barChart = new Morris.Bar({
+      element: 'grafikkms',
+      resize: true,
+      parseTime: false,
+      data: [{"posyandu_nama":"Posyandu RW I","jumlah_06":"2","jumlah_612":"3","jumlah_1224":"4","jumlah_2436":"1","jumlah_3648":"2"},
+            {"posyandu_nama":"Posyandu RW III","jumlah_06":"2","jumlah_612":"3","jumlah_1224":"4","jumlah_2436":"1","jumlah_3648":"2"},
+            {"posyandu_nama":"Biru","jumlah_06":"2","jumlah_612":"3","jumlah_1224":"4","jumlah_2436":"1","jumlah_3648":"2"},
+            {"posyandu_nama":"Merah","jumlah_06":"2","jumlah_612":"3","jumlah_1224":"4","jumlah_2436":"1","jumlah_3648":"2"}],
+      barColors: ['#00a65a', '#f56954', '#12a91c', '#4a2ad7', '#1745c0'],
+      xkey: 'posyandu_nama',
+      ykeys: ['jumlah_06', 'jumlah_612','jumlah_1224', 'jumlah_2436', 'jumlah_3648'],
+      labels: ['Usia 0-6', 'Usia 6-12','Usia 12-24', 'Usia 24-36', 'Usia 36-48'],
+      hideHover: 'auto',
+      xLabelAngle: 60,
+      redraw: true
+    });
+
+    
+  });
+</script>

@@ -859,8 +859,7 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'Laporan Penyuluhan';		
 		$data['name'] = $this->name_member["name"];
-		$data['kecamatan'] = $this->user_model->kecamatan();
-		$data['rekap_pb'] = $this->user_model->rekap_pb();			
+		$data['penyuluhan'] = $this->user_model->penyuluhan();			
 		$data['main_content'] = 'users/penyuluhan';
 		$this->load->view('template/user/view', $data);
 	}
@@ -932,12 +931,12 @@ class Users extends CI_Controller {
 		$this->load->view('template/user/view', $data);
 	}
 
-	public function jb_abses_bulan_lalu()
+	public function jb_absen_bulan_lalu()
 	{
 		$data['title'] = 'Laporan Lulus ASI Ekslusif';		
 		$data['name'] = $this->name_member["name"];		
-		$data['jb_abses_bulan_lalu'] = $this->user_model->jb_abses_bulan_lalu();
-		$data['main_content'] = 'users/jb_abses_bulan_lalu';
+		$data['jb_absen_bulan_lalu'] = $this->user_model->jb_absen_bulan_lalu();
+		$data['main_content'] = 'users/jb_absen_bulan_lalu';
 		$this->load->view('template/user/view', $data);
 	}
 
@@ -1062,22 +1061,6 @@ class Users extends CI_Controller {
 		$data['main_content'] = 'users/jb_kematian';
 		$this->load->view('template/user/view', $data);
 
-		/*$result_dewasa = array(); // create array 
-          $i = 0;
-
-          foreach($jumlah_dewasa as $key => $row)
-          {
-            $result_dewasa[$i]['title_dewasa'] = $title_dewasa[$i];
-            $result_dewasa[$i]['nama_peserta_dewasa'] = $nama_peserta_dewasa[$i];
-            $result_dewasa[$i]['tanda_pengenal_dewasa'] = $tanda_pengenal_dewasa[$i];
-            $result_dewasa[$i]['nomor_pengenal_dewasa'] = $nomor_pengenal_dewasa[$i];
-            $i++;
-          }
-                    
-          $responses_dewasa['results']= $result_dewasa;
-          $nm_peserta_dewasa = json_encode($responses_dewasa);
-          $datapage[ 'peserta_dewasa' ] = json_decode($nm_peserta_dewasa);*/
-
 	}
 
 	public function add_kematian()
@@ -1115,10 +1098,9 @@ class Users extends CI_Controller {
 
 	public function persediaan_bahan()
 	{
-		$data['title'] = 'Laporan Persediaan';		
-		$data['name'] = $this->name_member["name"];
-		$data['kecamatan'] = $this->user_model->kecamatan();
-		$data['rekap_pb'] = $this->user_model->rekap_pb();			
+		$data['title'] = 'Laporan Persediaan';				
+		$data['name'] = $this->name_member["name"];		
+		$data['persediaan'] = $this->user_model->persediaan();
 		$data['main_content'] = 'users/persediaan';
 		$this->load->view('template/user/view', $data);
 	}
