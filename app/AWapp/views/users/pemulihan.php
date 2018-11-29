@@ -37,22 +37,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                 <!--<?php foreach ($balita_list as $rows) : ?>
+                 <!--<?php //foreach ($balita_list as $rows) : ?>
                  <tr>
                   <td>
-                    <?php $attributes = array('class' => 'form-horizontal'); ?>
-                            <?php echo form_open('delete-pengukuran', $attributes); ?>
-                              <input type="hidden" name="ukur_id" value="<?php echo $rows->ukur_id; ?>" class="form-control">
+                    <?php //$attributes = array('class' => 'form-horizontal'); ?>
+                            <?php //echo form_open('delete-pengukuran', $attributes); ?>
+                              <input type="hidden" name="ukur_id" value="<?php //echo $rows->ukur_id; ?>" class="form-control">
                               <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah yakin akan dihapus?');"><i class="fa fa-remove"></i> Hapus</button>
                           </form> 
                   </td>
-                  <td><?php echo $rows->balita_nik ?></td>
-                  <td><a href="pemulihan/<?php echo $rows->balita_id;  ?>"><?php echo $rows->balita_nama ?></a></td>
-                  <td><?php echo $rows->jk ?></td>
-                  <td><?php echo $rows->mulai_pmt ?></td>
-                  <td><?php echo $rows->jml_pmt ?></td>
+                  <td><?php //echo $rows->balita_nik ?></td>
+                  <td><a href="pemulihan/<?php //echo $rows->balita_id;  ?>"><?php //echo $rows->balita_nama ?></a></td>
+                  <td><?php //echo $rows->jk ?></td>
+                  <td><?php //echo $rows->mulai_pmt ?></td>
+                  <td><?php //echo $rows->jml_pmt ?></td>
                 </tr>
-                <?php endforeach; ?> -->
+                <?php //endforeach; ?> -->
 
                 <tr>
                   <td>#</td>

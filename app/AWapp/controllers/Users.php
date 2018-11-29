@@ -1149,8 +1149,8 @@ class Users extends CI_Controller {
 	{
 		$data['title'] = 'PMT Pemulihan';		
 		$data['name'] = $this->name_member["name"];	
-		$data['balita_list'] = $this->user_model->balita_list();	
-		$data['posyandu'] = $this->user_model->posyandu();
+		//$data['balita_list'] = $this->user_model->balita_list();	
+		//$data['posyandu'] = $this->user_model->posyandu();
 		$data['main_content'] = 'users/pemulihan';
 		$this->load->view('template/user/view', $data);
 	}
