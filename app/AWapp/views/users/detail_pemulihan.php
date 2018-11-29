@@ -1,4 +1,3 @@
-Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="container">
     <!-- Content Header (Page header) -->
